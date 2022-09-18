@@ -1,0 +1,41 @@
+{
+  "name": "frontdesk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "bin": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProyectosEspeciales/Raghsa-FrontDesk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProyectosEspeciales/Raghsa-FrontDesk/issues"
+  },
+  "homepage": "https://github.com/ProyectosEspeciales/Raghsa-FrontDesk#readme",
+  "dependencies": {
+    "chrome-launcher": "^0.15.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.2",
+    "express": "^4.17.3",
+    "open": "^8.4.0",
+    "socket.io": "^4.4.1",
+    "socket.io-stream": "^0.9.1",
+    "winston": "^3.8.2"
+  },
+  "pkg": {
+    "scripts": "src/backend/**/*",
+    "assets": [
+      "public/**/*",
+      "backend/**/*"
+    ],
+    "targets": [
+      "node14-win-arm64"
+    ],
+    "outputPath": "dist"
+  }
+}

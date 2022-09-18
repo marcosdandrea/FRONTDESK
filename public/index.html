@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./styles/globals.css">
+    <link rel="stylesheet" href="./styles/nomenclatorStyle.css" />
+    <link rel="stylesheet" href="./styles/frontDeskStyle.css" />
+
+    <script src="./scripts/socket.io/socket.io.js"></script>
+    <script src="./scripts/sockets.js" defer></script>
+
+    <script src="./scripts/errorManagement.js" defer></script>
+    <script src="./scripts/bindElements.js" defer></script>
+
+    <script src="./scripts/calendarVideoPlayer.js" defer></script>
+    <script src="./scripts/nomenclatorBuilder.js" defer></script>
+    <script src="./scripts//comunicationManager.js" defer></script>
+    <title></title>
+  </head>
+  <body>
+    <div class="frontDesk">
+      <div class="errorDebugger">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, dolor.</div>
+      <div class="mediaContainer">
+        <video 
+          id="videoPlayer"
+          poster=""
+          loop muted autoplay class="videoPlayer"></video>
+      </div>
+      <div class="nomenclator">
+        <div class="branding"> </div>
+        <div class="floorListContainer">
+          <div class="building1">
+            <div class="floorList"></div>
+          </div>
+          <div class="building2">
+            <div class="floorList"></div>
+          </div>
+        </div>
+      </div>
+      <div class="comunications">
+        <img src="./assets/comunication.png" alt="">
+      </div>
+    </div>
+  </body>
+</html>

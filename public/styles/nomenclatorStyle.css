@@ -1,0 +1,107 @@
+
+.nomenclator{
+    aspect-ratio: 9/17.065;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: opacity 2s ease;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    row-gap: calc(var(--scale) * 8 );
+    padding-top: 4rem;
+}
+
+.floorListContainer{
+    display: flex;
+    width: 90%;  
+    overflow: hidden; 
+    flex-direction: column; 
+    row-gap: calc(var(--scale) * 5); 
+}
+
+.building1 .floorList{
+    justify-content: space-between;
+}
+
+.building1{
+    height: calc(var(--scale) * 80);
+    border-bottom: solid;
+    border-width: 2px;
+    border-image: linear-gradient(to right, #85807e00, #85807E, #85807e00) 1;
+    padding-bottom: calc(var(--scale) * 7);
+}
+
+.building2{
+    height: calc(var(--scale) * 20);
+}
+
+.floorList{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    row-gap: calc(var(--scale) * 1.4);
+    column-gap: 1rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.floor{
+    font-family: "Stainless Bold", serif;
+    width: 29rem;
+    display: flex;
+    gap: 1rem;
+    border-bottom: solid;
+    border-width: 1px;
+    border-image: linear-gradient(to right, #85807E, #85807e00) 1;
+    padding-bottom: calc(var(--scale) * 1.4);
+    padding-left: 1rem;
+    overflow: hidden;
+}
+
+.buildingSplit{
+    font-family: "Stainless Regular", serif;
+    color: #B6B3B2;
+    font-size: calc(var(--scale) * 1.2);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.floorNumber{
+    color: #85807E;
+    min-width: calc(var(--scale) * 3);
+    display: flex;
+    align-items: center;
+}
+
+.namesContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: calc(var(--scale) * 0.8);
+}
+
+.name{
+    color: #85807E;
+    font-size: calc(var(--scale) * 2);
+    font-family: "Stainless Regular", serif;
+    display: flex;
+    align-items: flex-start;
+    line-height: calc(var(--scale) * 2.2);
+}
+
+.branding{
+    background-image: url(../assets/brand.png);
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: calc(var(--scale) * 11);
+
+}
+
+#nomenclatorScale{
+    width: 85%;
+}

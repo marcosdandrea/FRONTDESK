@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="videoStyle.css">
+    <script src="videoMain.js" defer></script>
+    <title>Panel</title>
+</head>
+
+<body>
+    <h1>Centro Empresarial Libertador</h1>
+
+    <div class="panelContainer">
+        <div class="upperContainer">
+            <h2>Modificación de Nomina</h2>
+            <div class="rangeContainer">
+                <p>Escala Global de Display</p>
+                <input type="range">
+            </div>
+        </div>
+
+
+
+        <div class="cardsContainer">
+            <div class="cards">
+                <div class="innerCard">
+                    <h3>01</h3>
+                    <div class="officeContainer">
+                        <!--  <img src="cartelTesting.jpg" alt=""> -->
+                    </div>
+                    <div class="cardTitle">
+                        <p>Titulo del Archivo</p>
+
+                        <button>Cambiar Archivo</button>
+                        <button>Reproducir Ahora</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardsContainer">
+                <div class="cards">
+                    <div class="innerCard">
+                        <h3>02</h3>
+                        <div class="officeContainer">
+                            <!--  <img src="cartelTesting.jpg" alt=""> -->
+                        </div>
+                        <div class="cardTitle">
+                            <p>Titulo del Archivo</p>
+
+                            <button>Cambiar Archivo</button>
+                            <button>Reproducir Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cardsContainer">
+                    <div class="cards">
+                        <div class="innerCard">
+                            <h3>03</h3>
+                            <div class="officeContainer">
+                                <!--  <img src="cartelTesting.jpg" alt=""> -->
+                            </div>
+                            <div class="cardTitle">
+                                <p>Titulo del Archivo</p>
+
+                                <button>Cambiar Archivo</button>
+                                <button>Reproducir Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+
+            </div>
+            <video id="video" src="miVideo.mp4" type="video/mp4" controls height="200px" width="auto"></video><br/>
+         
+            <canvas id="canvas"></canvas> <br/><br/>
+           
+
+</body>
+
+</html>
+
+<!--<div class="building1">
+                <div class="floorList">
+                    <div class="floor">
+                        <div class="floorNumber">01</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">HIT <br> ZS</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">02</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">HIT <br> Naranja X</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">03</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">HIT | Workcafé <br> Wildlife | ank</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">04</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">GlaxoSmithKline</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">05</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">Lenovo</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">06</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">Lenovo Motorola</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">07</div>
+                        <div class="namesContainer">
+                            <div class="buildingSplit">N<div class="name">Ciena</div>
+                            </div>
+                            <div class="buildingSplit">S<div class="name">L'Oréal</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">08</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">L'Oréal</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">09</div>
+                        <div class="namesContainer">
+                            <div class="buildingSplit">N<div class="name">Lenovo</div>
+                            </div>
+                            <div class="buildingSplit">S<div class="name">Servier</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">10</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">Hewlett Packard Enterprise</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">11</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">National Shipping S.A.</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">12</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">RAGHSA</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">14</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">Takeda</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">15</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">Raízen</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">16</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">Syneos Health</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">17</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">Chevron - COSCO</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">18</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">Chevron</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">19</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">Syneos Health</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">20</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">PedidosYa</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">21</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">RAGHSA</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">22</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">RAGHSA</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">23</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">RAGHSA</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">24</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">RAGHSA</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">25</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">Navent</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">26</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">RAGHSA</div>
+                        </div>
+                    </div>
+                    <div class="floor">
+                        <div class="floorNumber">27</div>
+                        <div class="buildingSplit">&nbsp; &nbsp;<div class="name">RAGHSA</div>
+                        </div>
+                    </div>
+                </div>
+        </div> -->

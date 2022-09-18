@@ -1,0 +1,269 @@
+["-------------------------------------------------------------
+19/5/2022 | admin | 14:22 - [ACT] A seleccionado el video FIN DE AÑO -ATARDECER.mp4 para el día 24/12/2022, a la hora undefined
+19/5/2022 | admin | 14:18 - [ACT] A seleccionado el video FIN DE AÑO -MEDIODIA.mp4 para el día 24/12/2022, a la hora undefined
+19/5/2022 | admin | 14:16 - [ACT] A seleccionado el video FIN DE AÑO -MAÑANA.mp4 para el día 24/12/2022, a la hora undefined
+19/5/2022 | admin | 14:14 - [ACT] Agregó un nuevo día: 24/12/2022
+19/5/2022 | admin | 14:14 - [ACT] Cambió el video del día de Agregue un video... a VERANO-ATARDECER.mp4
+19/5/2022 | admin | 14:14 - [ACT] Cambió el video del día de Agregue un video... a VERANO-MEDIODIA-REDUX.mp4
+19/5/2022 | admin | 14:13 - [ACT] Cambió el video del día de Agregue un video... a VERANO-MAÑANA.mp4
+19/5/2022 | admin | 14:13 - [ACT] Agregó un nuevo día: 21/12/2022
+19/5/2022 | admin | 14:13 - [ACT] Cambió el video del día de Agregue un video... a PRIMAVERA-ATARDECER.mp4
+19/5/2022 | admin | 14:13 - [ACT] Cambió el video del día de Agregue un video... a PRIMAVERA-MEDIODIA.mp4
+19/5/2022 | admin | 14:13 - [ACT] Cambió el video del día de Agregue un video... a PRIMAVERA-MAÑANA.mp4
+19/5/2022 | admin | 14:13 - [ACT] Agregó un nuevo día: 22/11/2022
+19/5/2022 | admin | 14:12 - [ACT] Cambió el video del día de Agregue un video... a FIESTASPATRIAS.mp4
+19/5/2022 | admin | 14:12 - [ACT] Reprogramó la fecha de inicio de campaña del 19/11/2022 al 20/11/2022
+19/5/2022 | admin | 14:12 - [ACT] Reprogramó la fecha de inicio de campaña del 20/10/2022 al 19/11/2022
+19/5/2022 | admin | 14:12 - [ACT] Agregó un nuevo día: 20/10/2022
+19/5/2022 | admin | 14:12 - [ACT] A seleccionado el video PRIMAVERA-ATARDECER.mp4 para el día 21/09/2022, a la hora undefined
+19/5/2022 | admin | 14:09 - [ACT] A seleccionado el video PRIMAVERA-MEDIODIA.mp4 para el día 21/09/2022, a la hora undefined
+19/5/2022 | admin | 14:06 - [ACT] A seleccionado el video PRIMAVERA-MAÑANA.mp4 para el día 21/09/2022, a la hora undefined
+19/5/2022 | admin | 14:04 - [ACT] Reprogramó la fecha de inicio de campaña del 21/08/2022 al 21/09/2022
+19/5/2022 | admin | 14:04 - [ACT] Agregó un nuevo día: 21/08/2022
+19/5/2022 | admin | 14:03 - [ACT] Cambió el video del día de Agregue un video... a FIESTASPATRIAS.mp4
+19/5/2022 | admin | 14:03 - [ACT] Agregó un nuevo día: 17/08/2022
+19/5/2022 | admin | 14:03 - [ACT] Cambió el video del día de Agregue un video... a INVIERNO-ATARDECER.mp4
+19/5/2022 | admin | 14:03 - [ACT] Cambió el video del día de Agregue un video... a INVIERNO-MEDIODIA.mp4
+19/5/2022 | admin | 14:02 - [ACT] Cambió el video del día de Agregue un video... a INVIERNO-MAÑANA.mp4
+19/5/2022 | admin | 14:02 - [ACT] Agregó un nuevo día: 10/07/2022
+19/5/2022 | admin | 14:02 - [ACT] Cambió el video del día de Agregue un video... a FIESTASPATRIAS.mp4
+19/5/2022 | admin | 14:02 - [ACT] Agregó un nuevo día: 09/07/2022
+19/5/2022 | admin | 14:01 - [ACT] Cambió el video del día de Agregue un video... a INVIERNO-ATARDECER.mp4
+19/5/2022 | admin | 14:01 - [ACT] Cambió el video del día de Agregue un video... a INVIERNO-MEDIODIA.mp4
+19/5/2022 | admin | 14:01 - [ACT] Cambió el video del día de Agregue un video... a INVIERNO-MAÑANA.mp4
+19/5/2022 | admin | 14:01 - [ACT] Agregó un nuevo día: 18/06/2022
+19/5/2022 | admin | 14:00 - [ACT] Cambió el video del día de Agregue un video... a FIESTASPATRIAS.mp4
+19/5/2022 | admin | 14:00 - [ACT] Agregó un nuevo día: 17/06/2022
+19/5/2022 | admin | 14:00 - [ACT] Reprogramó la fecha de inicio de campaña del 21/07/2022 al 21/06/2022
+19/5/2022 | admin | 13:59 - [ACT] Borró el video FIESTASPATRIAS.mp4 del día 17/07/2022
+19/5/2022 | admin | 13:59 - [ACT] Cambió el video del día de Agregue un video... a FIESTASPATRIAS.mp4
+19/5/2022 | admin | 13:59 - [ACT] Agregó un nuevo día: 17/07/2022
+19/5/2022 | admin | 13:58 - [ACT] A seleccionado el video INVIERNO-ATARDECER.mp4 para el día 21/07/2022, a la hora undefined
+19/5/2022 | admin | 13:56 - [ACT] A seleccionado el video INVIERNO-MEDIODIA.mp4 para el día 21/07/2022, a la hora undefined
+19/5/2022 | admin | 13:53 - [ACT] A seleccionado el video INVIERNO-MAÑANA.mp4 para el día 21/07/2022, a la hora undefined
+19/5/2022 | admin | 13:51 - [ACT] Agregó un nuevo día: 21/07/2022
+19/5/2022 | admin | 13:51 - [ACT] Cambió el video del día de Agregue un video... a FIESTASPATRIAS.mp4
+19/5/2022 | admin | 13:51 - [ACT] Agregó un nuevo día: 20/06/2022
+19/5/2022 | admin | 13:50 - [ACT] Cambió el video del día de Agregue un video... a OTOÑO-ATARDECER.mp4
+19/5/2022 | admin | 13:50 - [ACT] Cambió el video del día de Agregue un video... a OTOÑO-MEDIODIA.mp4
+19/5/2022 | admin | 13:50 - [ACT] Cambió el video del día de Agregue un video... a OTOÑO-MAÑANA.mp4
+19/5/2022 | admin | 13:50 - [ACT] Agregó un nuevo día: 26/05/2022
+19/5/2022 | admin | 13:49 - [ACT] Cambió el video del día de Agregue un video... a FIESTASPATRIAS.mp4
+19/5/2022 | admin | 13:49 - [ACT] Agregó un nuevo día: 18/05/2022
+19/5/2022 | admin | 13:48 - [ACT] A seleccionado el video OTOÑO-ATARDECER.mp4 para el día 21/03/2022, a la hora undefined
+19/5/2022 | admin | 13:46 - [ACT] A seleccionado el video OTOÑO-MEDIODIA.mp4 para el día 21/03/2022, a la hora undefined
+19/5/2022 | admin | 13:44 - [ACT] A seleccionado el video OTOÑO-MAÑANA.mp4 para el día 21/03/2022, a la hora undefined
+19/5/2022 | admin | 13:42 - [ACT] Agregó un nuevo día: 21/03/2022
+19/5/2022 | admin | 13:40 - [ACT] A seleccionado el video VERANO-MEDIODIA-REDUX.mp4 para el día 03/04/2022, a la hora undefined
+19/5/2022 | admin | 13:36 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 13:36 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+19/5/2022 | admin | 14:30 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:30 - [ACT] Cambio la escala a 1.04
+19/5/2022 | admin | 14:30 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:30 - [ACT] Cambio la escala a 1.20
+19/5/2022 | admin | 14:30 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:30 - [ACT] Cambio la escala a 1.18
+19/5/2022 | admin | 14:30 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:30 - [ACT] Cambio la escala a 1.22
+19/5/2022 | admin | 14:30 - [ACT] Cambio la escala a 1.16
+19/5/2022 | admin | 14:30 - [ACT] Cambio la escala a 1.12
+19/5/2022 | admin | 14:29 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:29 - [ACT] Escribió Amazon Web Services en el piso 12 del building1
+19/5/2022 | admin | 14:29 - [ACT] Escribió Cervecería y Maltería Quilmes en el piso 27 del building1
+19/5/2022 | admin | 14:29 - [ACT] Escribió Cervecería y Maltería Quilmes en el piso 26 del building1
+19/5/2022 | admin | 14:29 - [ACT] Escribió Cervecería y Maltería Quilmes en la división sur del piso 21 del building1
+19/5/2022 | admin | 14:29 - [ACT] Activó la división del piso 21 del building1
+19/5/2022 | admin | 14:28 - [ACT] Ingresó al modo Modificar Nomenclador
+19/5/2022 | admin | 14:28 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 14:28 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+19/5/2022 | admin | 14:54 - [LOG] El usuario ha cerrado sesión
+19/5/2022 | admin | 14:53 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 14:52 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:52 - [ACT] Cambio la escala a 1.28
+19/5/2022 | admin | 14:52 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:52 - [ACT] Cambio la escala a 1.30
+19/5/2022 | admin | 14:52 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:52 - [ACT] Cambio la escala a 1.31
+19/5/2022 | admin | 14:52 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:52 - [ACT] Cambio la escala a 1.33
+19/5/2022 | admin | 14:52 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:52 - [ACT] Cambio la escala a 1.25
+19/5/2022 | admin | 14:52 - [ACT] Cambio la escala a 1.16
+19/5/2022 | admin | 14:52 - [ACT] Cambio la escala a 1.10
+19/5/2022 | admin | 14:52 - [ACT] Cambio la escala a 0.97
+19/5/2022 | admin | 14:52 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:52 - [ACT] Cambio la escala a 0.74
+19/5/2022 | admin | 14:52 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:52 - [ACT] Cambio la escala a 1.07
+19/5/2022 | admin | 14:51 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:50 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:48 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:48 - [ACT] Cambio la escala a 1.25
+19/5/2022 | admin | 14:48 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:48 - [ACT] Cambio la escala a 1.20
+19/5/2022 | admin | 14:48 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:48 - [ACT] Cambio la escala a 1.11
+19/5/2022 | admin | 14:48 - [ACT] Cambio la escala a 1.06
+19/5/2022 | admin | 14:48 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:46 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:46 - [ACT] Cambio la escala a 1.10
+19/5/2022 | admin | 14:46 - [ACT] Ingresó al modo Modificar Nomenclador
+19/5/2022 | admin | 14:46 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 14:46 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+19/5/2022 | admin | 14:56 - [ACT] Publicó los cambios
+19/5/2022 | admin | 14:56 - [ACT] Cambio la escala a 1.24
+19/5/2022 | admin | 14:56 - [ACT] Cambio la escala a 1.22
+19/5/2022 | admin | 14:56 - [ACT] Ingresó al modo Modificar Nomenclador
+19/5/2022 | admin | 14:56 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 14:56 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+19/5/2022 | admin | 14:58 - [LOG] El usuario ha cerrado sesión
+19/5/2022 | admin | 14:57 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 14:57 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+19/5/2022 | admin | 15:00 - [LOG] El usuario ha cerrado sesión
+19/5/2022 | admin | 14:58 - [ACT] Ingresó al modo Modificar Nomenclador
+19/5/2022 | admin | 14:58 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 14:58 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+19/5/2022 | admin | 15:03 - [LOG] El usuario ha cerrado sesión
+19/5/2022 | admin | 15:02 - [ACT] Ingresó al modo Modificar Nomenclador
+19/5/2022 | admin | 15:02 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 15:02 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+19/5/2022 | admin | 15:06 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 15:05 - [ACT] Publicó los cambios
+19/5/2022 | admin | 15:05 - [ACT] Escribió Lenovo en el piso 05 del building1
+19/5/2022 | admin | 15:05 - [ACT] Publicó los cambios
+19/5/2022 | admin | 15:05 - [ACT] Escribió Ragsha en el piso 05 del building1
+19/5/2022 | admin | 15:04 - [ACT] Ingresó al modo Modificar Nomenclador
+19/5/2022 | admin | 15:04 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 15:04 - [ACT] Ingresó al modo Modificar Nomenclador
+19/5/2022 | admin | 15:04 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 15:04 - [ACT] Ingresó al modo Modificar Nomenclador
+19/5/2022 | admin | 15:04 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 15:04 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+19/5/2022 | admin | 15:06 - [LOG] El usuario ha cerrado sesión
+19/5/2022 | admin | 15:06 - [ACT] Escribió Raghsa en la división sur del piso 05 del building1
+19/5/2022 | admin | 15:06 - [ACT] Publicó los cambios
+19/5/2022 | admin | 15:06 - [ACT] Activó la división del piso 05 del building1
+19/5/2022 | admin | 15:06 - [ACT] Ingresó al modo Modificar Nomenclador
+19/5/2022 | admin | 15:06 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 15:06 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+19/5/2022 | admin | 15:33 - [LOG] El usuario ha cerrado sesión
+19/5/2022 | admin | 15:33 - [ACT] Ingresó al modo Programación de Videos
+19/5/2022 | admin | 15:33 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+24/5/2022 | j.garvie | 18:17 - [LOG] El usuario ha cerrado sesión
+24/5/2022 | j.garvie | 18:16 - [ACT] Cambió el video del día de VERANO-MEDIODIA.mp4 a FIESTASPATRIAS.mp4
+24/5/2022 | j.garvie | 18:15 - [ACT] Cambió el video del día de FIESTASPATRIAS.mp4 a VERANO-MEDIODIA.mp4
+24/5/2022 | j.garvie | 18:14 - [ACT] Cambió el video del día de FIN DE AÑO -ATARDECER.mp4 a OTOÑO-ATARDECER.mp4
+24/5/2022 | j.garvie | 18:13 - [ACT] Cambió el video del día de OTOÑO-ATARDECER.mp4 a OTOÑO-MEDIODIA.mp4
+24/5/2022 | j.garvie | 18:13 - [ACT] Cambió el video del día de FIN DE AÑO -MEDIODIA.mp4 a OTOÑO-ATARDECER.mp4
+24/5/2022 | j.garvie | 18:13 - [ACT] Cambió el video del día de FIN DE AÑO -MAÑANA.mp4 a OTOÑO-MAÑANA.mp4
+24/5/2022 | j.garvie | 18:12 - [ACT] Cambió el video del día de Agregue un video... a OTOÑO-MAÑANA.mp4
+24/5/2022 | j.garvie | 18:11 - [ACT] Agregó un nuevo día: 26/05/2022
+24/5/2022 | j.garvie | 18:06 - [ACT] Reprogramó la fecha de inicio de campaña del 26/05/2022 al 25/05/2022
+24/5/2022 | j.garvie | 18:06 - [ACT] Reprogramó la fecha de inicio de campaña del 18/05/2022 al 24/05/2022
+24/5/2022 | j.garvie | 18:05 - [ACT] Ingresó al modo Programación de Videos
+24/5/2022 | j.garvie | 18:05 - [ACT] Ingresó al modo Modificar Nomenclador
+24/5/2022 | j.garvie | 18:01 - [ACT] Ingresó al modo Programación de Videos
+24/5/2022 | j.garvie | 18:01 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+24/5/2022 | j.garvie | 18:35 - [LOG] El usuario ha cerrado sesión
+24/5/2022 | j.garvie | 18:35 - [ACT] Ingresó al modo Programación de Videos
+24/5/2022 | j.garvie | 18:32 - [ACT] Ingresó al modo Modificar Nomenclador
+24/5/2022 | j.garvie | 18:29 - [ACT] Ingresó al modo Programación de Videos
+24/5/2022 | j.garvie | 18:27 - [ACT] Reestableció los parámtros
+24/5/2022 | j.garvie | 18:27 - [ACT] Publicó los cambios
+24/5/2022 | j.garvie | 18:27 - [ACT] Escribió HIT <br>ZS en el piso 01 del building1
+24/5/2022 | j.garvie | 18:27 - [ACT] Publicó los cambios
+24/5/2022 | j.garvie | 18:26 - [ACT] Escribió HIT d<br>ZS en el piso 01 del building1
+24/5/2022 | j.garvie | 18:26 - [ACT] Publicó los cambios
+24/5/2022 | j.garvie | 18:26 - [ACT] Ingresó al modo Modificar Nomenclador
+24/5/2022 | j.garvie | 18:24 - [ACT] Ingresó al modo Programación de Videos
+24/5/2022 | j.garvie | 18:24 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+24/5/2022 | j.garvie | 18:36 - [ACT] Ingresó al modo Modificar Nomenclador
+24/5/2022 | j.garvie | 18:35 - [ACT] Ingresó al modo Programación de Videos
+24/5/2022 | j.garvie | 18:35 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+26/5/2022 | j.garvie | 17:47 - [LOG] El usuario ha cerrado sesión
+26/5/2022 | j.garvie | 17:42 - [ACT] Desactivó la división del piso 11 del building1
+26/5/2022 | j.garvie | 17:42 - [ACT] Activó la división del piso 11 del building1
+26/5/2022 | j.garvie | 17:40 - [ACT] Ingresó al modo Modificar Nomenclador
+26/5/2022 | j.garvie | 17:39 - [ACT] Cambió el video del día de VERANO-MEDIODIA-REDUX.mp4 a OTOÑO-ATARDECER.mp4
+26/5/2022 | j.garvie | 17:38 - [ACT] Cambió el video del día de PRIMAVERA-MEDIODIA.mp4 a OTOÑO-MEDIODIA.mp4
+26/5/2022 | j.garvie | 17:37 - [ACT] Cambió el video del día de VERANO-MEDIODIA-REDUX.mp4 a PRIMAVERA-MEDIODIA.mp4
+26/5/2022 | j.garvie | 17:36 - [ACT] Cambió el video del día de OTOÑO-MEDIODIA.mp4 a VERANO-MEDIODIA-REDUX.mp4
+26/5/2022 | j.garvie | 17:35 - [ACT] Cambió el video del día de Agregue un video... a VERANO-MEDIODIA-REDUX.mp4
+26/5/2022 | j.garvie | 17:31 - [ACT] Cambió el video del día de Agregue un video... a OTOÑO-MEDIODIA.mp4
+26/5/2022 | j.garvie | 17:25 - [ACT] Cambió el video del día de OTOÑO-ATARDECER.mp4 a OTOÑO-MAÑANA.mp4
+26/5/2022 | j.garvie | 17:23 - [ACT] Cambió el video del día de OTOÑO-MEDIODIA.mp4 a OTOÑO-ATARDECER.mp4
+26/5/2022 | j.garvie | 17:19 - [ACT] Cambió el video del día de OTOÑO-MAÑANA.mp4 a OTOÑO-MEDIODIA.mp4
+26/5/2022 | j.garvie | 17:14 - [ACT] Ingresó al modo Programación de Videos
+26/5/2022 | j.garvie | 17:14 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+27/5/2022 | j.garvie | 09:29 - [LOG] El usuario ha cerrado sesión
+27/5/2022 | j.garvie | 09:25 - [ACT] Publicó los cambios
+27/5/2022 | j.garvie | 09:25 - [ACT] Publicó los cambios
+27/5/2022 | j.garvie | 09:25 - [ACT] Escribió RAGHSA  en la división norte del piso 11 del building1
+27/5/2022 | j.garvie | 09:24 - [ACT] Escribió National Shipping S.A. en la división norte del piso 11 del building1
+27/5/2022 | j.garvie | 09:23 - [ACT] Ingresó al modo Modificar Nomenclador
+27/5/2022 | j.garvie | 09:23 - [ACT] Ingresó al modo Programación de Videos
+27/5/2022 | j.garvie | 09:23 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+6/7/2022 | admin | 16:35 - [ACT] Configuró el inicio del video INVIERNO-ATARDECER.mp4 a las undefinedhs del día 06/07/2022
+6/7/2022 | admin | 16:35 - [ACT] A seleccionado el video INVIERNO-ATARDECER.mp4 para el día 06/07/2022, a la hora undefined
+6/7/2022 | admin | 16:31 - [ACT] Borró el video (no seleccionó un archivo) del día 06/07/2022
+6/7/2022 | admin | 16:30 - [ACT] Cambió el video del día de Agregue un video... a FIESTASPATRIAS.mp4
+6/7/2022 | admin | 16:30 - [ACT] Agregó un nuevo día: 06/07/2022
+6/7/2022 | admin | 16:28 - [ACT] Ingresó al modo Programación de Videos
+6/7/2022 | admin | 16:28 - [ACT] Escribió Visionar en la división sur del piso 01 del building1
+6/7/2022 | admin | 16:28 - [ACT] Publicó los cambios
+6/7/2022 | admin | 16:28 - [ACT] Activó la división del piso 01 del building1
+6/7/2022 | admin | 16:27 - [ACT] Ingresó al modo Modificar Nomenclador
+6/7/2022 | admin | 16:27 - [ACT] Ingresó al modo Programación de Videos
+6/7/2022 | admin | 16:27 - [ACT] Escribió Guillou Brands en el piso 01 del building1
+6/7/2022 | admin | 16:27 - [ACT] Publicó los cambios
+6/7/2022 | admin | 16:27 - [ACT] Ingresó al modo Modificar Nomenclador
+6/7/2022 | admin | 16:27 - [ACT] Ingresó al modo Programación de Videos
+6/7/2022 | admin | 16:27 - [ACT] Ingresó al modo Modificar Nomenclador
+6/7/2022 | admin | 16:27 - [ACT] Ingresó al modo Programación de Videos
+6/7/2022 | admin | 16:27 - [ACT] Ingresó al modo Modificar Nomenclador
+6/7/2022 | admin | 16:26 - [ACT] Cambió el video del día de FIESTASPATRIAS.mp4 a INVIERNO-MEDIODIA.mp4
+6/7/2022 | admin | 16:26 - [ACT] Ingresó al modo Programación de Videos
+6/7/2022 | admin | 16:26 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+9/9/2022 | admin | 10:16 - [ACT] Cambió el video del día de INVIERNO-ATARDECER.mp4 a INVIERNO-MEDIODIA.mp4
+9/9/2022 | admin | 10:16 - [ACT] Cambió el video del día de FIESTASPATRIAS.mp4 a INVIERNO-ATARDECER.mp4
+9/9/2022 | admin | 10:16 - [ACT] Ingresó al modo Programación de Videos
+9/9/2022 | admin | 10:16 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+9/9/2022 | admin | 10:28 - [LOG] El usuario ha cerrado sesión
+9/9/2022 | admin | 10:25 - [ACT] Cambió el video del día de INVIERNO-MEDIODIA.mp4 a FIESTASPATRIAS.mp4
+9/9/2022 | admin | 10:25 - [ACT] Ingresó al modo Programación de Videos
+9/9/2022 | admin | 10:25 - [LOG] El usuario ha iniciado sesión
+-------------------------------------------------------------
+14/9/2022 | admin | 14:23 - [ACT] Publicó los cambios
+14/9/2022 | admin | 14:23 - [ACT] Cambio la escala a 0.84
+14/9/2022 | admin | 14:23 - [ACT] Publicó los cambios
+14/9/2022 | admin | 14:23 - [ACT] Cambio la escala a 1.04
+14/9/2022 | admin | 14:22 - [ACT] Escribió Raghsa en la división sur del piso 01 del building1
+14/9/2022 | admin | 14:22 - [ACT] Publicó los cambios
+14/9/2022 | admin | 14:22 - [ACT] Activó la división del piso 01 del building1
+14/9/2022 | admin | 14:22 - [ACT] Escribió Proyecciones Digitales en el piso 01 del building1
+14/9/2022 | admin | 14:22 - [ACT] Publicó los cambios
+14/9/2022 | admin | 14:22 - [ACT] Desactivó la división del piso 01 del building1
+14/9/2022 | admin | 14:22 - [ACT] Ingresó al modo Modificar Nomenclador
+14/9/2022 | admin | 14:21 - [ACT] Cambió el video del día de Agregue un video... a FIN DE AÑO -ATARDECER.mp4
+14/9/2022 | admin | 14:21 - [ACT] Agregó un nuevo día: 14/09/2022
+14/9/2022 | admin | 14:21 - [ACT] Cambió el video del día de INVIERNO-ATARDECER.mp4 a INVIERNO-MEDIODIA.mp4
+14/9/2022 | admin | 14:21 - [ACT] Cambió el video del día de FIESTASPATRIAS.mp4 a INVIERNO-ATARDECER.mp4
+14/9/2022 | admin | 14:21 - [ACT] Ingresó al modo Programación de Videos
+14/9/2022 | admin | 14:21 - [LOG] El usuario ha iniciado sesión"]

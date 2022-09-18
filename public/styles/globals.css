@@ -1,0 +1,26 @@
+@font-face {
+    font-family: "Stainless Regular";
+    src: url("../assets/fonts/StainlessRegular.otf");
+}
+
+@font-face {
+    font-family: "Stainless Bold";
+    src: url("../assets/fonts/StainlessBold.otf");
+}
+
+@font-face {
+    font-family: "Stainless Light";
+    src: url("../assets/fonts/StainlessLight.otf");
+}
+
+:root {
+    --scale: 1rem;
+}
+
+body {
+    /* background-image: url(../Design/ref-02.png); */
+    background-size: cover;
+    margin:0px;
+    font-size: calc(var(--scale) * 2);
+    user-select: none;
+}
