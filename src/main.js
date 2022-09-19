@@ -9,14 +9,15 @@
 
   socket.initSocket(clientServer);
   backendManager.init();
+  
 
   //path.join(path.dirname(process.execPath),
   clientApp.use(express.static(path.join(__dirname, '../public')));
   logger.info(path.join(__dirname, '../public'))
 
   clientServer.listen(3000, "0.0.0.0", () => {
-    logger.info('Client server listening at port %d', 3000);
-    launchChrome()
+    logger.info('Client server listening at port ' + 3000);
+    //launchChrome()
   });
 
   function launchChrome() {

@@ -6,6 +6,7 @@ const backendServer = require('http').createServer(backendApp);
 const socket = require('./socket.js');
 const logger = require('../logger')
 const userServices = require("./services/userServices")
+const comunicationsAPI = require("./controllers/comunications/comunicationsAPI")
 
 let currentLog = {};
 
@@ -15,10 +16,13 @@ function init() {
     socket.initSocket(backendServer);
 
     backendApp.use('/', express.static(path.join(__dirname, '../../backend')));
+    backendApp.use(express.json())
     backendApp.get('/login', userServices.login)
+    comunicationsAPI.begin(backendApp)
 
     backendServer.listen(port, "0.0.0.0", () => {
-        logger.info('Backend server listening at port %d', port);
+        logger.info('Backend server listening at port '+ port);
+        return (backendApp)
     }).on('error', (err) => logger.error(err))
 
 }
