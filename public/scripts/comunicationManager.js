@@ -9,3 +9,6 @@ if (today > endDate ){
     comunications.style.display = "none"
 }
 
+fetch("http://localhost:3100/comunications")
+.then(response => response.json())
+.then(data => console.log("This is my data:",data));
