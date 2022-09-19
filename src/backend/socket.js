@@ -18,7 +18,7 @@ module.exports = {
             fileSystem.cleanPanelFiles()
 
             socket.on("disconnect", (user) => {
-                logger.info (currentUser.username + " : El cliente se desconectó del Panel Backend")
+                logger.info (" El cliente se desconectó del Panel Backend")
                 const backendManager = require('./backendManager')
                 backendManager.closeUserSession(user)
             })

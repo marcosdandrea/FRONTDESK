@@ -2,7 +2,7 @@ const DAO = require("./comunicationsDAO")
 
 async function getComunication(req, res, next) {
     try{
-        res.status(200).send(await DAO.getComunication())
+        res.status(200).send(await JSON.stringify(await DAO.getComunication()))
     }catch(err){
         res.status(500)
     }

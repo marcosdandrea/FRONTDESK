@@ -1,22 +1,14 @@
 
-
 async function getComunications() {
-
-    fetch("http://localhost:3100/comunications")
-    .then(response => response.json())
-    .then(data => {printComunications(data)})
-  
-
-    
-
-/*     
+   
     try{
-        const req = await fetch("http://localhost:3100/comunications")
-        console.log("This is my req",req)
+        const res = await fetch("http://localhost:3100/comunications")
+        const parsedReq = await res.json();
+        printComunications(parsedReq)
     }catch(error){
         console.log(error);
     }
-    */
+    
 }
 
 getComunications()
