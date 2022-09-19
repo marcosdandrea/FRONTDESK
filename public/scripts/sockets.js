@@ -8,6 +8,10 @@ socket.on("refreshFrontend", () => {
     location.reload();
 })
 
+socket.on("showNotification", (id) => {
+    showSpecificComunication(id);
+})
+
 const turnOnMonitors = (message) => {
     console.log ("Encendiendo monitores")
     socket.emit("WOL", message) //WakeOnLan

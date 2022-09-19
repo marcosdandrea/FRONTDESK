@@ -1,0 +1,65 @@
+.comunications{
+    aspect-ratio: 9/17.065;
+    height: 100%;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.9);
+    align-items: center;
+    opacity: 0.9;
+    flex-direction: column;
+    font-family: "Stainless Regular";
+    text-align: center;
+    justify-content: center;
+    row-gap: 6rem;
+    transition: opacity 1s ease;
+    opacity: 0;
+}
+
+.comunications .newBadge{
+    background-image: url(../../assets/badge.png);
+    position: absolute;
+    right: -1rem;
+    top: 0px;
+    width: 200px;
+    height: 202px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.comunications .header{
+    font-size: 4.5rem;
+    font-family: 'Stainless Bold';
+    color: #575756;
+    position: absolute;
+    top: 8rem;
+}
+
+.comunications .media{
+    width: 80%;
+    aspect-ratio: 16/9;
+    border-radius: 2rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.comunications .title{
+    font-size: 3rem;
+    font-family: 'Stainless Bold';
+    color: #575756;
+    max-width: 80%;
+}
+
+.comunications .paragraph{
+    font-size: 2.5rem;
+    font-family: 'Stainless Regular';
+    color: #575756;
+    width: 80%;
+}
+
+.comunications .footer{
+    font-size: 2rem;
+    font-family: 'Stainless Regular';
+    color: #575756;
+    position: absolute;
+    bottom: 2rem;
+}

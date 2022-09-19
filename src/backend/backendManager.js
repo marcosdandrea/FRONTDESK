@@ -7,6 +7,7 @@ const socket = require('./socket.js');
 const logger = require('../logger')
 const userServices = require("./services/userServices")
 const comunicationsAPI = require("./controllers/comunications/comunicationsAPI")
+const cors = require("cors")
 
 let currentLog = {};
 
@@ -15,6 +16,7 @@ function init() {
     const port = 3100
     socket.initSocket(backendServer);
 
+    backendApp.use(cors())
     backendApp.use('/', express.static(path.join(__dirname, '../../backend')));
     backendApp.use(express.json())
     backendApp.get('/login', userServices.login)

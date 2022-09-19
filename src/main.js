@@ -6,12 +6,13 @@
   const socket = require('./socket.js');
   const backendManager = require('./backend/backendManager')
   const logger = require("./logger")
+  const cors = require('cors')
 
   socket.initSocket(clientServer);
-  backendManager.init();
-  
+  backendManager.init();  
 
   //path.join(path.dirname(process.execPath),
+  clientApp.use(cors())
   clientApp.use(express.static(path.join(__dirname, '../public')));
   logger.info(path.join(__dirname, '../public'))
 
