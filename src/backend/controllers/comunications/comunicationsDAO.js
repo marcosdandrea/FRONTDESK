@@ -38,8 +38,7 @@ async function deleteComunication(id) {
     try {
         const file = await readFilesAndParse(dataPath)
         const index = file.comunications.findIndex( entry => entry.id === id)
-        if (index == -1) throw new Error ("Can't find a comunication with that id number")
-        console.log (id, index)
+        if (index == -1) return new Error ("Can't find a comunication with that id number")
         file.comunications.splice(index, 1)
         await writeFile(dataPath, file)
         return await readFilesAndParse(dataPath)
