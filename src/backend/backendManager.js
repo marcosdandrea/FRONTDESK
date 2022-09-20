@@ -17,8 +17,10 @@ function init() {
     socket.initSocket(backendServer);
 
     backendApp.use(cors())
-    backendApp.use('/', express.static(path.join(__dirname, '../../backend')));
+    backendApp.use(express.urlencoded({extended: true}))
     backendApp.use(express.json())
+    backendApp.use('/', express.static(path.join(__dirname, '../../backend')));
+
     backendApp.get('/login', userServices.login)
     comunicationsAPI.begin(backendApp)
 
