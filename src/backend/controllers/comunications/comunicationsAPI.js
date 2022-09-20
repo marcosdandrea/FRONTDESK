@@ -11,15 +11,18 @@ function begin(backendApp) {
         services.newComunication
         )
 
-    backendApp.get("/comunications", 
+    backendApp.get("/comunications",
+        uploader.none(), 
         services.getComunication
         )
 
     backendApp.put("/comunications", 
+        uploader.none(),
         services.editComunication
         )
 
     backendApp.delete("/comunications", 
+        uploader.none(),
         services.deleteComunication
         )
 
