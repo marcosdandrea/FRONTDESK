@@ -43,4 +43,22 @@ async function deleteComunication(req, res, next) {
     }
 }
 
-module.exports = { getComunication, editComunication, newComunication, deleteComunication }
+async function editConfigurations(req, res, next) {
+    try{
+        const data = req.body
+        res.status(200).send(await DAO.editConfigurations(data))
+    }catch(err){
+        res.status(304)
+    }
+}
+
+
+async function getConfigurations(req, res, next) {
+    try{
+        res.status(200).send(await DAO.getConfigurations())
+    }catch(err){
+        res.status(304)
+    }
+}
+
+module.exports = { getComunication, editComunication, newComunication, deleteComunication, editConfigurations, getConfigurations }

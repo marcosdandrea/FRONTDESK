@@ -8,7 +8,7 @@ const crypto = require('crypto')
 async function getComunication() {
     try {
         const file = await readFilesAndParse(dataPath)
-        return file
+        return file.comunications
     } catch (err) {
         logger.error("getComunication - " + err)
     }
@@ -70,4 +70,24 @@ async function writeFile(dataPath, data) {
     }
 }
 
-module.exports = { getComunication, editComunication, newComunication, deleteComunication }
+async function getConfigurations() {
+    try {
+        const file = await readFilesAndParse(dataPath)
+        return file.config
+    } catch (err) {
+        logger.error("getConfigurations - " + err)
+    }
+}
+
+async function editConfigurations(data) {
+    try {
+        const file = await readFilesAndParse(dataPath)
+        file.config = {...data}
+        await writeFile(dataPath, file)
+        return ("Configurations for comunications updated")
+    } catch (err) {
+        logger.error("editConfigurations - " + err)
+    }
+}
+
+module.exports = { getComunication, editComunication, newComunication, deleteComunication, editConfigurations, getConfigurations }

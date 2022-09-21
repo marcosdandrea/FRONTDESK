@@ -1,9 +1,12 @@
 const multer = require('multer')
 const crypto = require('crypto')
+const fs = require('fs')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/media/comunications')
+        const path = `public/media/comunications`
+        fs.mkdirSync(path, { recursive: true })
+        return cb(null, path)
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = crypto.randomUUID()

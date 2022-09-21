@@ -1,6 +1,6 @@
 const services = require("./comunicationsServices")
 const { uploadFile } = require("./comunicationsFileUploader")
-const { schemaPost, schemaPatch, fileFieldExist } = require("./comunicationsModels")
+const { schemaPost, schemaPatch, schemaConfig } = require("./comunicationsModels")
 const validator = require('express-joi-validation').createValidator({})
 const multer = require('multer')
 const uploader = multer()
@@ -27,6 +27,17 @@ function begin(backendApp) {
     backendApp.delete("/comunications",
         uploader.none(),
         services.deleteComunication
+    )
+
+    backendApp.put("/comunications/config",
+        uploader.none(),
+        validator.body(schemaConfig),
+        services.editConfigurations
+    )
+
+    backendApp.get("/comunications/config",
+        uploader.none(),
+        services.getConfigurations
     )
 
 }

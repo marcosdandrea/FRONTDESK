@@ -15,8 +15,11 @@ const schemaPatch = Joi.object({
   id: Joi.string().required().guid()
 })
 
-const fileFieldExist = (req, res, next) => {
-  if (!req.file) res.status(404).send("You must include a file field")
-}
+const schemaConfig = Joi.object({
+  title: Joi.string().required().min(10).max(20),
+  footer: Joi.string().required(),
+  comunication_duration: Joi.number().required().min(10).max(240),
+  comunication_interval: Joi.number().required().min(10).max(240)
+})
 
-module.exports = { schemaPost, schemaPatch, fileFieldExist }
+module.exports = { schemaPost, schemaPatch, schemaConfig }
