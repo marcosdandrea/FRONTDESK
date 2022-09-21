@@ -11,14 +11,6 @@ async function getComunication(req, res, next) {
 async function editComunication(req, res, next) {
     try{
         const data = req.body
-        const title = req.body.config.title
-        const footer = req.body.config.footer
-        const comunication_duration = req.body.config.comunication_duration
-        const comunication_interval = req.body.config.comunication_interval
-        if (!title || !footer || !comunication_duration || !comunication_interval) {
-            res.status(400).send("You must send full config information in body") 
-            return
-        }
         res.status(200).send(await DAO.editComunication(data))
     }catch(err){
         res.status(304)

@@ -14,14 +14,36 @@ const storage = multer.diskStorage({
     }
 })
 
-module.exports = multer({
-    storage: storage,
-    fileFilter: (req, file, cb) => {
-        if (file.mimetype == "image/png" || file.mimetype == "video/mp4") {
-            cb(null, true);
-        } else {
-            cb(null, false);
-            return cb(new Error('Only .png, .mp4 format allowed!'));
-        }
+
+function checkFormat(req, file, cb) {
+    if (file.mimetype == "image/png" || file.mimetype == "video/mp4") {
+        cb(null, true);
+    } else {
+        cb(null, false);
+        return cb(new Error('Only .png, .mp4 format allowed!'));
     }
-})
+}
+
+function uploadFile(req, res, next) {
+
+    const upload = multer({
+        storage: storage,
+        fileFilter:
+            checkFormat,
+
+    }).single('media');
+
+    upload(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+            // A Multer error occurred when uploading.
+            res.status(403).send(err.message)
+        } else if (err) {
+            // An unknown error occurred when uploading.
+            res.status(403).send(err.message)
+        }
+        // Everything went fine. 
+        next()
+    })
+}
+
+module.exports = { uploadFile }

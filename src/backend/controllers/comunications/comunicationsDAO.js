@@ -16,7 +16,12 @@ async function getComunication() {
 
 async function editComunication(data) {
     try {
-        await writeFile(dataPath, data)
+        const file = await readFilesAndParse(dataPath)
+        const index = file.comunications.findIndex( entry => entry.id === data.id)
+        if (index == -1) return new Error ("Can't find a comunication with that id number")
+        file.comunications[index] = {...data}
+        await writeFile(dataPath, file)
+        return ("Comunication " + data.id + " Updated")
     } catch (err) {
         logger.error("editComunication - " + err)
     }

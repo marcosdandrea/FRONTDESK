@@ -1,30 +1,33 @@
 const services = require("./comunicationsServices")
-const uploader = require("./comunicationsFileUploader")
-const { schema } = require("./comunicationsValidations")
+const { uploadFile } = require("./comunicationsFileUploader")
+const { schemaPost, schemaPatch, fileFieldExist } = require("./comunicationsModels")
 const validator = require('express-joi-validation').createValidator({})
+const multer = require('multer')
+const uploader = multer()
 
 function begin(backendApp) {
 
-    backendApp.post("/comunications",         
-        uploader.single('media'),
-        validator.body(schema),    
+    backendApp.post("/comunications",
+        uploadFile,
+        validator.body(schemaPost),
         services.newComunication
-        )
+    )
 
     backendApp.get("/comunications",
-        uploader.none(), 
-        services.getComunication
-        )
-
-    backendApp.put("/comunications", 
         uploader.none(),
-        services.editComunication
-        )
+        services.getComunication
+    )
 
-    backendApp.delete("/comunications", 
+    backendApp.patch("/comunications",
+        uploader.none(),
+        validator.body(schemaPatch),
+        services.editComunication
+    )
+
+    backendApp.delete("/comunications",
         uploader.none(),
         services.deleteComunication
-        )
+    )
 
 }
 

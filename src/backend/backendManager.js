@@ -20,16 +20,34 @@ function init() {
     backendApp.use(express.urlencoded({extended: true}))
     backendApp.use(express.json())
     backendApp.use('/', express.static(path.join(__dirname, '../../backend')));
+    backendApp.use(timeout)
 
     backendApp.get('/login', userServices.login)
     comunicationsAPI.begin(backendApp)
+
+    backendApp.use(errorHandler)
 
     backendServer.listen(port, "0.0.0.0", () => {
         logger.info('Backend server listening at port '+ port);
         return (backendApp)
     }).on('error', (err) => logger.error(err))
 
+
 }
+
+function timeout (req, res, next){
+    res.setTimeout(3000, function(){
+        logger.error('Request has timed out.');
+            res.status(408).send("Request has timed out due to error");
+        });
+
+    next();
+};
+
+
+const errorHandler = (error, request, response, next) => {
+    console.log (error)
+  }
 
 function sendUserData(socket) {
     socket.emit("userData", JSON.stringify(currentLog))
