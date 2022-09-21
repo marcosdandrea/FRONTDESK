@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="./styles/panel.css">
     <link rel="stylesheet" href="./styles/videoPanel.css">
     <link rel="stylesheet" href="./styles/dropdown.css">
+    <link rel="stylesheet" href="./styles/comunications.css">
     <title>Panel de Control</title>
 </head>
 <body>
@@ -43,7 +44,22 @@
     
     <div class="comunicationsPanel">
 
+      
     </div>
+  <button id="addComunication">Agregar comunicado</button>
+
+  <div class="addComunicationModal">
+      <form method="post" action="localhost:3100/comunications">
+
+         <input type="text" id="title" name="title" class="inputToSend" placeholder="Titulo">
+          <input type="textarea" id="paragraph" name="paragraph" class="inputToSend" placeholder="Parrafo">
+        <input type="text" id="date" name="show_new_badge_until" class="inputToSend" placeholder="DD/MM/YYYY">
+        <input type="file" id="media" name="media" class="inputToSend">
+
+        <input type="submit">
+        
+    </form>
+  </div>
 
     <div class="app" style="display: none;">
         <div class="appHeader">
