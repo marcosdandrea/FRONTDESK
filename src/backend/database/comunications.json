@@ -1,1 +1,31 @@
-{"config":{"title":"Comunidad Raghsa","footer":"Footer de prueba","comunication_duration":20,"comunication_interval":10,"id":"1e51b550-3263-4d05-a0dd-a8f4d3f5e526"},"comunications":[{"title":"ESTE ES UN VIDEO","paragraph":"ESTE ES UN PARRAFO LARGO DDE VIDEO","media":{"filename":"853856c2-e8b6-47a9-b908-9cef82373907.mp4","originalName":"Aquí sacando a mi amiga de una relación tóxica.mp4"},"show_new_badge_until":"2022-09-22T03:00:00.000Z","id":"48bb8a28-7de7-42ca-8a31-30d8371a5dc7"},{"title":"ESTA ES UNA IMAGEN","paragraph":"UNA GASEOSA DE POMELO","media":{"filename":"6324f452-e241-40e0-8c1f-9ea754565f87.png","originalName":"pomelo.png"},"show_new_badge_until":"2022-09-22T03:00:00.000Z","id":"0ce29e6b-99bf-4a7c-b553-a3d9f7feba2c"}]}
+{
+    "config": {
+        "title": "Comunidad Raghsa",
+        "footer": "Footer de prueba",
+        "comunication_duration": 20,
+        "comunication_interval": 10,
+        "id": "1e51b550-3263-4d05-a0dd-a8f4d3f5e526"
+    },
+    "comunications": [
+        {
+            "title": "ESTE ES UN VIDEO",
+            "paragraph": "ESTE ES UN PARRAFO LARGO DDE VIDEO",
+            "media": {
+                "filename": "853856c2-e8b6-47a9-b908-9cef82373907.mp4",
+                "originalName": "Aquí sacando a mi amiga de una relación tóxica.mp4"
+            },
+            "show_new_badge_until": "2022-09-22T03:00:00.000Z",
+            "id": "48bb8a28-7de7-42ca-8a31-30d8371a5dc7"
+        },
+        {
+            "title": "ESTA ES UNA IMAGEN",
+            "paragraph": "UNA GASEOSA DE POMELO",
+            "media": {
+                "filename": "6324f452-e241-40e0-8c1f-9ea754565f87.png",
+                "originalName": "pomelo.png"
+            },
+            "show_new_badge_until": "2022-09-22T03:00:00.000Z",
+            "id": "0ce29e6b-99bf-4a7c-b553-a3d9f7feba2c"
+        }
+    ]
+}
