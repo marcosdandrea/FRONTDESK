@@ -74,10 +74,10 @@ const nomenclatorSwitchPosition = (interval) => {
         if (showingComunication){
             clearTimeout(switchTimeout)
             nomenclatorSwitchPosition(5000)
-            console.log ("A comunication is currently running. Waitin 5 sec to swap parade")
+            //console.log ("A comunication is currently running. Waitin 5 sec to swap parade")
             return;
         }
-        console.log ("Swapping parade and re timming switch interval to", switchParadeTimer)
+        //console.log ("Swapping parade and re timming switch interval to", switchParadeTimer)
         if (nomenclatorActualPositionSwitch) {
             parade.style.opacity = 0;
             setTimeout(() => {
