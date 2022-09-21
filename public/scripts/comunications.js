@@ -2,6 +2,7 @@ let comPanel
 let comunications
 let configurations
 let currIndexCom = 0
+let showingComunication = false
 
 document.addEventListener('DOMContentLoaded', async () => {
     refreshData()
@@ -69,6 +70,7 @@ function setupTimers() {
 }
 
 function hideComunication() {
+    showingComunication = 0
     comPanel.style.opacity = 0;
     currIndexCom++
     if (currIndexCom > comunications.length-1) currIndexCom = 0;
@@ -79,6 +81,7 @@ function hideComunication() {
 function showNextComunication() {
     setupComunication(comunications[currIndexCom])
     comPanel.style.opacity = 1;
+    showingComunication = 1
     setTimeout(hideComunication, parseInt(configurations.comunication_duration))
 }
 
