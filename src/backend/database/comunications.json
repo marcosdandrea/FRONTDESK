@@ -8,34 +8,14 @@
     },
     "comunications": [
         {
-            "title": "Titulo largos",
-            "paragraph": "Parrafo super largo con varios caracteres",
+            "title": "Titulo de video OK",
+            "paragraph": "Video de prueba 4",
+            "show_new_badge_until": "2022-09-23T03:00:00.000Z",
+            "id": "3ab68c9c-6bed-44a4-98a8-5e21bffd42db",
             "media": {
-                "filename": "fba1ebc1-f4b9-47e4-aa0c-8da35edc37e9.png",
-                "originalName": "Ricky_Vitali.png"
-            },
-            "show_new_badge_until": "2022-09-30T03:00:00.000Z",
-            "id": "304183c6-07f0-4ad5-84aa-a5ca8af3d7b1"
-        },
-        {
-            "title": "Titulo largos3",
-            "paragraph": "Parrafo super largo con varios caracteres",
-            "media": {
-                "filename": "875c5d36-fd00-4b2a-9c2f-cdd1fa74ca63.png",
-                "originalName": "Ricky_Vitali.png"
-            },
-            "show_new_badge_until": "2022-09-30T03:00:00.000Z",
-            "id": "7040b841-3562-4c27-91cf-dec4b3364711"
-        },
-        {
-            "title": "Titulo largos4",
-            "paragraph": "Parrafo super largo con varios caracteres",
-            "media": {
-                "filename": "c1f7e6d5-fc2c-4d1d-b058-b2922d579e9f.png",
-                "originalName": "Ricky_Vitali.png"
-            },
-            "show_new_badge_until": "2022-09-30T03:00:00.000Z",
-            "id": "4d770e3a-5fda-4c04-a300-5ef62a1ddb6e"
+                "filename": "8aae2967-67d2-43ad-baca-2080791474c2.mp4",
+                "originalName": "Aquí sacando a mi amiga de una relación tóxica.mp4"
+            }
         }
     ]
 }

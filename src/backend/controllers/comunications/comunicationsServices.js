@@ -9,7 +9,7 @@ async function getComunication(req, res, next) {
         for (const entry in comunications) {
             const file = path.join(__dirname, "../../../../public/media/comunications", comunications[entry].media.filename)
             const answ = await checkIfFileExists(file)
-            if (answ) checkedComunications.push (comunications[entry])
+            if (answ) checkedComunications.push(comunications[entry])
         }
 
         res.status(200).send(await JSON.stringify(checkedComunications))
@@ -38,7 +38,7 @@ async function newComunication(req, res, next) {
             res.status(400).send("You must send full information in body")
             return
         }
-        await deleteHorphanMedia(comunications)
+       // await deleteHorphanMedia(comunications)
         res.status(200).send(await DAO.newComunication(data))
     } catch (err) {
         res.status(304)
@@ -81,15 +81,19 @@ async function checkIfFileExists(file) {
     }
 }
 
-async function deleteHorphanMedia(comunications){
-    const files = await fs.readdir(path.join(__dirname, "../../../../public/media/comunications"))
-    
-    for (const file in files) {
-        const fileDir = path.join(__dirname, "../../../../public/media/comunications", files[file])
-        const founded = comunications.find( entry => entry.media.filename == files[file])
-        if (founded) return
-        await fs.rm(fileDir)
-        console.log ("File " + files[file] + " deleted because was unused")
+async function deleteHorphanMedia(comunications) {
+    try {
+        const files = await fs.readdir(path.join(__dirname, "../../../../public/media/comunications"))
+
+        for (const file in files) {
+            const fileDir = path.join(__dirname, "../../../../public/media/comunications", files[file])
+            const founded = comunications.find(entry => entry.media.filename == files[file])
+            if (founded) return
+            await fs.rm(fileDir)
+            console.log("File " + files[file] + " deleted because was unused")
+        }
+    } catch (err) {
+        throw new Error(err)
     }
 }
 
