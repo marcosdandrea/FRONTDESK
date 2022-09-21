@@ -1,6 +1,7 @@
 let nomenclatorActualPositionSwitch = false;
 let nomenclator = {};
 let globalScale = 1;
+const switchParadeTimer = 120000
 
 const buildFloor = (floorData, floorIndex) => {
 
@@ -66,22 +67,33 @@ const buildFloorList = (buildingData, buildingList) => {
     })
 }
 
+let switchTimeout
 const nomenclatorSwitchPosition = (interval) => {
-    setInterval(() => {
+
+    switchTimeout = setTimeout(() => {
+        if (showingComunication){
+            clearTimeout(switchTimeout)
+            nomenclatorSwitchPosition(5000)
+            console.log ("A comunication is currently running. Waitin 5 sec to swap parade")
+            return;
+        }
+        console.log ("Swapping parade and re timming switch interval to", switchParadeTimer)
         if (nomenclatorActualPositionSwitch) {
-            nomenclatorElement.style.opacity = 0;
+            parade.style.opacity = 0;
             setTimeout(() => {
-                frontDesk.style.flexDirection = "row-reverse"
-                nomenclatorElement.style.opacity = 1;
+                parade.style.flexDirection = "row-reverse"
+                parade.style.opacity = 1;
             }, 2500)
 
         } else {
-            nomenclatorElement.style.opacity = 0;
+            parade.style.opacity = 0;
             setTimeout(() => {
-                frontDesk.style.flexDirection = "row"
-                nomenclatorElement.style.opacity = 1;
+                parade.style.flexDirection = "row"
+                parade.style.opacity = 1;
             }, 2500)
         }
+        clearTimeout(switchTimeout)
+        nomenclatorSwitchPosition(switchParadeTimer)
         nomenclatorActualPositionSwitch = !nomenclatorActualPositionSwitch;
     }, interval)
 }
@@ -97,4 +109,4 @@ readTextFile("../data/nomenclatorData.json", function(text){
 });
 
 
-//nomenclatorSwitchPosition(240000)
+nomenclatorSwitchPosition(switchParadeTimer)

@@ -18,27 +18,6 @@ async function getComunication(req, res, next) {
     }
 }
 
-async function checkIfFileExists(file) {
-    try {
-        await fs.stat(file)
-        return true
-    } catch (err) {
-        return false
-    }
-}
-
-async function deleteHorphanMedia(comunications){
-    const files = await fs.readdir(path.join(__dirname, "../../../../public/media/comunications"))
-    
-    for (const file in files) {
-        const fileDir = path.join(__dirname, "../../../../public/media/comunications", files[file])
-        const founded = comunications.find( entry => entry.media.filename == files[file])
-        if (founded) return
-        await fs.rm(fileDir)
-        console.log ("File " + files[file] + " deleted because was unused")
-    }
-}
-
 async function editComunication(req, res, next) {
     try {
         const data = req.body
@@ -90,6 +69,27 @@ async function getConfigurations(req, res, next) {
         res.status(200).send(await DAO.getConfigurations())
     } catch (err) {
         res.status(304)
+    }
+}
+
+async function checkIfFileExists(file) {
+    try {
+        await fs.stat(file)
+        return true
+    } catch (err) {
+        return false
+    }
+}
+
+async function deleteHorphanMedia(comunications){
+    const files = await fs.readdir(path.join(__dirname, "../../../../public/media/comunications"))
+    
+    for (const file in files) {
+        const fileDir = path.join(__dirname, "../../../../public/media/comunications", files[file])
+        const founded = comunications.find( entry => entry.media.filename == files[file])
+        if (founded) return
+        await fs.rm(fileDir)
+        console.log ("File " + files[file] + " deleted because was unused")
     }
 }
 

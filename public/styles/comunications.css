@@ -12,6 +12,7 @@
     row-gap: 6rem;
     transition: opacity 1s ease;
     opacity: 0;
+    position: relative;
 }
 
 .comunications .newBadge{
