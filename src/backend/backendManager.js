@@ -36,11 +36,12 @@ function init() {
 }
 
 function timeout (req, res, next){
+    /*
     res.setTimeout(3000, function(){
         logger.error('Request has timed out.');
             res.status(408).send("Request has timed out due to error");
         });
-
+*/
     next();
 };
 

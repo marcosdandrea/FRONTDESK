@@ -82,9 +82,10 @@ async function getConfigurations() {
 async function editConfigurations(data) {
     try {
         const file = await readFilesAndParse(dataPath)
-        file.config = {...data}
+        const id = crypto.randomUUID()
+        file.config = {...data, id}
         await writeFile(dataPath, file)
-        return ("Configurations for comunications updated")
+        return file.config
     } catch (err) {
         logger.error("editConfigurations - " + err)
     }

@@ -10,15 +10,22 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = crypto.randomUUID()
-        const filename = file.originalname.split('.')
+        const filename = cleanFileName(file.originalname).split('.')
         const extension = filename.pop()
         filename.join(".")
-        cb(null, filename + '.' + uniqueSuffix + "." + extension)
+        cb(null, uniqueSuffix + "." + extension)
     }
 })
 
+function cleanFileName( s ) {
+    return s.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+
+  }
 
 function checkFormat(req, file, cb) {
+    file.originalname = Buffer.from(file.originalname, 'latin1').toString(
+        'utf8',
+      );
     if (file.mimetype == "image/png" || file.mimetype == "video/mp4") {
         cb(null, true);
     } else {

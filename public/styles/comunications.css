@@ -31,6 +31,7 @@
     color: #575756;
     position: absolute;
     top: 8rem;
+    width: 40rem;
 }
 
 .comunications .media{
@@ -40,6 +41,11 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.comunications .media video{
+    width: 100%
 }
 
 .comunications .title{
