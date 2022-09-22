@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="./scripts/sweetAlert2/dist/sweetalert2.min.js" defer></script>
-    <script src="./scripts/socket.io/socket.io.js"defer></script>
+    <script src="./scripts/socket.io/socket.io.js" defer></script>
     <script src="./scripts/socket.io-stream.js"></script>
     <script src="./scripts/sockets.js" defer></script>
-    <script src="./scripts/panel.js"defer></script>
+    <script src="./scripts/panel.js" defer></script>
     <script src="./scripts/videoCalendarPanel.js" defer></script>
     <script src="./scripts/nomenclatorPanel.js" defer></script>
     <script src="./scripts/comunications.js" defer></script>
+    <script src="./scripts/comunicationConfig.js" defer></script>
 
     <link rel="stylesheet" href="./scripts/sweetAlert2/dist/sweetalert2.css">
     <link rel="stylesheet" href="./styles/toggle.css">
@@ -25,6 +27,7 @@
     <link rel="stylesheet" href="./styles/comunications.css">
     <title>Panel de Control</title>
 </head>
+
 <body>
     <div class="header">
         <h1>Centro Empresarial Libertador</h1>
@@ -38,27 +41,39 @@
     </div>
 
     <div class="changeSectionContainer">
-        <button class="genericButton changeSection warning" id="btnSwithMode">Modificación de Nomina</button> 
-        <button class="genericButton changeSection warning" id="btnSwithMode">Comunicados</button> 
+        <button class="genericButton changeSection warning" id="btnSwithMode">Modificación de Nomina</button>
+        <button class="genericButton changeSection warning" id="btnSwithMode">Comunicados</button>
     </div>
-    
+
+    <div class="comunicationsConfig">
+        <div class="configContainer">
+            <div class="configInputs">
+                <input type="text" name="title" placeholder="Titulo" id="configTitle" class="configInputs">
+                <input type="text" name="footer" placeholder="Footer" id="configFooter" class="configInputs">
+            </div>
+            <div>
+                <input type="number" name="comunication_duration" id="comunication_duration" class="configInputs">
+                <input type="number" name="comunication_interval" id="comunication_interval" class="configInputs">
+            </div>
+        </div>
+    </div>
     <div class="comunicationsPanel">
 
-      
     </div>
-  <button id="addComunication">Agregar comunicado</button>
+    <button id="addComunication">Agregar comunicado</button>
 
 
     <div class="app" style="display: none;">
         <div class="appHeader">
             <div class="sectionTitle">PROGRAMACIÓN DE VIDEOS</div>
             <div class="nomenclatorSectionControls ">
-                <label id="nomenclatorScaleLabel" class="nomenclatorScaleLabel" for="nomenclatorScale">Escala: 1.0</label> 
-                <input type="range" min="0.1" max="2" step="0.01" name="" id="nomenclatorScale">  
+                <label id="nomenclatorScaleLabel" class="nomenclatorScaleLabel" for="nomenclatorScale">Escala:
+                    1.0</label>
+                <input type="range" min="0.1" max="2" step="0.01" name="" id="nomenclatorScale">
                 <div class="nomenclatorControlsContainer">
-                    <button class="genericButton succeed" id="saveChanges">Publicar Cambios</button>  
-                    <button class="genericButton warning" id="reloadData">Reestablecer todo</button>     
-                </div>        
+                    <button class="genericButton succeed" id="saveChanges">Publicar Cambios</button>
+                    <button class="genericButton warning" id="reloadData">Reestablecer todo</button>
+                </div>
             </div>
             <div class="calendarSectionControls">
                 <button class="genericButton succeed" id="btnAddNewDay">Agregar nueva fecha</button>
@@ -72,9 +87,9 @@
         <div class="closeModal"></div>
         <div class="modalContainer">
             <div class="videoModalContainer">
-            <video src="" class="videoModal" controls ></video>
+                <video src="" class="videoModal" controls></video>
             </div>
-            
+
         </div>
     </div>
 
@@ -82,7 +97,7 @@
         <div class="logCloseModal closeModal"></div>
         <div class="userLogModalContainer">
             <p id="userLogTitle">Registro de Actividades Usuarios</p>
-            
+
             <div class="userLogModalContent">
                 <div>
                     <ul id="logList">
@@ -90,7 +105,7 @@
                     </ul>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
@@ -101,17 +116,18 @@
             <div id="userLogButton">
                 Ver registros de Usuario
             </div>
-        
-        </div>
- 
 
-       
+        </div>
+
+
+
     </footer>
 
-    
+
 </body>
 <script>
 
 
 </script>
+
 </html>
