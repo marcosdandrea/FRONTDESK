@@ -6,6 +6,7 @@ const schemaPost = Joi.object({
   title: Joi.string().required().min(10).max(20),
   paragraph: Joi.string().required().min(15).max(100),
   show_new_badge_until: Joi.date().format("DD/MM/YYYY").required().greater("now"),
+  media: Joi.string()
 })
 
 const schemaPatch = Joi.object({

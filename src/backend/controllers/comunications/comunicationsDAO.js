@@ -21,7 +21,7 @@ async function editComunication(data) {
         if (index == -1) return new Error ("Can't find a comunication with that id number")
         file.comunications[index] = {...data, media: file.comunications[index].media}
         await writeFile(dataPath, file)
-        return ("Comunication " + data.id + " Updated")
+        return ({status: "Comunication " + data.id + " Updated"})
     } catch (err) {
         logger.error("editComunication - " + err)
     }
@@ -29,11 +29,12 @@ async function editComunication(data) {
 
 async function newComunication(data) {
     try {
+        console.log ("Creating new comunication")
         data.id = crypto.randomUUID()
         const file = await readFilesAndParse(dataPath)
         file.comunications.push(data)
         await writeFile(dataPath, file)
-        return data.id 
+        return {status: data.id + " created"}
     } catch (err) {
         logger.error("newComunication - " + err)
     }

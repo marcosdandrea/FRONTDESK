@@ -181,15 +181,15 @@ function printComunications(data) {
 
 const comunicationInputs = document.getElementsByClassName('inputToSend')
 
-function waitToSend() {
+async function waitToSend() {
 
     if (sender) clearTimeout(sender);
-    sender = setTimeout(sendToServer(this), delayToSend)
+    sender = setTimeout(await sendToServer(this), delayToSend)
 
 }
 
 
-function sendToServer(selectedInput) {
+async function sendToServer(selectedInput) {
 
     let inputsToSend = selectedInput.closest('.comunicationCard')
 
@@ -216,20 +216,17 @@ function sendToServer(selectedInput) {
         return
     }
 
-    const formData = new FormData
+    const formData = new FormData()
     formData.append("title", title)
     formData.append("paragraph", paragraph)
     formData.append("show_new_badge_until", show_new_badge_untilParsed)
-    formData.append("media", mediaElement.files[0], "nombredelarchivo.png")
+    formData.append("media", mediaElement.files[0])
 
     const optionsPost = {
         method: "POST",
-        body: formData,
-        headers: {
-            "Content-Type": "application/json"
-        }
+        body: formData
     }
-    
+
     const optionsPatch = {
         method: "PATCH",
         body: JSON.stringify({
@@ -243,29 +240,39 @@ function sendToServer(selectedInput) {
         }
     }
 
-    console.log((comunicationsPanel.childElementCount))
 
     let foundedIndex = 0
     for (let index = 0; index < comunicationsPanel.childElementCount; index++) {
         if (comunicationsPanel.children[index].id == comunicationID) {
             foundedIndex = index
             break
-        }        
+        }
     }
 
-    let lastCard = (foundedIndex == comunicationsPanel.childElementCount-1)
+    let lastCard = (foundedIndex == comunicationsPanel.childElementCount - 1)
 
     console.log("must POST?", creatingComunication && lastCard)
 
     let options = (creatingComunication && lastCard) ? optionsPost : optionsPatch
 
-    fetch("http://localhost:3100/comunications", options)
+    console.log("Sending to server", options)
+    const answ = await makeFetch("http://localhost:3100/comunications", options)
+    console.log(answ)
 
+}
 
-
-
-
-
+async function makeFetch(URL, options) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await fetch(URL, options)
+            let parsedRes
+            parsedRes = res.json()
+            resolve(parsedRes)
+        } catch (err) {
+            console.log (err.message, err)
+            reject(err.message)
+        }
+    })
 }
 
 
