@@ -256,7 +256,7 @@ async function sendToServer(selectedInput) {
     let options = (creatingComunication && lastCard) ? optionsPost : optionsPatch
 
     console.log("Sending to server", options)
-    const answ = await makeFetch("http://localhost:3100/comunications", options)
+    const answ = await makeFetch("http://localhost:3100/comunications/withMedia", options)
     console.log(answ)
 
 }

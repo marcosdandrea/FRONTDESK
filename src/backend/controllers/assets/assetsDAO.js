@@ -1,7 +1,7 @@
 const fs = require('fs').promises
 const Path = require('path')
 const dir = Path.join(__dirname, '../../../../', "backend", "assets", "icons", "comunications")
-const videoNotAvailable = path.join(__dirname, '../../../../', "backend", "assets", "icons", "comunications", "videoNotAvailable.png")
+const videoNotAvailable = Path.join(__dirname, '../../../../', "backend", "assets", "icons", "comunications", "videoNotAvailable.png")
 
 async function getAllIcons() {
     try {
