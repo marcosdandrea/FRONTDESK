@@ -38,7 +38,7 @@ async function newComunication(req, res, next) {
             res.status(400).send("You must send full information in body")
             return
         }
-       // await deleteHorphanMedia(comunications)
+        await deleteHorphanMedia(comunications)
         res.status(200).send(await DAO.newComunication(data))
     } catch (err) {
         res.status(304)
@@ -84,10 +84,13 @@ async function checkIfFileExists(file) {
 async function deleteHorphanMedia(comunications) {
     try {
         const files = await fs.readdir(path.join(__dirname, "../../../../public/media/comunications"))
+        const videoNotAvailable = await fs.readdir(path.join(__dirname, "../../../../public/media/comunications", "videoNotAvailable.png"))
 
         for (const file in files) {
             const fileDir = path.join(__dirname, "../../../../public/media/comunications", files[file])
-            const founded = comunications.find(entry => entry.media.filename == files[file])
+            const founded = comunications.find(entry => {
+                return (entry.media.filename == files[file] || files[file] == videoNotAvailable)
+            })
             if (founded) return
             await fs.rm(fileDir)
             console.log("File " + files[file] + " deleted because was unused")

@@ -6,6 +6,7 @@ const backendServer = require('http').createServer(backendApp);
 const socket = require('./socket.js');
 const logger = require('../logger')
 const userServices = require("./services/userServices")
+const assetsServices = require ("./controllers/assets/assetsAPI")
 const comunicationsAPI = require("./controllers/comunications/comunicationsAPI")
 const cors = require("cors")
 
@@ -20,10 +21,10 @@ function init() {
     backendApp.use(express.urlencoded({extended: true}))
     backendApp.use(express.json())
     backendApp.use('/', express.static(path.join(__dirname, '../../backend')));
-    backendApp.use(timeout)
 
     backendApp.get('/login', userServices.login)
     comunicationsAPI.begin(backendApp)
+    assetsServices.begin(backendApp)
 
     backendApp.use(errorHandler)
 
@@ -32,18 +33,14 @@ function init() {
         return (backendApp)
     }).on('error', (err) => logger.error(err))
 
+    backendApp.get('/', (req, res) => {
+        console.log ("Cannot reach endpoint",req.url, req.method)
+        res.status(404).send("Endpoint is not reachable")
+    })
 
 }
 
-function timeout (req, res, next){
-    /*
-    res.setTimeout(3000, function(){
-        logger.error('Request has timed out.');
-            res.status(408).send("Request has timed out due to error");
-        });
-*/
-    next();
-};
+
 
 
 const errorHandler = (error, request, response, next) => {

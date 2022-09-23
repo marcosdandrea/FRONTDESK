@@ -1,15 +1,21 @@
 const services = require("./comunicationsServices")
 const { uploadFile } = require("./comunicationsFileUploader")
-const { schemaPost, schemaPatch, schemaConfig } = require("./comunicationsModels")
+const { schemaPostMedia, schemaPostIcon, schemaPatch, schemaConfig } = require("./comunicationsModels")
 const validator = require('express-joi-validation').createValidator({})
 const multer = require('multer')
 const uploader = multer()
 
 function begin(backendApp) {
 
-    backendApp.post("/comunications",
+    backendApp.post("/comunications/withMedia",
         uploadFile,
-        validator.body(schemaPost),
+        validator.body(schemaPostMedia),
+        services.newComunication
+    )
+
+    backendApp.post("/comunications/withIcon",
+        uploader.none(),
+        validator.body(schemaPostIcon),
         services.newComunication
     )
 
