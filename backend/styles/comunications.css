@@ -62,19 +62,37 @@
 }
 
 
-/* Modal */
-
-.addComunicationModal {
-    display: none;
-
-}
-
-.addComunicationModal form {
-    display: flex;
-    flex-direction: column;
-}
-
-
-.deleteButton{
+.deleteButton {
     cursor: pointer;
+    background-image: url(../assets/icons/deleteIcon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    background-size: 68%;
+    border: none;
+    border-radius: 50%;
+}
+
+
+/* Config */
+
+.comunicationsConfig {
+    width: 90%;
+    border-radius: 10px;
+}
+
+.configContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    background: whitesmoke;
+    width: 98%;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    column-gap: 1rem;
 }
