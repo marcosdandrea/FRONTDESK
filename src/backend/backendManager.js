@@ -6,8 +6,9 @@ const backendServer = require('http').createServer(backendApp);
 const socket = require('./socket.js');
 const logger = require('../logger')
 const userServices = require("./services/userServices")
-const assetsServices = require ("./controllers/assets/assetsAPI")
+const assetsAPI = require ("./controllers/assets/assetsAPI")
 const comunicationsAPI = require("./controllers/comunications/comunicationsAPI")
+const backupAPI = require("./controllers/backups/backupsAPI")
 const cors = require("cors")
 
 let currentLog = {};
@@ -24,7 +25,8 @@ function init() {
 
     backendApp.get('/login', userServices.login)
     comunicationsAPI.begin(backendApp)
-    assetsServices.begin(backendApp)
+    assetsAPI.begin(backendApp)
+    backupAPI.begin(backendApp)
 
     backendApp.use(errorHandler)
 
