@@ -35,7 +35,7 @@ function checkFormat(req, file, cb) {
 }
 
 function uploadFile(req, res, next) {
-
+    console.log ("uploading File")
     const upload = multer({
         storage: storage,
         fileFilter:

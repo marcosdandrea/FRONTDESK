@@ -27,7 +27,35 @@ async function editComunication(req, res, next) {
     }
 }
 
+async function deleteHorphanMedia(comunications) {
+    let deleteCount = 0
+    return new Promise(async (resolve, reject) => {
+        try {
+            const files = await fs.readdir(path.join(__dirname, "../../../../public/media/comunications"))
+            const videoNotAvailable = path.join(__dirname, "../../../../public/media/comunications", "videoNotAvailable.png")
+
+            for (const file in files) {
+                const fileDir = path.join(__dirname, "../../../../public/media/comunications", files[file])
+                const founded = comunications.find(entry => {
+                    return (entry.media.filename == files[file] || files[file] == videoNotAvailable)
+                })
+                if (founded) continue;
+                await fs.rm(fileDir)
+                deleteCount++
+                console.log("File " + files[file] + " deleted because was unused")
+            }
+            console.info(deleteCount, "hast been deleted due horphanity")
+            resolve()
+        } catch (err) {
+            console.log(err)
+            reject(err.message)
+        }
+    })
+}
+
+
 async function newComunication(req, res, next) {
+
     try {
         const title = req.body.title
         const paragraph = req.body.paragraph
@@ -38,8 +66,11 @@ async function newComunication(req, res, next) {
             res.status(400).send("You must send full information in body")
             return
         }
-        await deleteHorphanMedia(comunications)
-        res.status(200).send(await DAO.newComunication(data))
+
+        const answ = await DAO.newComunication(data)
+        await deleteHorphanMedia(await DAO.getComunication())
+
+        res.status(200).send(answ)
     } catch (err) {
         res.status(304)
     }
@@ -81,23 +112,5 @@ async function checkIfFileExists(file) {
     }
 }
 
-async function deleteHorphanMedia(comunications) {
-    try {
-        const files = await fs.readdir(path.join(__dirname, "../../../../public/media/comunications"))
-        const videoNotAvailable = await fs.readdir(path.join(__dirname, "../../../../public/media/comunications", "videoNotAvailable.png"))
-
-        for (const file in files) {
-            const fileDir = path.join(__dirname, "../../../../public/media/comunications", files[file])
-            const founded = comunications.find(entry => {
-                return (entry.media.filename == files[file] || files[file] == videoNotAvailable)
-            })
-            if (founded) return
-            await fs.rm(fileDir)
-            console.log("File " + files[file] + " deleted because was unused")
-        }
-    } catch (err) {
-        throw new Error(err)
-    }
-}
 
 module.exports = { getComunication, editComunication, newComunication, deleteComunication, editConfigurations, getConfigurations }
