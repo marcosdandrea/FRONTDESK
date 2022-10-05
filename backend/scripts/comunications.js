@@ -9,6 +9,7 @@ async function getComunications() {
     try {
         const res = await fetch("http://localhost:3100/comunications")
         comunications = await res.json()
+        console.log(comunications)
         return comunications
     } catch (error) {
         console.log(error);
@@ -35,7 +36,6 @@ async function getConfig() {
     const comunications = await getComunications()
     printComunications(comunications)
     printConfig(config)
-    console.log(comunicationsPanel)
 })()
 
 
@@ -52,8 +52,6 @@ function printConfig(configData) {
     const comunication_interval = document.getElementById('comunication_interval');
     const configId = document.getElementsByClassName('comunicationsConfig')[0]
     configId.setAttribute("id", configData.id);
-
-    console.log("Config:", configData, configTitle, configFooter);
 
     configTitle.value = configData.title
     configFooter.value = configData.footer
@@ -98,8 +96,6 @@ function sendConfig(selectedInput) {
         comunication_interval
     }
 
-    console.log(data)
-
     const options = {
         method: "PUT",
         body: JSON.stringify(data),
@@ -124,29 +120,22 @@ function printComunications(data) {
 
     comunicationsPanel.innerHTML = "";
 
-
+    let cardCount = 0
 
     data.forEach(comunication => {
 
         let parsedDate = Date.parse(comunication.show_new_badge_until)
         const dateFormated = new Date(parsedDate).toLocaleDateString('es-EN')
-
         const dateForInput = new Date(parsedDate).toLocaleDateString('en-ca')
-
         const today = new Date().toLocaleDateString('en-ca')
-
-        console.log("Date: " + dateForInput)
-
-        //let cardDiv = document.createElement("div");
-
 
         let comunicationBody = `
         <div class="comunicationCard" id="${comunication.id}">
-        <div>01</div>
+        <div>${cardCount++}</div>
             <div class="comunicationMedia">
-                <label for="media">
-                    <img src="./assets/images/selectMedia.png" alt="Select media"/>
-                </label>
+
+                    <img src="http://localhost:3000/media/comunications/${comunication.media.filename}" id="hola" alt="Select media"/>
+                
                 <input type="file" id="media" name="media" class="inputToSend">
             </div>
 
@@ -164,17 +153,19 @@ function printComunications(data) {
         </div>
         `
         comunicationsPanel.innerHTML += comunicationBody
-        //cardDiv.innerHTML = comunicationBody;
-        //comunicationsPanel.appendChild(cardDiv)
 
     });
 
-    /* Consultar con Marcos */
     for (let i = 0; i < comunicationInputs.length; i++) {
         comunicationInputs[i].addEventListener('change', waitToSend)
     }
+
     deleteComunication()
+    openModal()
 }
+
+
+
 
 
 /* DATA SENDER */
@@ -189,6 +180,11 @@ async function waitToSend() {
 }
 
 
+
+
+
+
+
 async function sendToServer(selectedInput) {
 
     let inputsToSend = selectedInput.closest('.comunicationCard')
@@ -197,12 +193,11 @@ async function sendToServer(selectedInput) {
     let paragraph = inputsToSend.querySelector('#paragraph').value
     let show_new_badge_until = inputsToSend.querySelector('#show_new_badge_until').value
     let mediaElement = inputsToSend.querySelector('#media')
-    //const today = new Date().toLocaleDateString('en-ca')
+
     const splitedDate = show_new_badge_until.split('-')
     const show_new_badge_untilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
     const comunicationID = inputsToSend.id
 
-    //console.log("Largo de title:", title.length, "Largo de paragraph:", paragraph.length)
 
     /* VALIDACION */
 
@@ -254,24 +249,30 @@ async function sendToServer(selectedInput) {
     console.log("must POST?", creatingComunication && lastCard)
 
     let options = (creatingComunication && lastCard) ? optionsPost : optionsPatch
+    let url = (creatingComunication && lastCard) ? "http://localhost:3100/comunications/withMedia" : "http://localhost:3100/comunications"
 
     console.log("Sending to server", options)
-    const answ = await makeFetch("http://localhost:3100/comunications/withMedia", options)
-    console.log(answ)
-
+    const answ = await makeFetch(url, options)
+    console.log (answ)
 }
+
+
+
+
 
 async function makeFetch(URL, options) {
     return new Promise(async (resolve, reject) => {
         try {
+            console.log("options", options)
             const res = await fetch(URL, options)
+            console.log ("res", res)
             let parsedRes
             parsedRes = res.json()
             resolve(parsedRes)
         } catch (err) {
-            console.log (err.message, err)
+            console.log(err.message, err)
             reject(err.message)
-        }
+        }   
     })
 }
 
@@ -357,12 +358,92 @@ function deleteComunication() {
     }
 }
 
+/* MODAL */
+
+
+function openModal() {
+
+    const selectMedia = document.getElementById('hola')
+    const outerModal = document.getElementsByClassName('outerModal')[0]
+    
+
+    console.log(outerModal)
+
+    selectMedia.addEventListener('click', function (event) {
+        console.log(outerModal)
+        outerModal.style.display = 'flex'
+        getModalMedia()
+    })
+
+}
+
+function getModalMedia() {
+
+    fetch("http://localhost:3100/assets/comunications/icons")
+        .then(response => response.json())
+        .then(data =>
+            printInModal(data)
+        )
+
+}
+
+
+
+const modalContent = document.getElementsByClassName("modalContent")[0]
+const iconsNav = document.getElementById('iconsNav')
+const multimediaNav = document.getElementById('multimediaNav')
+
+
+function printInModal(modalMedia) {
+
+    modalContent.innerHTML = "";
+
+    modalMedia.forEach(mediaElement => {
+
+        let formatedMedia = mediaElement.replace(/\\/g, "/")
+
+        let modalIconsContent = `
+            <div class="iconContainer">
+                <img src="http://localhost:3100/${formatedMedia}" id="hola" alt="Select media"/>
+            </div>
+        `
+        modalContent.innerHTML += modalIconsContent
+        
+    });
+
+}
+
+multimediaNav.addEventListener('click', function() {
+    modalContent.innerHTML = ""
+
+    let modalMediaContent = `
+            <div class="iconContainer">
+                <input type="file" id="media" name="media" class="inputToSend">
+            </div>
+        `
+    modalContent.innerHTML += modalMediaContent
+})
+
+iconsNav.addEventListener('click', function () {
+    getModalMedia()
+})
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 /* EXTRAS */
+
+
 
 
 /* fetch("http://localhost:3100/comunications")
