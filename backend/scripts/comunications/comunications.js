@@ -180,11 +180,6 @@ async function waitToSend() {
 }
 
 
-
-
-
-
-
 async function sendToServer(selectedInput) {
 
     let inputsToSend = selectedInput.closest('.comunicationCard')
@@ -263,14 +258,11 @@ async function sendToServer(selectedInput) {
 async function makeFetch(URL, options) {
     return new Promise(async (resolve, reject) => {
         try {
-            console.log("options", options)
             const res = await fetch(URL, options)
-            console.log ("res", res)
             let parsedRes
             parsedRes = res.json()
             resolve(parsedRes)
         } catch (err) {
-            console.log(err.message, err)
             reject(err.message)
         }   
     })
@@ -283,6 +275,8 @@ const addComunication = document.getElementById('addComunication')
 const addComunicationModal = document.getElementsByClassName('addComunicationModal')[0]
 let creatingComunication = false;
 
+
+let tempData = undefined;
 addComunication.addEventListener('click', function () {
 
     const today = new Date().toLocaleDateString('en-ca')
@@ -291,17 +285,17 @@ addComunication.addEventListener('click', function () {
 
     creatingComunication = true;
 
-    const data = {
+    tempData = {
         title: "Escribe un titulo",
         paragraph: "Escribe un parrafo",
         show_new_badge_until: show_new_badge_untilParsed,
         media: {
-            filename: "videoNotAvailable.png",
+            filename: "../../assets/videoNotAvailable.png",
             originalName: "videoNotAvailable.png"
         }
     }
 
-    comunications.push(data)
+    comunications.push(tempData)
 
     printComunications(comunications)
 
@@ -366,25 +360,36 @@ function openModal() {
     const selectMedia = document.getElementById('hola')
     const outerModal = document.getElementsByClassName('outerModal')[0]
     
-
     console.log(outerModal)
 
-    selectMedia.addEventListener('click', function (event) {
+    selectMedia.addEventListener('click', async (event) => {
         console.log(outerModal)
+        const url = "http://localhost:3100/assets/comunications/icons"
+        const options = {method: "GET"}
+        const mediaRepository = await makeFetch(url,options)
+        printInModal(mediaRepository)
         outerModal.style.display = 'flex'
-        getModalMedia()
     })
 
 }
 
-function getModalMedia() {
+async function getModalMedia() {
 
+    try{
+        const url = "http://localhost:3100/assets/comunications/icons"
+        const options = {method: "GET"}
+        await makeFetch(url,options)
+    }catch(err){
+        console.log (err)
+    }
+
+    /*
     fetch("http://localhost:3100/assets/comunications/icons")
         .then(response => response.json())
         .then(data =>
             printInModal(data)
         )
-
+    */
 }
 
 
@@ -427,18 +432,6 @@ multimediaNav.addEventListener('click', function() {
 iconsNav.addEventListener('click', function () {
     getModalMedia()
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* EXTRAS */

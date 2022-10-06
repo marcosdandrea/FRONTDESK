@@ -3,7 +3,10 @@ const logger = require('../../../logger')
 
 async function getAllIcons(req, res, next) {
     try{
-        res.send(await assetsDAO.getAllIcons())
+        const answ = await assetsDAO.getAllIcons()
+        const index = answ.findIndex( element => element.includes("videoNotAvailable"))
+        answ.splice(index, 1)
+        res.send (answ)
     }catch(err){
         logger.error(err.message)
         res.status(500).send(err.message)

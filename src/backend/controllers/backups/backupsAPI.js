@@ -10,8 +10,12 @@ function begin(backendApp) {
         services.createBackup
     )
 
-    backendApp.get("/backup:id",
+    backendApp.get("/backup:timestamp",
         services.restoreBackup
+    )
+
+    backendApp.delete("/backup:timestamp",
+        services.deleteBackup
     )
 
 }
