@@ -222,7 +222,7 @@ async function sendToServer(selectedInput) {
     formData.append("title", title)
     formData.append("paragraph", paragraph)
     formData.append("show_new_badge_until", show_new_badge_untilParsed)
-    formData.append("media", mediaElement.files[0])
+    formData.append("media", fileToUpload.files[0])
 
     const optionsPost = {
         method: "POST",
@@ -256,7 +256,7 @@ async function sendToServer(selectedInput) {
     console.log("must POST?", creatingComunication && lastCard)
 
     let options = (creatingComunication && lastCard) ? optionsPost : optionsPatch
-    let url = (creatingComunication && lastCard) ? "http://localhost:3100/comunications/withMedia" : "http://localhost:3100/comunications"
+    let url = "http://localhost:3100/comunications"
 
     console.log("Sending to server", options)
     const answ = await makeFetch(url, options)
@@ -408,6 +408,11 @@ function openModal() {
             printInModal(mediaRepository)
             outerModal.style.display = 'flex'
         })
+
+        navCloseModal.addEventListener('click', () => {
+            outerModal.style.display = 'none'
+        })
+
     }
 }
 
@@ -431,30 +436,41 @@ function openModal() {
 const modalContent = document.getElementsByClassName("modalContent")[0]
 const iconsNav = document.getElementById('iconsNav')
 const multimediaNav = document.getElementById('multimediaNav')
-console.log(iconsNav)
+console.log(modalContent)
 
 function printInModal(modalMedia) {
 
     modalContent.innerHTML = "";
 
+    const iconContainer = document.createElement("div")
+    iconContainer.className = "iconContainer"
+    modalContent.appendChild(iconContainer)
+
     modalMedia.forEach(mediaElement => {
 
-        let formatedMedia = mediaElement.replace(/\\/g, "/")
+        const formatedMedia = mediaElement.replace(/\\/g, "/")
+        const iconButton = document.createElement("img")
+        const mediaUrl = `http://localhost:3100/${formatedMedia}`
+        iconButton.src = mediaUrl
 
-        let modalIconsContent = `
-            <div class="iconContainer">
-                <img src="http://localhost:3100/${formatedMedia}" id="hola" alt="Select media"/>
-            </div>
-        `
-        modalContent.innerHTML += modalIconsContent
+        iconButton.addEventListener('click', ()=>{
+            comunications.at(-1).media.filename = mediaUrl
+            comunications.at(-1).media.originalName = mediaUrl.split("/").pop()
+        })
 
+       iconContainer.appendChild(iconButton)
     });
 
 }
 
+let fileToUpload = undefined
+const navCloseModal = document.getElementsByClassName('navCloseModal')[0]
+console.log(navCloseModal)
+
 /* TOGGLE SECTION IN MODAL NAV */
 multimediaNav.addEventListener('click', function () {
     modalContent.innerHTML = ""
+    
 
     const iconContainer = document.createElement("div")
     iconContainer.className = "iconContainer"
@@ -472,11 +488,11 @@ multimediaNav.addEventListener('click', function () {
     acceptButton.className = "btnSubmit"
     acceptButton.textContent = "Aceptar"
     acceptButton.addEventListener ("click", ()=>{
-        const file = inputFile.value
-        console.log (file)
-        //comunications[comunications.length-1].media.filename = 
+        fileToUpload = inputFile
     })
 
+    iconsNav.style.borderBottom = "none"
+    multimediaNav.style.borderBottom = "1px solid #3C3C3B"
     iconContainer.appendChild(acceptButton)
     
 })
@@ -489,6 +505,8 @@ iconsNav.addEventListener('click', async (event) => {
     }
     const mediaRepository = await makeFetch(url, options)
     printInModal(mediaRepository)
+    multimediaNav.style.borderBottom = "none"
+    iconsNav.style.borderBottom = "1px solid #3C3C3B"
 })
 
 

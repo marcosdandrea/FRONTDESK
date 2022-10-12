@@ -7,22 +7,11 @@ const uploader = multer()
 
 function begin(backendApp) {
 
-    backendApp.post("/comunications/withMedia",
-        uploadFile,
-        validator.body(schemaPostMedia),
-        services.newComunication
-    )
-
-    backendApp.post("/comunications/withIcon",
-        uploader.none(),
-        validator.body(schemaPostIcon),
-        services.newComunication
-    )
+    //comunications
 
     backendApp.post("/comunications",
         uploadFile,
-        validator.body(schemaPost),
-    
+        validator.body(schemaPost),    
         services.newComunication
     )
 
@@ -41,6 +30,8 @@ function begin(backendApp) {
         uploader.none(),
         services.deleteComunication
     )
+
+    //configuration
 
     backendApp.put("/comunications/config",
         uploader.none(),
