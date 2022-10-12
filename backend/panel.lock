@@ -48,12 +48,26 @@
     <div class="comunicationsConfig">
         <div class="configContainer">
             <div class="configInputs">
-                <input type="text" name="title" placeholder="Titulo" id="configTitle" class="configInputs">
-                <input type="text" name="footer" placeholder="Footer" id="configFooter" class="configInputs">
+                <div>
+                    <p>Titulo</p>
+                    <input type="text" name="title" placeholder="Titulo" id="configTitle" class="configInputs">
+                </div>
+                <div>
+                    <p>Footer</p>
+                    <input type="text" name="footer" placeholder="Footer" id="configFooter" class="configInputs">
+                </div>
             </div>
-            <div>
-                <input type="number" name="comunication_duration" id="comunication_duration" class="configInputs">
-                <input type="number" name="comunication_interval" id="comunication_interval" class="configInputs">
+            <div class="configTimeInputs">
+                <div>
+                    <p>Duración de Comunicados</p>
+                    <input type="number" name="comunication_duration" id="comunication_duration" class="configInputs">
+                    <p>seg.</p>
+                </div>
+                <div>
+                    <p>Intervalo de Comunicados</p>
+                    <input type="number" name="comunication_interval" id="comunication_interval" class="configInputs">
+                    <p>min.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -62,23 +76,24 @@
     </div>
     <button id="addComunication">Agregar comunicado</button>
 
-        <div class="outerModal">
+    <div class="outerModal">
         <div class="closeModal"></div>
-            <div class="modalContainerMedia">
-                <div class="modalNav">
-                    <ul>
-                        <li id="iconsNav">Iconos</li>
-                        <li id="multimediaNav">Multimedia</li>
-                    </ul>
-                </div>
+        <div class="modalContainerMedia">
+            <div class="modalNav">
+                <ul>
+                    <li id="iconsNav">Iconos</li>
+                    <li id="multimediaNav">Multimedia</li>
+                </ul>
+                <div class="navCloseModal">X</div>
+            </div>
 
-                <div class="modalContent">
-                
-                </div>
-       
+            <div class="modalContent">
 
             </div>
+
+
         </div>
+    </div>
 
 
     <div class="app" style="display: none;">

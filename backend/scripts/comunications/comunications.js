@@ -120,7 +120,7 @@ function printComunications(data) {
 
     comunicationsPanel.innerHTML = "";
 
-    let cardCount = 0
+    let cardCount = 1
 
     data.forEach(comunication => {
 
@@ -131,25 +131,37 @@ function printComunications(data) {
 
         let comunicationBody = `
         <div class="comunicationCard" id="${comunication.id}">
-        <div>${cardCount++}</div>
+        <div class="cardNumber">${cardCount++}</div>
+
             <div class="comunicationMedia">
 
-                    <img src="http://localhost:3000/media/comunications/${comunication.media.filename}" id="hola" alt="Select media"/>
+                    <img src="http://localhost:3000/media/comunications/${comunication.media.filename}" class="cardMedia" alt="Select media"/>
                 
                 <input type="file" id="media" name="media" class="inputToSend">
             </div>
 
             <div class="comunicationInputs">
-                <input type="text" id="title" name="title" class="inputToSend" value="${comunication.title}">
-                <input type="textarea" id="paragraph" name="paragraph" class="inputToSend" value="${comunication.paragraph}">
-
-                <div class="comunicationDate">
-                    <input type="date" required pattern="\d{2}-\d{2}-\d{4}" id="show_new_badge_until" name="show_new_badge_until" class="inputToSend" min="${today}" value="${dateForInput}">
-                    <button class="preview">Previsualizar</button>
+                <div>
+                    <p>Titulo</p>
+                    <input type="text" id="title" name="title" class="inputToSend" value="${comunication.title}">
                 </div>
-                
+                <div>
+                    <p>Parrafo</p>
+                    <input type="textarea" id="paragraph" name="paragraph" class="inputToSend" value="${comunication.paragraph}">
+                </div>
+                <div class="comunicationDate">
+                    <div>
+                        <p>Duracion de Novedad</p>
+                        <input type="date" required pattern="\d{2}-\d{2}-\d{4}" id="show_new_badge_until" name="show_new_badge_until" class="inputToSend" min="${today}" value="${dateForInput}">
+                    </div>
+           
+                </div>
+        
             </div>
-            <button class="deleteButton problem" id="${comunication.id}"></button>
+                 <div class="cardOptionsContainer">
+                        <button class="preview"></button>
+                        <button class="deleteButton problem" id="${comunication.id}"></button>
+                    </div>
         </div>
         `
         comunicationsPanel.innerHTML += comunicationBody
@@ -248,7 +260,7 @@ async function sendToServer(selectedInput) {
 
     console.log("Sending to server", options)
     const answ = await makeFetch(url, options)
-    console.log (answ)
+    console.log(answ)
 }
 
 
@@ -264,7 +276,7 @@ async function makeFetch(URL, options) {
             resolve(parsedRes)
         } catch (err) {
             reject(err.message)
-        }   
+        }
     })
 }
 
@@ -283,6 +295,8 @@ addComunication.addEventListener('click', function () {
     const splitedDate = today.split('-')
     const show_new_badge_untilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
 
+
+
     creatingComunication = true;
 
     tempData = {
@@ -298,8 +312,29 @@ addComunication.addEventListener('click', function () {
     comunications.push(tempData)
 
     printComunications(comunications)
-
+    cardCreationMode()
 })
+
+function cardCreationMode() {
+    const newComunicationCard = document.querySelectorAll('.comunicationCard:last-of-type')[0]
+    newComunicationCard.style.border = '2px solid #F39200'
+    addComunication.style.display = 'none'
+
+    console.log(comunications)
+    window.addEventListener('click', function (e) {
+
+        if (e.target != newComunicationCard && e.target != addComunication) {
+            /*
+            newComunicationCard.remove()
+            comunications.splice(-1)
+            addComunication.style.display = 'block'
+            console.log(comunications)
+            */
+        }
+
+    })
+}
+
 
 /* DELETE COMUNICATION */
 
@@ -357,47 +392,46 @@ function deleteComunication() {
 
 function openModal() {
 
-    const selectMedia = document.getElementById('hola')
+    const selectMedia = document.querySelectorAll('.cardMedia')
     const outerModal = document.getElementsByClassName('outerModal')[0]
-    
-    console.log(outerModal)
 
-    selectMedia.addEventListener('click', async (event) => {
-        console.log(outerModal)
-        const url = "http://localhost:3100/assets/comunications/icons"
-        const options = {method: "GET"}
-        const mediaRepository = await makeFetch(url,options)
-        printInModal(mediaRepository)
-        outerModal.style.display = 'flex'
-    })
 
+    for (let i = 0; i < selectMedia.length; i++) {
+
+        selectMedia[i].addEventListener('click', async (event) => {
+            console.log(outerModal)
+            const url = "http://localhost:3100/assets/comunications/icons"
+            const options = {
+                method: "GET"
+            }
+            const mediaRepository = await makeFetch(url, options)
+            printInModal(mediaRepository)
+            outerModal.style.display = 'flex'
+        })
+    }
 }
 
-async function getModalMedia() {
+/* async function getModalMedia() {
 
-    try{
+    try {
         const url = "http://localhost:3100/assets/comunications/icons"
-        const options = {method: "GET"}
-        await makeFetch(url,options)
-    }catch(err){
-        console.log (err)
+        const options = {
+            method: "GET"
+        }
+        await makeFetch(url, options)
+    } catch (err) {
+        console.log(err)
     }
 
-    /*
-    fetch("http://localhost:3100/assets/comunications/icons")
-        .then(response => response.json())
-        .then(data =>
-            printInModal(data)
-        )
-    */
-}
 
+}
+ */
 
 
 const modalContent = document.getElementsByClassName("modalContent")[0]
 const iconsNav = document.getElementById('iconsNav')
 const multimediaNav = document.getElementById('multimediaNav')
-
+console.log(iconsNav)
 
 function printInModal(modalMedia) {
 
@@ -413,24 +447,48 @@ function printInModal(modalMedia) {
             </div>
         `
         modalContent.innerHTML += modalIconsContent
-        
+
     });
 
 }
 
-multimediaNav.addEventListener('click', function() {
+/* TOGGLE SECTION IN MODAL NAV */
+multimediaNav.addEventListener('click', function () {
     modalContent.innerHTML = ""
 
-    let modalMediaContent = `
-            <div class="iconContainer">
-                <input type="file" id="media" name="media" class="inputToSend">
-            </div>
-        `
-    modalContent.innerHTML += modalMediaContent
+    const iconContainer = document.createElement("div")
+    iconContainer.className = "iconContainer"
+
+    modalContent.appendChild(iconContainer)
+
+    const inputFile = document.createElement("input")
+    inputFile.type = "file"
+    inputFile.id = "media"
+    inputFile.className = "inputToSend"
+
+    iconContainer.appendChild(inputFile)
+    
+    const acceptButton = document.createElement("button")
+    acceptButton.className = "btnSubmit"
+    acceptButton.textContent = "Aceptar"
+    acceptButton.addEventListener ("click", ()=>{
+        const file = inputFile.value
+        console.log (file)
+        //comunications[comunications.length-1].media.filename = 
+    })
+
+    iconContainer.appendChild(acceptButton)
+    
 })
 
-iconsNav.addEventListener('click', function () {
-    getModalMedia()
+/* TOGGLE SECTION IN MODAL NAV */
+iconsNav.addEventListener('click', async (event) => {
+    const url = "http://localhost:3100/assets/comunications/icons"
+    const options = {
+        method: "GET"
+    }
+    const mediaRepository = await makeFetch(url, options)
+    printInModal(mediaRepository)
 })
 
 
