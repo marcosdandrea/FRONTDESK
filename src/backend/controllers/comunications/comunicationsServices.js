@@ -55,18 +55,14 @@ async function deleteHorphanMedia(comunications) {
 
 
 async function newComunication(req, res, next) {
-
     try {
+            
         const title = req.body.title
         const paragraph = req.body.paragraph
-        const media = { filename: req.file.filename, originalName: req.file.originalname }
+        const media = req.body.media
         const show_new_badge_until = req.body.show_new_badge_until
         const data = { title, paragraph, media, show_new_badge_until }
-        if (!title || !paragraph || !media || !show_new_badge_until) {
-            res.status(400).send("You must send full information in body")
-            return
-        }
-
+        
         const answ = await DAO.newComunication(data)
         await deleteHorphanMedia(await DAO.getComunication())
 

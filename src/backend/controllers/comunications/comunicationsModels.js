@@ -2,6 +2,17 @@ const JoiBase = require('joi')
 const JoiDate = require("@joi/date")
 const Joi = JoiBase.extend(JoiDate); // extend Joi with Joi Date
 
+const schemaPost = Joi.object({
+  title: Joi.string().required().min(10).max(20),
+  paragraph: Joi.string().required().min(15).max(100),
+  show_new_badge_until: Joi.date().format("DD/MM/YYYY").required().greater("now"),
+  icon: Joi.string(),
+  media: {
+    filename: Joi.string().required(),
+    originalName: Joi.string().required()
+  } 
+})
+
 const schemaPostMedia = Joi.object({
   title: Joi.string().required().min(10).max(20),
   paragraph: Joi.string().required().min(15).max(100),
@@ -33,4 +44,4 @@ const schemaConfig = Joi.object({
   comunication_interval: Joi.number().required().min(10).max(240)
 })
 
-module.exports = { schemaPostMedia, schemaPostIcon, schemaPatch, schemaConfig }
+module.exports = { schemaPostMedia, schemaPost, schemaPostIcon, schemaPatch, schemaConfig }
