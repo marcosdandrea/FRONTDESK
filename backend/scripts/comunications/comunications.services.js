@@ -31,10 +31,11 @@ function printComunicationsCards(data) {
         const comunicationMediaContainer = document.createElement('div')
         comunicationMediaContainer.className = 'comunicationMedia'
         const cardImage = document.createElement('img')
-        cardImage.src = comunication.media.filename
+        cardImage.src = 'http://localhost:3000/media/comunications/'+comunication.media.filename
         cardImage.className = 'cardMedia'
+        cardImage.addEventListener('click', openModal)
         /* Checkear si agregar el input oculto */
-
+        comunicationMediaContainer.appendChild(cardImage)
         comunicationCard.appendChild(comunicationMediaContainer)
 
         const comunicationInputsContainer = document.createElement('div')
@@ -50,7 +51,9 @@ function printComunicationsCards(data) {
         inputTitle.className = 'inputToSend'
         inputTitle.id = 'title'
 
-
+        comunicationInputsContainer.appendChild(titleDiv)
+        titleDiv.appendChild(cardTitle)
+        titleDiv.appendChild(inputTitle)
         comunicationCard.appendChild(comunicationInputsContainer)
         /*--------------*/
 
@@ -64,6 +67,10 @@ function printComunicationsCards(data) {
         inputParagraph.setAttribute("value", comunication.paragraph)
         inputParagraph.className = 'inputToSend'
         inputParagraph.id = 'paragraph'
+
+        comunicationInputsContainer.appendChild(paragraphDiv)
+        paragraphDiv.appendChild(paragraph)
+        paragraphDiv.appendChild(inputParagraph)
         /*--------------*/
 
         /* Div Fecha */
@@ -81,6 +88,11 @@ function printComunicationsCards(data) {
         dateInput.setAttribute("value", dateForInput)
         dateInput.className = 'inputToSend'
         dateInput.id = 'show_new_badge_until'
+
+        comunicationInputsContainer.appendChild(comunicationDateContainer)
+        comunicationDateContainer.appendChild(dateDiv)
+        dateDiv.appendChild(dateTitle)
+        dateDiv.appendChild(dateInput)
         /*---------------*/
 
         /* Card Options */
@@ -93,6 +105,8 @@ function printComunicationsCards(data) {
         deleteButton.id = comunication.id
 
         comunicationCard.appendChild(cardOptionsContainer)
+        cardOptionsContainer.appendChild(buttonPreview)
+        cardOptionsContainer.appendChild(deleteButton)
         
         /* ------------ */
 
