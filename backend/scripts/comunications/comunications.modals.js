@@ -1,7 +1,9 @@
+import makeFetch from './comunications.fetch.js'
 
 function openModal() {
 
-    //const selectMedia = document.querySelectorAll('.cardMedia')
+    console.log('Opening modal')
+    const selectMedia = document.querySelectorAll('.cardMedia')
 
     for (let i = 0; i < selectMedia.length; i++) {
 

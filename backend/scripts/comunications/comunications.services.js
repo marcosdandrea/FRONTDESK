@@ -1,4 +1,6 @@
 import openModal from './comunications.modals.js'
+import deleteComunication from './comunications.js'
+import makeFetch from './comunications.fetch.js'
 
 function printComunicationsCards(data) {
     //console.log("Print this", data)
@@ -18,6 +20,7 @@ function printComunicationsCards(data) {
         const comunicationCard = document.createElement('div')
         comunicationCard.className = 'comunicationCard'
         comunicationCard.id = comunication.id
+        comunicationCard.setAttribute('data-CardCreation', "false")
 
 
 
@@ -31,7 +34,7 @@ function printComunicationsCards(data) {
         const comunicationMediaContainer = document.createElement('div')
         comunicationMediaContainer.className = 'comunicationMedia'
         const cardImage = document.createElement('img')
-        cardImage.src = 'http://localhost:3000/media/comunications/'+comunication.media.filename
+        cardImage.src = 'http://localhost:3000/media/comunications/' + comunication.media.filename
         cardImage.className = 'cardMedia'
         cardImage.addEventListener('click', openModal)
         /* Checkear si agregar el input oculto */
@@ -103,49 +106,13 @@ function printComunicationsCards(data) {
         const deleteButton = document.createElement('button')
         deleteButton.className = 'deleteButton problem'
         deleteButton.id = comunication.id
+        deleteButton.addEventListener('click', deleteComunication)
 
         comunicationCard.appendChild(cardOptionsContainer)
         cardOptionsContainer.appendChild(buttonPreview)
         cardOptionsContainer.appendChild(deleteButton)
-        
+
         /* ------------ */
-
- /*        let comunicationBody = `
-        <div class="comunicationCard" id="${comunication.id}">
-        <div class="cardNumber">${cardCount++}</div>
-
-            <div class="comunicationMedia">
-
-                    <img src="http://localhost:3000/media/comunications/${comunication.media.filename}" class="cardMedia" alt="Select media"/>
-                
-                <input type="file" id="media" name="media" class="inputToSend">
-            </div>
-
-            <div class="comunicationInputs">
-                <div>
-                    <p>Titulo</p>
-                    <input type="text" id="title" name="title" class="inputToSend" value="${comunication.title}">
-                </div>
-                <div>
-                    <p>Parrafo</p>
-                    <input type="textarea" id="paragraph" name="paragraph" class="inputToSend" value="${comunication.paragraph}">
-                </div>
-                <div class="comunicationDate">
-                    <div>
-                        <p>Duracion de Novedad</p>
-                        <input type="date" required pattern="\d{2}-\d{2}-\d{4}" id="show_new_badge_until" name="show_new_badge_until" class="inputToSend" min="${today}" value="${dateForInput}">
-                    </div>
-           
-                </div>
-        
-            </div>
-                 <div class="cardOptionsContainer">
-                        <button class="preview"></button>
-                        <button class="deleteButton problem" id="${comunication.id}"></button>
-                    </div>
-        </div>
-        ` */
-       /*  comunicationsPanel.innerHTML += comunicationBody */
 
     });
 
@@ -154,24 +121,212 @@ function printComunicationsCards(data) {
     }
 }
 
+async function waitToSend() {
+
+    if (sender) clearTimeout(sender);
+    sender = setTimeout(await editCard(this), delayToSend)
+
+}
+async function editCard(selectedInput) {
+
+
+
+
+    let inputsToSend = selectedInput.closest('.comunicationCard')
+    console.log(inputsToSend.getAttribute("data-cardCreation"))
+
+    let title = inputsToSend.querySelector('#title').value
+    let paragraph = inputsToSend.querySelector('#paragraph').value
+    let show_new_badge_until = inputsToSend.querySelector('#show_new_badge_until').value
+    let mediaElement = inputsToSend.querySelector('#media')
+
+    const splitedDate = show_new_badge_until.split('-')
+    const show_new_badge_untilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
+    const comunicationID = inputsToSend.id
+
+
+    /* VALIDACION */
+
+    if (title.length > 20 || paragraph.length > 40) {
+        Swal.fire({
+            title: 'Formato de Texto invalido',
+            text: "Titulo o parrafo demasiado largos",
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+        })
+        return
+    }
+
+    const options = {
+        method: "PATCH",
+        body: JSON.stringify({
+            title,
+            paragraph,
+            show_new_badge_until: show_new_badge_untilParsed,
+            id: comunicationID
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+
+    let foundedIndex = 0
+    for (let index = 0; index < comunicationsPanel.childElementCount; index++) {
+        if (comunicationsPanel.children[index].id == comunicationID) {
+            foundedIndex = index
+            break
+        }
+    }
+
+   
+
+    if (inputsToSend.getAttribute("data-cardCreation") == "false") {
+        let url = "http://localhost:3100/comunications"
+        console.log("Sending to server", options)
+        const answ = await makeFetch(url, options)
+        console.log(answ)
+    }
+
+
+}
+
+/* async function editCard(selectedInput) {
+
+    let inputsToSend = selectedInput.closest('.comunicationCard')
+
+    let title = inputsToSend.querySelector('#title').value
+    let paragraph = inputsToSend.querySelector('#paragraph').value
+    let show_new_badge_until = inputsToSend.querySelector('#show_new_badge_until').value
+    let mediaElement = inputsToSend.querySelector('#media')
+
+    const splitedDate = show_new_badge_until.split('-')
+    const show_new_badge_untilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
+    const comunicationID = inputsToSend.id
+
+
+
+
+    if (title.length > 20 || paragraph.length > 40) {
+        Swal.fire({
+            title: 'Formato de Texto invalido',
+            text: "Titulo o parrafo demasiado largos",
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+        })
+        return
+    }
+
+    const formData = new FormData()
+    formData.append("title", title)
+    formData.append("paragraph", paragraph)
+    formData.append("show_new_badge_until", show_new_badge_untilParsed)
+    formData.append("media", fileToUpload.files[0])
+
+    const optionsPost = {
+        method: "POST",
+        body: formData
+    }
+
+    const optionsPatch = {
+        method: "PATCH",
+        body: JSON.stringify({
+            title,
+            paragraph,
+            show_new_badge_until: show_new_badge_untilParsed,
+            id: comunicationID
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+
+    let foundedIndex = 0
+    for (let index = 0; index < comunicationsPanel.childElementCount; index++) {
+        if (comunicationsPanel.children[index].id == comunicationID) {
+            foundedIndex = index
+            break
+        }
+    }
+
+    let lastCard = (foundedIndex == comunicationsPanel.childElementCount - 1)
+
+    console.log("must POST?", creatingComunication && lastCard)
+
+    let options = (creatingComunication && lastCard) ? optionsPost : optionsPatch
+    let url = "http://localhost:3100/comunications"
+
+    console.log("Sending to server", options)
+    const answ = await makeFetch(url, options)
+    console.log(answ)
+}
+  */
+
 function cardCreationMode() {
     const newComunicationCard = document.querySelectorAll('.comunicationCard:last-of-type')[0]
     newComunicationCard.style.border = '2px solid #F39200'
+    newComunicationCard.setAttribute('data-CardCreation', "true")
     addComunication.style.display = 'none'
 
-    //console.log(comunications)
-    window.addEventListener('click', function (e) {
+    const createNewButton = document.createElement('button');
+    createNewButton.innerText = "Crear"
+    newComunicationCard.appendChild(createNewButton)
 
-        if (e.target != newComunicationCard && e.target != addComunication) {
-            /*
-            newComunicationCard.remove()
-            comunications.splice(-1)
-            addComunication.style.display = 'block'
-            console.log(comunications)
-            */
-        }
-
+    createNewButton.addEventListener('click', () => {
+        createCard(newComunicationCard)
     })
+
+
 }
 
-export {printComunicationsCards, cardCreationMode}
+async function createCard(newCard) {
+    console.log('Creando', newCard)
+    let inputsToSend = newCard.closest('.comunicationCard')
+
+    let title = inputsToSend.querySelector('#title').value
+    let paragraph = inputsToSend.querySelector('#paragraph').value
+    let show_new_badge_until = inputsToSend.querySelector('#show_new_badge_until').value
+
+    const splitedDate = show_new_badge_until.split('-')
+    const show_new_badge_untilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
+    const comunicationID = inputsToSend.id
+
+    const formData = new FormData()
+    formData.append("title", title)
+    formData.append("paragraph", paragraph)
+    formData.append("show_new_badge_until", show_new_badge_untilParsed)
+    formData.append("media", fileToUpload.files[0])
+
+    const options = {
+        method: "POST",
+        body: formData
+    }
+
+    console.log(title, paragraph, show_new_badge_until)
+    let url = "http://localhost:3100/comunications"
+    if (newCard.getAttribute("data-cardCreation") == "true") {
+
+        console.log("Sending to server", options)
+        const answ = await makeFetch(url, options)
+        console.log(answ)
+
+    }
+
+
+    /* printComunicationsCards(comunications) */
+
+}
+
+export {
+    printComunicationsCards,
+    cardCreationMode
+}
+
+
+
+/* 
+    let url = "http://localhost:3100/comunications"
+    console.log("Sending to server", options)
+    const answ = await makeFetch(url, options)
+    console.log(answ) */

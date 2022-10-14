@@ -11,4 +11,4 @@ async function makeFetch(URL, options) {
     })
 }
 
-export default { makeFetch } 
+export default makeFetch  

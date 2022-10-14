@@ -1,6 +1,12 @@
 import makeFetch from './comunications.fetch.js'
-import { getConfig, printConfig } from './comunications.configurations.js'
-import {printComunicationsCards, cardCreationMode} from './comunications.services.js'
+import {
+    getConfig,
+    printConfig
+} from './comunications.configurations.js'
+import {
+    printComunicationsCards,
+    cardCreationMode
+} from './comunications.services.js'
 
 (async () => {
     const config = await getConfig()
@@ -25,12 +31,12 @@ async function getComunications() {
 async function waitToSend() {
 
     if (sender) clearTimeout(sender);
-    sender = setTimeout(await sendToServer(this), delayToSend)
+    sender = setTimeout(await editCard(this), delayToSend)
 
 }
 
 
-async function sendToServer(selectedInput) {
+async function editCard(selectedInput) {
 
     let inputsToSend = selectedInput.closest('.comunicationCard')
 
@@ -56,18 +62,7 @@ async function sendToServer(selectedInput) {
         return
     }
 
-    const formData = new FormData()
-    formData.append("title", title)
-    formData.append("paragraph", paragraph)
-    formData.append("show_new_badge_until", show_new_badge_untilParsed)
-    formData.append("media", fileToUpload.files[0])
-
-    const optionsPost = {
-        method: "POST",
-        body: formData
-    }
-
-    const optionsPatch = {
+    const options = {
         method: "PATCH",
         body: JSON.stringify({
             title,
@@ -88,12 +83,12 @@ async function sendToServer(selectedInput) {
             break
         }
     }
-
+/* 
     let lastCard = (foundedIndex == comunicationsPanel.childElementCount - 1)
 
     console.log("must POST?", creatingComunication && lastCard)
 
-    let options = (creatingComunication && lastCard) ? optionsPost : optionsPatch
+    let options = (creatingComunication && lastCard) ? optionsPost : optionsPatch */
     let url = "http://localhost:3100/comunications"
 
     console.log("Sending to server", options)
@@ -105,10 +100,7 @@ async function sendToServer(selectedInput) {
 
 const addComunication = document.getElementById('addComunication')
 const addComunicationModal = document.getElementsByClassName('addComunicationModal')[0]
-let creatingComunication = false;
 
-
-let tempData = undefined;
 addComunication.addEventListener('click', function () {
 
     const today = new Date().toLocaleDateString('en-ca')
@@ -131,11 +123,44 @@ addComunication.addEventListener('click', function () {
 
     comunications.push(tempData)
 
-    printComunications(comunications)
+    printComunicationsCards(comunications)
     cardCreationMode()
 })
 
 
+/* async function createCard(newCard) {
+    console.log('Creando', newCard)
+    let inputsToSend = newCard.closest('.comunicationCard')
+
+    let title = inputsToSend.querySelector('#title').value
+    let paragraph = inputsToSend.querySelector('#paragraph').value
+    let show_new_badge_until = inputsToSend.querySelector('#show_new_badge_until').value
+
+    const splitedDate = show_new_badge_until.split('-')
+    const show_new_badge_untilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
+    const comunicationID = inputsToSend.id
+
+    const formData = new FormData()
+    formData.append("title", title)
+    formData.append("paragraph", paragraph)
+    formData.append("show_new_badge_until", show_new_badge_untilParsed)
+    formData.append("media", fileToUpload.files[0])
+
+    const options = {
+        method: "POST",
+        body: formData
+    }
+
+    console.log(title, paragraph, show_new_badge_until)
+    let url = "http://localhost:3100/comunications"
+    console.log("Sending to server", options)
+    const answ = await makeFetch(url, options)
+    console.log(answ)
+
+   
+
+}
+ */
 
 /* DELETE COMUNICATION */
 
@@ -177,8 +202,13 @@ function deleteComunication() {
                     }
 
                     fetch("http://localhost:3100/comunications", options)
-                        .then(getComunications())
+                        .then(getComunications()
+
+                    )
+
+
                 }
+
             })
 
 
@@ -187,6 +217,6 @@ function deleteComunication() {
 
     }
 
- /*    printComunications(comunications) */
-    
 }
+
+export default deleteComunication
