@@ -43,6 +43,8 @@ function printInModal(modalMedia) {
         iconButton.addEventListener('click', () => {
             comunications.at(-1).media.filename = mediaUrl
             comunications.at(-1).media.originalName = mediaUrl.split("/").pop()
+            outerModal.style.display = "none"
+            console.log(mediaUrl)
         })
 
         iconContainer.appendChild(iconButton)
@@ -61,6 +63,8 @@ iconsNav.addEventListener('click', async (event) => {
     multimediaNav.style.borderBottom = "none"
     iconsNav.style.borderBottom = "1px solid #3C3C3B"
 })
+
+
 
 multimediaNav.addEventListener('click', function () {
     modalContent.innerHTML = ""

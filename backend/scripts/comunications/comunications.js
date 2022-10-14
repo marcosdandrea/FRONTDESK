@@ -3,10 +3,7 @@ import {
     getConfig,
     printConfig
 } from './comunications.configurations.js'
-import {
-    printComunicationsCards,
-    cardCreationMode
-} from './comunications.services.js'
+import {printComunicationsCards} from './comunications.services.js'
 
 (async () => {
     const config = await getConfig()
@@ -83,12 +80,12 @@ async function editCard(selectedInput) {
             break
         }
     }
-/* 
-    let lastCard = (foundedIndex == comunicationsPanel.childElementCount - 1)
+    /* 
+        let lastCard = (foundedIndex == comunicationsPanel.childElementCount - 1)
 
-    console.log("must POST?", creatingComunication && lastCard)
+        console.log("must POST?", creatingComunication && lastCard)
 
-    let options = (creatingComunication && lastCard) ? optionsPost : optionsPatch */
+        let options = (creatingComunication && lastCard) ? optionsPost : optionsPatch */
     let url = "http://localhost:3100/comunications"
 
     console.log("Sending to server", options)
@@ -127,8 +124,7 @@ addComunication.addEventListener('click', function () {
     cardCreationMode()
 })
 
-
-/* async function createCard(newCard) {
+async function createCard(newCard) {
     console.log('Creando', newCard)
     let inputsToSend = newCard.closest('.comunicationCard')
 
@@ -153,69 +149,92 @@ addComunication.addEventListener('click', function () {
 
     console.log(title, paragraph, show_new_badge_until)
     let url = "http://localhost:3100/comunications"
-    console.log("Sending to server", options)
-    const answ = await makeFetch(url, options)
-    console.log(answ)
+    if (newCard.getAttribute("data-cardCreation") == "true") {
 
-   
+        console.log("Sending to server", options)
+        const answ = await makeFetch(url, options)
+        const comunicationData = await getComunications()
+        printComunicationsCards(comunicationData)
+        addComunication.style.display = 'flex'
+        console.log(answ)
+
+    }
+
+
+    /* printComunicationsCards(comunications) */
 
 }
- */
+
 
 /* DELETE COMUNICATION */
 
-function deleteComunication() {
-    const deleteButton = document.getElementsByClassName('deleteButton')
+async function deleteComunication(e) {
+        console.log (e.target.id)
 
-    for (let i = 0; i < deleteButton.length; i++) {
-
-        deleteButton[i].addEventListener('click', function (e) {
-
-            Swal.fire({
-                title: 'Estas seguro que quieres borrar',
-                text: "Vas a borrar",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Borrar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                        'Borrado',
-                        'Borrado con exitosamente',
-                        'success'
-                    )
-
-
-                    const id = e.target.id
-                    const data = {
-                        id
-                    }
-
-                    const options = {
-                        method: "DELETE",
-                        body: JSON.stringify(data),
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    }
-
-                    fetch("http://localhost:3100/comunications", options)
-                        .then(getComunications()
-
-                    )
-
-
-                }
-
-            })
-
-
-
+        const result = await Swal.fire({
+            title: 'Estas seguro que quieres borrar',
+            text: "Vas a borrar",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Borrar'
         })
 
-    }
+        if (result.isConfirmed == false) return
+
+        try {
+            const id = e.target.id
+
+            const options = {
+                method: "DELETE",
+                body: JSON.stringify({id}),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+
+            const url = "http://localhost:3100/comunications"
+            await makeFetch(url, options)
+            const comunicationData = await getComunications()
+            printComunicationsCards(comunicationData)
+
+            Swal.fire(
+                'Borrado',
+                'Borrado con exitosamente',
+                'success'
+            )
+
+        } catch (err) {
+            console.log(err)
+            Swal.fire(
+                'Error',
+                'Se produjo un error',
+                'error'
+            )
+        }
+
+}
+
+function cardCreationMode() {
+    const newComunicationCard = document.querySelectorAll('.comunicationCard:last-of-type')[0]
+    const newCardOptions = newComunicationCard.querySelector('.cardOptionsContainer')
+    const newCardPreview = newCardOptions.querySelector('.preview')
+    console.log(newCardOptions)
+
+    newComunicationCard.style.border = '2px solid #F39200'
+    newComunicationCard.setAttribute('data-CardCreation', "true")
+    addComunication.style.display = 'none'
+    newCardPreview.style.display = 'none'
+
+    const createNewButton = document.createElement('button');
+    createNewButton.className = 'createCardButton'
+    newCardOptions.appendChild(createNewButton)
+
+    createNewButton.addEventListener('click', () => {
+        createCard(newComunicationCard)
+
+    })
 
 }
 
