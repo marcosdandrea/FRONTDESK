@@ -1,6 +1,7 @@
 import makeFetch from './comunications.fetch.js'
 
 async function openModal() {
+   if(this.getAttribute('data-cardCreation') == 'true'){
 
     const url = "http://localhost:3100/assets/comunications/icons"
     const options = {
@@ -10,7 +11,7 @@ async function openModal() {
     printInModal(mediaRepository)
     outerModal.style.display = 'flex'
     console.log('Opening modal', outerModal)
-
+   }
 
 }
 
@@ -32,8 +33,12 @@ function printInModal(modalMedia) {
         iconButton.addEventListener('click', () => {
             comunications.at(-1).media.filename = mediaUrl
             comunications.at(-1).media.originalName = mediaUrl.split("/").pop()
+            let Originalmedia = mediaUrl.split("/").pop()
+          
+            fileToUpload = mediaUrl 
             outerModal.style.display = "none"
-            console.log(mediaUrl)
+           
+            console.log(Originalmedia,mediaUrl)
         })
 
         iconContainer.appendChild(iconButton)

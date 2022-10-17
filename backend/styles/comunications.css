@@ -40,6 +40,16 @@
 .comunicationsPanel {
     width: 90%;
     border-radius: 10px;
+
+}
+
+.addComunicationContainer {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin-bottom: 4rem;
 }
 
 .comunicationInputs {
@@ -236,7 +246,7 @@
     color: #3C3C3B;
 }
 
-.textContainer{
+.textContainer {
     margin-bottom: 15px;
     width: 90%;
 }
@@ -267,7 +277,7 @@
     width: 90%;
 }
 
-.btnSubmit{
+.btnSubmit {
     background-color: #009640;
     border: none;
     padding: 5px 10px 5px 10px;
@@ -277,28 +287,28 @@
     width: 50%;
 }
 
-#media{
+#media {
     width: 100%;
 }
 
 .inputToSend::-webkit-file-upload-button {
-  color: #fff;
-  display: inline-block;
-  background: #1D71B8;
-  border: none;
-  border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    background: #1D71B8;
+    border: none;
+    border-radius: 5px;
     padding: 5px 10px 5px 10px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-family: 'Stainless Regular';
-/*   width: 100%; */
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: 'Stainless Regular';
+    /*   width: 100%; */
 }
 
-.createCardButton{
-        cursor: pointer;
+.createCardButton {
+    cursor: pointer;
     background-image: url(../assets/icons/checkIcon.png);
     background-color: transparent;
     background-repeat: no-repeat;

@@ -3,8 +3,12 @@ import {
     getConfig,
     printConfig
 } from './comunications.configurations.js'
-import {printComunicationsCards} from './comunications.services.js'
-import {validateFields} from './comunications.validations.js'
+import {
+    printComunicationsCards
+} from './comunications.services.js'
+import {
+    validateFields
+} from './comunications.validations.js'
 
 
 (async () => {
@@ -66,6 +70,46 @@ addComunication.addEventListener('click', function () {
     cardCreationMode()
 })
 
+function cardCreationMode() {
+
+
+    const newComunicationCard = document.querySelectorAll('.comunicationCard:last-of-type')[0]
+    const newCardOptions = newComunicationCard.querySelector('.cardOptionsContainer')
+    const newCardImage = newComunicationCard.querySelector('.cardMedia')
+    const newCardPreview = newCardOptions.querySelector('.preview')
+
+    const oldCards = document.querySelectorAll('.comunicationCard:not(:last-child)')
+
+
+
+    newComunicationCard.style.border = '2px solid #F39200'
+    newComunicationCard.setAttribute('data-CardCreation', "true")
+    newCardImage.setAttribute('data-CardCreation', "true")
+    addComunication.style.display = 'none'
+    newCardPreview.style.display = 'none'
+    const createNewCardButton = document.createElement('button');
+    createNewCardButton.className = 'createCardButton'
+    newCardOptions.prepend(createNewCardButton)
+
+    createNewCardButton.addEventListener('click', () => {
+        createCard(newComunicationCard)
+
+    })
+
+    /* SI CLICKEA EN OTRA CARD, CANCELA EL MODO CREACION */
+    for (let i = 0; i < oldCards.length; i++) {
+
+        oldCards[i].addEventListener('click', async() => {
+            const comunicationData = await getComunications()
+            printComunicationsCards(comunicationData)
+            addComunication.style.display = 'flex'
+            return
+        })
+
+    }
+
+}
+
 async function createCard(newCard) {
     console.log('Creando', newCard)
     let inputsToSend = newCard.closest('.comunicationCard')
@@ -83,6 +127,7 @@ async function createCard(newCard) {
     formData.append("paragraph", paragraph)
     formData.append("show_new_badge_until", show_new_badge_untilParsed)
     formData.append("media", fileToUpload)
+    console.log("File:",fileToUpload)
 
     const options = {
         method: "POST",
@@ -103,81 +148,61 @@ async function createCard(newCard) {
     }
 
 
-    /* printComunicationsCards(comunications) */
-
 }
 
 
 /* DELETE COMUNICATION */
 
 async function deleteComunication(e) {
-        console.log (e.target.id)
+    console.log(e.target.id)
 
-        const result = await Swal.fire({
-            title: 'Estas seguro que quieres borrar',
-            text: "Vas a borrar",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Borrar'
-        })
-
-        if (result.isConfirmed == false) return
-
-        try {
-            const id = e.target.id
-
-            const options = {
-                method: "DELETE",
-                body: JSON.stringify({id}),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }
-
-            const url = "http://localhost:3100/comunications"
-            await makeFetch(url, options)
-            const comunicationData = await getComunications()
-            printComunicationsCards(comunicationData)
-
-            Swal.fire(
-                'Borrado',
-                'Borrado con exitosamente',
-                'success'
-            )
-
-        } catch (err) {
-            console.log(err)
-            Swal.fire(
-                'Error',
-                'Se produjo un error',
-                'error'
-            )
-        }
-
-}
-
-function cardCreationMode() {
-    const newComunicationCard = document.querySelectorAll('.comunicationCard:last-of-type')[0]
-    const newCardOptions = newComunicationCard.querySelector('.cardOptionsContainer')
-    const newCardPreview = newCardOptions.querySelector('.preview')
-    console.log(newCardOptions)
-
-    newComunicationCard.style.border = '2px solid #F39200'
-    newComunicationCard.setAttribute('data-CardCreation', "true")
-    addComunication.style.display = 'none'
-    newCardPreview.style.display = 'none'
-
-    const createNewButton = document.createElement('button');
-    createNewButton.className = 'createCardButton'
-    newCardOptions.appendChild(createNewButton)
-
-    createNewButton.addEventListener('click', () => {
-        createCard(newComunicationCard)
-
+    const result = await Swal.fire({
+        title: 'Estas seguro que quieres borrar',
+        text: "Vas a borrar",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Borrar'
     })
 
+    if (result.isConfirmed == false) return
+
+    try {
+        const id = e.target.id
+
+        const options = {
+            method: "DELETE",
+            body: JSON.stringify({
+                id
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+
+        const url = "http://localhost:3100/comunications"
+        await makeFetch(url, options)
+        const comunicationData = await getComunications()
+        printComunicationsCards(comunicationData)
+
+        Swal.fire(
+            'Borrado',
+            'Borrado con exitosamente',
+            'success'
+        )
+
+    } catch (err) {
+        console.log(err)
+        Swal.fire(
+            'Error',
+            'Se produjo un error',
+            'error'
+        )
+    }
+
 }
+
+
 
 export default deleteComunication

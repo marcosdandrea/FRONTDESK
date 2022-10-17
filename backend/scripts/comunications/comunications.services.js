@@ -1,7 +1,9 @@
 import openModal from './comunications.modals.js'
 import deleteComunication from './comunications.js'
 import makeFetch from './comunications.fetch.js'
-import {validateFields} from './comunications.validations.js'
+import {
+    validateFields
+} from './comunications.validations.js'
 
 function printComunicationsCards(data) {
     //console.log("Print this", data)
@@ -37,7 +39,10 @@ function printComunicationsCards(data) {
         const cardImage = document.createElement('img')
         cardImage.src = 'http://localhost:3000/media/comunications/' + comunication.media.filename
         cardImage.className = 'cardMedia'
+        cardImage.setAttribute('data-CardCreation', "false")
         cardImage.addEventListener('click', openModal)
+
+
         /* Checkear si agregar el input oculto */
         comunicationMediaContainer.appendChild(cardImage)
         comunicationCard.appendChild(comunicationMediaContainer)
@@ -146,7 +151,7 @@ async function editCard(selectedInput) {
     /* VALIDACION */
     if (!validateFields(title, paragraph)) return
 
-    console.log (fileToUpload)
+    console.log(fileToUpload)
 
     const options = {
         method: "PATCH",
@@ -170,7 +175,7 @@ async function editCard(selectedInput) {
         }
     }
 
-   
+
 
     if (inputsToSend.getAttribute("data-cardCreation") == "false") {
         let url = "http://localhost:3100/comunications"

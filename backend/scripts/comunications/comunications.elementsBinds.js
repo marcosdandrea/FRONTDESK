@@ -8,7 +8,6 @@ const configId = document.getElementsByClassName('comunicationsConfig')[0]
 const comunicationsPanel = document.getElementsByClassName("comunicationsPanel")[0]
 const comunicationInputs = document.getElementsByClassName('inputToSend')
 const outerModal = document.getElementById('comunicationsModal')
-/* const selectMedia = document.querySelectorAll('.cardMedia') */
 const modalContent = document.getElementsByClassName("modalContent")[0]
 const iconsNav = document.getElementById('iconsNav')
 const multimediaNav = document.getElementById('multimediaNav')
