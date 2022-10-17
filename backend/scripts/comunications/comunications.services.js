@@ -1,6 +1,7 @@
 import openModal from './comunications.modals.js'
 import deleteComunication from './comunications.js'
 import makeFetch from './comunications.fetch.js'
+import {validateFields} from './comunications.validations.js'
 
 function printComunicationsCards(data) {
     //console.log("Print this", data)
@@ -143,16 +144,9 @@ async function editCard(selectedInput) {
 
 
     /* VALIDACION */
+    if (!validateFields(title, paragraph)) return
 
-    if (title.length > 20 || paragraph.length > 40) {
-        Swal.fire({
-            title: 'Formato de Texto invalido',
-            text: "Titulo o parrafo demasiado largos",
-            icon: 'warning',
-            confirmButtonText: 'Aceptar'
-        })
-        return
-    }
+    console.log (fileToUpload)
 
     const options = {
         method: "PATCH",

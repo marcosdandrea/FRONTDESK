@@ -76,7 +76,7 @@
     </div>
     <button id="addComunication">Agregar comunicado</button>
 
-    <div class="outerModal">
+    <div class="outerModal" id="comunicationsModal">
         <div class="modalContainerMedia">
             <div class="modalNav">
                 <ul>

@@ -7,7 +7,7 @@ const comunication_interval = document.getElementById('comunication_interval');
 const configId = document.getElementsByClassName('comunicationsConfig')[0]
 const comunicationsPanel = document.getElementsByClassName("comunicationsPanel")[0]
 const comunicationInputs = document.getElementsByClassName('inputToSend')
-const outerModal = document.getElementsByClassName('outerModal')[0]
+const outerModal = document.getElementById('comunicationsModal')
 /* const selectMedia = document.querySelectorAll('.cardMedia') */
 const modalContent = document.getElementsByClassName("modalContent")[0]
 const iconsNav = document.getElementById('iconsNav')
@@ -22,3 +22,10 @@ let configs = []
 let fileToUpload = undefined
 let creatingComunication = false;
 let tempData = undefined;
+
+
+//EVENT LISTENERS
+
+navCloseModal.addEventListener('click', () => {
+    outerModal.style.display = 'none'
+})

@@ -19,8 +19,8 @@ async function refreshData() {
         const header = document.getElementsByClassName("header")[0]
         const footer = document.getElementsByClassName("footer")[0]
 
-        header.textContent = configurations.title
-        footer.textContent = configurations.footer
+        header.innerHTML = configurations.title
+        footer.innerHTML = configurations.footer
 
         comunications = await getData("http://localhost:3100/comunications")
 

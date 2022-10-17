@@ -1,28 +1,17 @@
 import makeFetch from './comunications.fetch.js'
 
-function openModal() {
+async function openModal() {
 
-    console.log('Opening modal')
-    const selectMedia = document.querySelectorAll('.cardMedia')
-
-    for (let i = 0; i < selectMedia.length; i++) {
-
-        selectMedia[i].addEventListener('click', async (event) => {
-            //console.log(outerModal)
-            const url = "http://localhost:3100/assets/comunications/icons"
-            const options = {
-                method: "GET"
-            }
-            const mediaRepository = await makeFetch(url, options)
-            printInModal(mediaRepository)
-            outerModal.style.display = 'flex'
-        })
-
-        navCloseModal.addEventListener('click', () => {
-            outerModal.style.display = 'none'
-        })
-
+    const url = "http://localhost:3100/assets/comunications/icons"
+    const options = {
+        method: "GET"
     }
+    const mediaRepository = await makeFetch(url, options)
+    printInModal(mediaRepository)
+    outerModal.style.display = 'flex'
+    console.log('Opening modal',outerModal)
+
+
 }
 
 function printInModal(modalMedia) {
@@ -96,7 +85,7 @@ multimediaNav.addEventListener('click', function () {
     acceptButton.textContent = "Subir Archivo"
     acceptButton.addEventListener("click", () => {
         outerModal.style.display = "none"
-        fileToUpload = inputFile
+        fileToUpload = inputFile.files[0]
     })
 
     iconsNav.style.borderBottom = "none"
