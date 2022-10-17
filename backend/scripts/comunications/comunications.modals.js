@@ -9,7 +9,7 @@ async function openModal() {
     const mediaRepository = await makeFetch(url, options)
     printInModal(mediaRepository)
     outerModal.style.display = 'flex'
-    console.log('Opening modal',outerModal)
+    console.log('Opening modal', outerModal)
 
 
 }
@@ -77,6 +77,7 @@ multimediaNav.addEventListener('click', function () {
     inputFile.type = "file"
     inputFile.id = "media"
     inputFile.className = "inputToSend"
+    inputFile.setAttribute("accept", ".png")
 
     iconContainer.appendChild(inputFile)
 
