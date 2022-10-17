@@ -51,10 +51,13 @@ function uploadFile(req, res, next) {
             console.log ("Media mode: File upload")
             media = { media: { filename: req.file.filename, originalName: req.file.originalname } }
         } else {
-            if (req.body.icon) {
+            if (req.body.media) {
                 res.multerUploadCompleted = false
                 console.log ("Media mode: Icon")
-                media = { media: { filename: req.body.icon, originalName: req.body.icon } }
+                const mediaParsed = JSON.parse(req.body.media)
+                console.log(mediaParsed)
+
+                media = { media: { filename: mediaParsed.filename, originalName: mediaParsed.originalName } }
             }else{
                 res.status(400).send("You must send full information in body")
                 return

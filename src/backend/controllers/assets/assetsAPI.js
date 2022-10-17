@@ -3,7 +3,9 @@ const assetServices = require('./assetsServices')
 
 function begin (app){
 
-    app.get('/assets/comunications/icons', assetServices.getAllIcons)
+    app.get('/assets/comunications/icons', 
+    assetServices.getAllIcons
+    )
 
 }
 

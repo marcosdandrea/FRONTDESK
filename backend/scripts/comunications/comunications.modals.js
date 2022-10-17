@@ -33,12 +33,12 @@ function printInModal(modalMedia) {
         iconButton.addEventListener('click', () => {
             comunications.at(-1).media.filename = mediaUrl
             comunications.at(-1).media.originalName = mediaUrl.split("/").pop()
-            let Originalmedia = mediaUrl.split("/").pop()
+            let originalMedia = mediaUrl.split("/").pop() 
           
-            fileToUpload = mediaUrl 
+            fileToUpload = JSON.stringify({filename: mediaUrl, originalName: originalMedia})
             outerModal.style.display = "none"
            
-            console.log(Originalmedia,mediaUrl)
+            console.log (originalMedia, mediaUrl)
         })
 
         iconContainer.appendChild(iconButton)

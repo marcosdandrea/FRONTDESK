@@ -37,9 +37,13 @@ function printComunicationsCards(data) {
         const comunicationMediaContainer = document.createElement('div')
         comunicationMediaContainer.className = 'comunicationMedia'
         const cardImage = document.createElement('img')
-        cardImage.src = 'http://localhost:3000/media/comunications/' + comunication.media.filename
+        if (comunication.media.filename.includes("/")){
+            cardImage.src = comunication.media.filename
+        }else{
+            cardImage.src = 'http://localhost:3000/media/comunications/' + comunication.media.filename
+        }
         cardImage.className = 'cardMedia'
-        cardImage.setAttribute('data-CardCreation', "false")
+        comunicationCard.setAttribute('data-CardCreation', "false")
         cardImage.addEventListener('click', openModal)
 
 
@@ -136,12 +140,11 @@ async function waitToSend() {
 async function editCard(selectedInput) {
 
     let inputsToSend = selectedInput.closest('.comunicationCard')
-    console.log(inputsToSend.getAttribute("data-cardCreation"))
+    console.log("This input to send:",inputsToSend)
 
     let title = inputsToSend.querySelector('#title').value
     let paragraph = inputsToSend.querySelector('#paragraph').value
     let show_new_badge_until = inputsToSend.querySelector('#show_new_badge_until').value
-    let mediaElement = inputsToSend.querySelector('#media')
 
     const splitedDate = show_new_badge_until.split('-')
     const show_new_badge_untilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]

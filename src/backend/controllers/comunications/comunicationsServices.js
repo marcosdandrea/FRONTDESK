@@ -7,9 +7,13 @@ async function getComunication(req, res, next) {
         const comunications = await DAO.getComunication()
         const checkedComunications = []
         for (const entry in comunications) {
-            const file = path.join(__dirname, "../../../../public/media/comunications", comunications[entry].media.filename)
-            const answ = await checkIfFileExists(file)
-            if (answ) checkedComunications.push(comunications[entry])
+            const file1 = path.join(__dirname, "../../../../public/media/comunications", comunications[entry].media.filename)
+            const file2 = path.join(__dirname, "../../../../backend/assets/icons/comunications", comunications[entry].media.originalName)
+            const answ1 = await checkIfFileExists(file1)
+            console.log (file2)
+            const answ2 = await checkIfFileExists(file2)
+            console.log (answ1, answ2)
+            if (answ1 == true || answ2 == true) checkedComunications.push(comunications[entry])
         }
 
         res.status(200).send(await JSON.stringify(checkedComunications))

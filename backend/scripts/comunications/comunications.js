@@ -39,6 +39,8 @@ async function waitToSend() {
 }
 
 
+
+
 /* ADD COMUNICATION */
 
 const addComunication = document.getElementById('addComunication')
@@ -59,7 +61,7 @@ addComunication.addEventListener('click', function () {
         paragraph: "Escribe un parrafo",
         show_new_badge_until: show_new_badge_untilParsed,
         media: {
-            filename: "../../assets/videoNotAvailable.png",
+            filename: "http://localhost:3100/assets/icons/comunications/videoNotAvailable.png",
             originalName: "videoNotAvailable.png"
         }
     }
@@ -127,7 +129,8 @@ async function createCard(newCard) {
     formData.append("paragraph", paragraph)
     formData.append("show_new_badge_until", show_new_badge_untilParsed)
     formData.append("media", fileToUpload)
-    console.log("File:",fileToUpload)
+
+    //console.log("File:",fileToUpload)
 
     const options = {
         method: "POST",
@@ -200,6 +203,7 @@ async function deleteComunication(e) {
             'error'
         )
     }
+    addComunication.style.display = 'flex'
 
 }
 
