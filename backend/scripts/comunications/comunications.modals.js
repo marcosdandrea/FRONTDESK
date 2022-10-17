@@ -96,7 +96,7 @@ multimediaNav.addEventListener('click', function () {
     acceptButton.textContent = "Subir Archivo"
     acceptButton.addEventListener("click", () => {
         outerModal.style.display = "none"
-        fileToUpload = inputFile
+        fileToUpload = inputFile.files[0]
     })
 
     iconsNav.style.borderBottom = "none"
