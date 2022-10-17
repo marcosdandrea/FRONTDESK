@@ -62,7 +62,7 @@ async function newComunication(req, res, next) {
         const media = req.body.media
         const show_new_badge_until = req.body.show_new_badge_until
         const data = { title, paragraph, media, show_new_badge_until }
-        
+        console.log("This is data:",data)
         const answ = await DAO.newComunication(data)
         await deleteHorphanMedia(await DAO.getComunication())
 

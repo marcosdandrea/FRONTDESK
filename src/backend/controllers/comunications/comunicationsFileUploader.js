@@ -45,6 +45,7 @@ function uploadFile(req, res, next) {
     upload(req, res, function (err) {
         //if req.file is undefined there's no file to upload
         let media = {}
+        console.log("Req file:",req.file)
         if (req.file != undefined) {
             res.multerUploadCompleted = true
             console.log ("Media mode: File upload")

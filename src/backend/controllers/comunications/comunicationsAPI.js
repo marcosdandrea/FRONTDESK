@@ -11,7 +11,7 @@ function begin(backendApp) {
 
     backendApp.post("/comunications",
         uploadFile,
-        validator.body(schemaPost),    
+        /* validator.body(schemaPost),    */ 
         services.newComunication
     )
 
