@@ -285,7 +285,25 @@
     height: 33rem;
     width: 38vw;
     align-items: center;
+    overflow: auto;
+    overflow-x: hidden;
 }
+
+.modalContainerMedia::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  .modalContainerMedia::-webkit-scrollbar-track {
+   /*  background-color: #585858; */
+    border-radius: 100px;
+  }
+  
+  .modalContainerMedia::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    border: 5px solid transparent;
+    background-clip: content-box;
+    background-color: #666666;
+  }
 
 
 .modalNav {
