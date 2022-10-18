@@ -10,6 +10,18 @@
     row-gap: 1rem;
     padding: 1rem;
     margin-bottom: 8rem;
+    color: #575756;
+}
+
+#sectionTitle{
+    font-family: "Stainless Regular";
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 40%;
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+    color: black;
 }
 
 .comunicationCard {
@@ -32,25 +44,29 @@
 
 
 .comunicationCard input {
-    margin: 10px;
-    padding: 5px;
+
     border-radius: 5px;
     background: #EDEDED;
     border: none;
     width: 34rem;
+    margin: 0px 0px 0px 10px;
+    padding: 4px;
+    color: gray;
 
 }
 
 
 .comunicationCard textarea {
-    margin: 10px;
-    padding: 5px;
+
     border-radius: 5px;
     background: #EDEDED;
     border: none;
     width: 34rem;
     resize: none;
     height: 3rem;
+    margin: 0px 0px 0px 10px;
+    padding: 4px;
+    color: gray;
 }
 
 
@@ -86,6 +102,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    height: 8rem;
+    justify-content: space-between;
 }
 
 .comunicationInputs div:nth-child(2){
@@ -108,6 +126,10 @@
     background-size: 68%;
     border: none;
     border-radius: 50%;
+}
+
+.preview:hover{
+    background-color: #18619c;
 }
 
 
@@ -167,6 +189,7 @@
     border-radius: 5px;
     background: #EDEDED;
     padding: 5px 10px 5px 10px;
+    width: 40rem;
 }
 
 .configInputs {
@@ -209,7 +232,7 @@
 }
 
 .comunicationMedia{
-    width: 12rem;
+    height: 8rem;
     aspect-ratio: 1.6;
     overflow: hidden;
     border-radius: 5px;
@@ -345,7 +368,7 @@
     gap: 10px;
     display: flex;
     align-items: center;
-    margin-top: 7.5rem;
+    margin-top: 6rem;
 }
 
 .fileContainer {
@@ -357,6 +380,7 @@
     width: 90%;
 }
 
+
 .btnSubmit {
     background-color: #009640;
     border: none;
@@ -365,6 +389,10 @@
     color: #fff;
     font-family: 'Stainless Regular';
     width: 50%;
+}
+
+.btnSubmit:hover{
+    background-color: #02833a;
 }
 
 /* #media {
@@ -387,6 +415,12 @@
     /*   width: 100%; */
 }
 
+.inputToSend::-webkit-file-upload-button:hover {
+
+    background: #175c94;
+
+}
+
 .createCardButton {
     cursor: pointer;
     background-image: url(../assets/icons/checkIcon.png);
@@ -398,6 +432,10 @@
     background-size: 68%;
     border: none;
     border-radius: 50%;
+}
+
+.createCardButton:hover{
+    background-color: #30b43b;
 }
 
 

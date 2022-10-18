@@ -47,7 +47,7 @@
     </div>
 
     <div class="comunicationSection" style="display: none">
-        <div>Configurar Comunicados</div>
+        <div id="sectionTitle">CONFIGURAR COMUNICADOS</div>
         <div class="comunicationsConfig">
             <div class="configContainer">
                 <div class="configInputs">
