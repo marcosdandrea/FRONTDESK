@@ -29,7 +29,12 @@ function printComunicationsCards(data) {
 
         const cardNumber = document.createElement('div')
         cardNumber.className = 'cardNumber'
-        cardNumber.innerText = cardCount++
+        if (cardCount < 10) {
+        cardNumber.innerText = "0"+cardCount++
+        }else{
+            cardNumber.innerText = cardCount++
+        }
+      
 
         comunicationsPanel.appendChild(comunicationCard)
         comunicationCard.appendChild(cardNumber)
@@ -74,12 +79,13 @@ function printComunicationsCards(data) {
         const paragraphDiv = document.createElement('div')
         const paragraph = document.createElement('p')
         paragraph.innerText = 'Parrafo'
-        const inputParagraph = document.createElement('input')
+        const inputParagraph = document.createElement('textarea')
         inputParagraph.setAttribute("type", "textarea")
         inputParagraph.setAttribute("name", "paragraph")
         inputParagraph.setAttribute("value", comunication.paragraph)
         inputParagraph.className = 'inputToSend'
         inputParagraph.id = 'paragraph'
+        inputParagraph.innerHTML = comunication.paragraph
 
         comunicationInputsContainer.appendChild(paragraphDiv)
         paragraphDiv.appendChild(paragraph)

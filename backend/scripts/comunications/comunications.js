@@ -84,7 +84,7 @@ function cardCreationMode() {
 
 
 
-    newComunicationCard.style.border = '2px solid #F39200'
+    newComunicationCard.classList = 'comunicationCard process'
     newComunicationCard.setAttribute('data-CardCreation', "true")
     newCardImage.setAttribute('data-CardCreation', "true")
     addComunication.style.display = 'none'

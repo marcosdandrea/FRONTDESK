@@ -41,63 +41,68 @@
     </div>
 
     <div class="changeSectionContainer">
-        <button class="genericButton changeSection warning" id="btnSwithMode">Modificación de Nomina</button>
-        <button class="genericButton changeSection warning" id="btnSwithMode">Comunicados</button>
+         <button class="genericButton changeSection warning" id="videoSectionButton">Programar Videos</button>
+        <button class="genericButton changeSection warning" id="nominaSectionButton">Modificación de Nomina</button>
+        <button class="genericButton changeSection warning" id="comunicationSectionButton">Comunicados</button>
     </div>
 
-    <div class="comunicationsConfig">
-        <div class="configContainer">
-            <div class="configInputs">
-                <div>
-                    <p>Titulo</p>
-                    <input type="text" name="title" placeholder="Titulo" id="configTitle" class="configInputs">
+    <div class="comunicationSection" style="display: none">
+        <div>Configurar Comunicados</div>
+        <div class="comunicationsConfig">
+            <div class="configContainer">
+                <div class="configInputs">
+                    <div>
+                        <p>Titulo</p>
+                        <input type="text" name="title" placeholder="Titulo" id="configTitle" class="configInputs">
+                    </div>
+                    <div>
+                        <p>Footer</p>
+                        <input type="text" name="footer" placeholder="Footer" id="configFooter" class="configInputs">
+                    </div>
                 </div>
-                <div>
-                    <p>Footer</p>
-                    <input type="text" name="footer" placeholder="Footer" id="configFooter" class="configInputs">
-                </div>
-            </div>
-            <div class="configTimeInputs">
-                <div>
-                    <p>Duración de Comunicados</p>
-                    <input type="number" name="comunication_duration" id="comunication_duration" class="configInputs">
-                    <p>seg.</p>
-                </div>
-                <div>
-                    <p>Intervalo de Comunicados</p>
-                    <input type="number" name="comunication_interval" id="comunication_interval" class="configInputs">
-                    <p>min.</p>
+                <div class="configTimeInputs">
+                    <div>
+                        <p>Duración de Comunicados</p>
+                        <input type="number" name="comunication_duration" id="comunication_duration"
+                            class="configInputs">
+                        <p>seg.</p>
+                    </div>
+                    <div>
+                        <p>Intervalo de Comunicados</p>
+                        <input type="number" name="comunication_interval" id="comunication_interval"
+                            class="configInputs">
+                        <p>min.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="comunicationsPanel">
+        <div class="comunicationsPanel">
 
-    </div>
-    <div class="addComunicationContainer">
-        <button class="defaultButton succeed" id="addComunication">Agregar comunicado</button>
-    </div>   
-    
-    <div class="outerModal" id="comunicationsModal">
-        <div class="modalContainerMedia">
-            <div class="modalNav">
-                <ul>
-                    <li id="iconsNav">Iconos</li>
-                    <li id="multimediaNav">Multimedia</li>
-                </ul>
-                <div class="navCloseModal"></div>
+        </div>
+        <div class="addComunicationContainer">
+            <button class="defaultButton succeed" id="addComunication">Agregar comunicado</button>
+        </div>
+
+        <div class="outerModal" id="comunicationsModal">
+            <div class="modalContainerMedia">
+                <div class="modalNav">
+                    <ul>
+                        <li id="iconsNav">Iconos</li>
+                        <li id="multimediaNav">Multimedia</li>
+                    </ul>
+                    <div class="navCloseModal"></div>
+                </div>
+
+                <div class="modalContent">
+
+                </div>
+
+
             </div>
-
-            <div class="modalContent">
-
-            </div>
-
-
         </div>
     </div>
 
-
-    <div class="app" style="display: none;">
+    <div class="app">
         <div class="appHeader">
             <div class="sectionTitle">PROGRAMACIÓN DE VIDEOS</div>
             <div class="nomenclatorSectionControls ">

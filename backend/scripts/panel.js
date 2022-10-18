@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("username").textContent = window.getCookie("username");
     const btnSwithMode = document.getElementById("btnSwithMode");
     const btnLogOut = document.getElementById("logOut");
-    btnSwithMode.addEventListener("click", changePanelMode)
+   /*  btnSwithMode.addEventListener("click", changePanelMode) */
     btnLogOut.addEventListener("click", () => {
         socket.emit("logOut", window.getCookie("username"));
         let baseURL = window.location.href
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         baseURL = baseURL[0] + ":" + baseURL[1]
         window.location.href = baseURL + ":3100"
     });
-    changePanelMode();
+     changePanelMode(); 
 })
 
 /* Log */
@@ -59,15 +59,32 @@ function changePanelMode() {
     const addNewDayBtn = document.getElementById("btnAddNewDay")
     const calendarSectionControls = document.getElementsByClassName("calendarSectionControls")[0]
     const sectionTitle = document.getElementsByClassName("sectionTitle")[0]
+    const comunicationSection = document.getElementsByClassName("comunicationSection")[0]
+    const appDiv = document.getElementsByClassName("app")[0]
 
-    calendarMode = !calendarMode;
-    if (calendarMode) {
-        console.log("Calendar Mode")
+    const videoSectionButton = document.getElementById('videoSectionButton')
+    const nominaSectionButton = document.getElementById('nominaSectionButton')
+    const comunicationSectionButton = document.getElementById('comunicationSectionButton') 
 
+    console.log("Calendar Mode")
+
+    const log = { type: "ACT", content: `Ingresó al modo Programación de Videos` }
+    socket.emit("setLog", JSON.stringify(log))
+
+    nomenclatorSectionControls.style.display = "none"
+    nomenclatorControls.style.display = "none"
+    addNewDayBtn.style.display = "flex"
+    calendarSectionControls.style.display = "block"
+    calendarControls.style.display = "flex"
+    sectionTitle.innerText = "PROGRAMACIÓN DE VIDEO"
+    socket.emit("getCalendarData")
+
+    videoSectionButton.addEventListener("click", ()=>{
         const log = { type: "ACT", content: `Ingresó al modo Programación de Videos` }
         socket.emit("setLog", JSON.stringify(log))
 
-        btnSwithMode.innerText = "Modificar Nómina"
+        comunicationSection.style.display = "none"
+        appDiv.style.display = "flex";
         nomenclatorSectionControls.style.display = "none"
         nomenclatorControls.style.display = "none"
         addNewDayBtn.style.display = "flex"
@@ -75,13 +92,16 @@ function changePanelMode() {
         calendarControls.style.display = "flex"
         sectionTitle.innerText = "PROGRAMACIÓN DE VIDEO"
         socket.emit("getCalendarData")
-    } else {
-        console.log("Nomenclator Mode")
+    })
 
+    nominaSectionButton.addEventListener("click", ()=>{
+        console.log("Nomenclator Mode")
+        
         const log = { type: "ACT", content: `Ingresó al modo Modificar Nomenclador` }
         socket.emit("setLog", JSON.stringify(log))
 
-        btnSwithMode.innerText = "Modificar Videos"
+        comunicationSection.style.display = "none"
+        appDiv.style.display = "flex";
         nomenclatorSectionControls.style.display = "flex"
         nomenclatorControls.style.display = "flex"
         addNewDayBtn.style.display = "none"
@@ -89,6 +109,14 @@ function changePanelMode() {
         calendarControls.style.display = "none"
         sectionTitle.innerText = "MODIFICAR NOMENCLADOR"
         socket.emit("getNomenclatorData")
-    }
+    })
+
+    comunicationSectionButton.addEventListener("click", ()=>{
+
+        appDiv.style.display = "none";
+        comunicationSection.style.display = "flex"
+    })
+
+
 }
 

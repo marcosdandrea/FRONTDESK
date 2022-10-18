@@ -87,13 +87,19 @@ h1 {
 
 }
 
-.changeSection {
+/* .changeSection {
     margin-right: 6rem;
     margin-left: auto;
-}
+} */
 
 .changeSectionContainer {
-    width: 91rem;
+    display: flex;
+    width: 78rem;
+    justify-content: flex-end;
+}
+
+.changeSectionContainer button {
+    margin: 10px 0px 10px 10px;
 }
 
 .app {
