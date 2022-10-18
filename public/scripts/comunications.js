@@ -45,7 +45,12 @@ function setupComunication(data) {
     title.innerHTML = data.title
 
     const mediaFilename = data.media.filename
-    const mediaURL = "url('../../media/comunications/" + mediaFilename + "')"
+    let mediaURL = undefined
+    if (mediaFilename.includes("/")){
+        mediaURL = "url('" + mediaFilename + "')"
+    }else{
+        mediaURL = "url('../../media/comunications/" + mediaFilename + "')"
+    }
     const mediaExtension = mediaFilename.split(".").pop()
     media.innerHTML = ""
     if (mediaExtension == "mp4") {
@@ -78,11 +83,12 @@ function hideComunication() {
     setupTimers()
 }
 
+let hideTimeout = undefined
 function showNextComunication() {
     setupComunication(comunications[currIndexCom])
     comPanel.style.opacity = 1;
     showingComunication = 1
-    setTimeout(hideComunication, parseInt(configurations.comunication_duration))
+    hideTimeout = setTimeout(hideComunication, parseInt(configurations.comunication_duration))
 }
 
 function showSpecificComunication(id) {
@@ -91,6 +97,7 @@ function showSpecificComunication(id) {
     console.log ("Showing Comunication " + id)
     setupComunication(comunications[index])
     comPanel.style.opacity = 1;
-    setTimeout(hideComunication, parseInt(configurations.comunication_duration))
+    clearTimeout(hideTimeout)
+    hideTimeout = setTimeout(hideComunication, parseInt(configurations.comunication_duration))
 }
 

@@ -218,7 +218,7 @@ h1 {
 }
 
 .process {
-    border: solid orange 1px;
+    border: solid orange 1px !important;
     animation-name: processBackgroundAnimation;
     animation-iteration-count: infinite;
     animation-direction: alternate;

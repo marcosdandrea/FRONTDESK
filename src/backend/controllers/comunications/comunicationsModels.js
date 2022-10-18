@@ -38,7 +38,7 @@ const schemaPatch = Joi.object({
 })
 
 const schemaConfig = Joi.object({
-  title: Joi.string().required().min(5).max(20),
+  title: Joi.string().required(),
   footer: Joi.string().required(),
   comunication_duration: Joi.number().required().min(10).max(240),
   comunication_interval: Joi.number().required().min(10).max(240)

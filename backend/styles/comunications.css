@@ -195,15 +195,21 @@
 .configInputs {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 10px;
-
 }
 
-.configInputs div {
-    display: inline-flex;
-    justify-content: center;
-    gap: 10px;
+.editableDiv {
+    background-color: #efefef;
+    border-radius: 5px;
+    height: 1.2rem;
+    width: 40rem;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    font-size: 1rem;
+    font-family: 'Stainless Light';
+    color: black;
 }
 
 .configTimeInputs {

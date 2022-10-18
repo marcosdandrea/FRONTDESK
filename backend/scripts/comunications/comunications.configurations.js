@@ -1,24 +1,37 @@
 
+configFooter.addEventListener("focus", (e)=>{switchInputEditMode(e, "html")})
+configFooter.addEventListener("blur", (e)=>{switchInputEditMode(e, "text")})
+configTitle.addEventListener("focus", (e)=>{switchInputEditMode(e, "html")})
+configTitle.addEventListener("blur", (e)=>{switchInputEditMode(e, "text")})
+comunication_duration.addEventListener("blur", sendConfig)
+comunication_interval.addEventListener("blur", sendConfig)
+
 function printConfig(configData) {
 
-
-    //const configTitle = document.getElementById('configTitle');
-    //const configFooter = document.getElementById('configFooter');
-    //const comunication_duration = document.getElementById('comunication_duration');
-    //const comunication_interval = document.getElementById('comunication_interval');
-    //const configId = document.getElementsByClassName('comunicationsConfig')[0]
-    configId.setAttribute("id", configData.id);
-
-    configTitle.value = configData.title
-    configFooter.value = configData.footer
+    configTitle.innerHTML = configData.title
+    configFooter.innerHTML = configData.footer
     comunication_duration.value = configData.comunication_duration
     comunication_interval.value = configData.comunication_interval
 
-    for (let i = 0; i < configInputs.length; i++) {
-        configInputs[i].addEventListener('change', waitToSendConfig)
+}
 
+let content
+function switchInputEditMode(e, mode){
+
+    //edit mode
+    if (mode == "html"){
+        console.log ("edit mode:", e.target.id)
+        content = e.target.innerHTML
+        e.target.textContent = content
+        e.target.classList.add("process")
+
+    //view mode
+    }else{
+        console.log ("view mode:", e.target.id)
+        e.target.innerHTML = e.target.textContent
+        e.target.classList.remove("process")
+        sendConfig()
     }
-
 }
 
 async function getConfig() {
@@ -33,32 +46,17 @@ async function getConfig() {
 
 }
 
-function waitToSendConfig() {
-
-    if (sender) clearTimeout(sender);
-    sender = setTimeout(sendConfig(this), delayToSend)
-
-}
-
-function sendConfig(selectedInput) {
-    const inputsToSend = selectedInput.closest('.comunicationsConfig')
-
-    const title = inputsToSend.querySelector('#configTitle').value
-    const footer = inputsToSend.querySelector('#configFooter').value
-    const comunication_duration = inputsToSend.querySelector('#comunication_duration').value
-    const comunication_interval = inputsToSend.querySelector('#comunication_interval').value
-    /*     let show_new_badge_until = inputsToSend.querySelector('#show_new_badge_until').value
-        const today = new Date().toLocaleDateString('en-ca')
-        const splitedDate = show_new_badge_until.split('-')
-        const show_new_badge_untilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0] */
-
-    const id = inputsToSend.id
+async function sendConfig() {
+    const title = configTitle.innerHTML
+    const footer = configFooter.innerHTML
+    const comunication_duration_value = comunication_duration.value
+    const comunication_interval_value = comunication_interval.value
 
     const data = {
         title,
         footer,
-        comunication_duration,
-        comunication_interval
+        comunication_duration: comunication_duration_value,
+        comunication_interval: comunication_interval_value
     }
 
     const options = {
@@ -69,7 +67,12 @@ function sendConfig(selectedInput) {
         }
     }
 
-    fetch("http://localhost:3100/comunications/config", options)
+    try{
+        await fetch("http://localhost:3100/comunications/config", options)
+        console.log ("Configurations saved!")
+    }catch(err){
+        console.log ("Error saving configuration: ", err.message)
+    }
 
 }
 
