@@ -1,4 +1,4 @@
-.comunicationSection{
+.comunicationSection {
     width: 78rem;
     height: 100%;
     min-height: 30rem;
@@ -13,7 +13,7 @@
     color: #575756;
 }
 
-#sectionTitle{
+#sectionTitle {
     font-family: "Stainless Regular";
     display: flex;
     justify-content: flex-start;
@@ -88,7 +88,7 @@
     margin-bottom: 4rem;
 }
 
-#addComunication{
+#addComunication {
     height: 2rem;
     border: none;
     border-radius: 5px;
@@ -106,7 +106,7 @@
     justify-content: space-between;
 }
 
-.comunicationInputs div:nth-child(2){
+.comunicationInputs div:nth-child(2) {
     align-items: baseline;
 }
 
@@ -117,7 +117,7 @@
     cursor: pointer;
     background-color: #1d71b8;
     background-image: url(../assets/icons/visualizeIcon.png);
-/*     background-size: contain; */
+    /*     background-size: contain; */
     color: #fff;
     height: 2rem;
     width: 2rem;
@@ -128,7 +128,7 @@
     border-radius: 50%;
 }
 
-.preview:hover{
+.preview:hover {
     background-color: #18619c;
 }
 
@@ -212,11 +212,11 @@
     flex-direction: column;
 }
 
-#show_new_badge_until{
+#show_new_badge_until {
     width: 7rem
 }
 
-.comunicationDate{
+.comunicationDate {
 
     display: flex;
     justify-content: flex-start !important;
@@ -231,7 +231,7 @@
     gap: 10px;
 }
 
-.comunicationMedia{
+.comunicationMedia {
     height: 8rem;
     aspect-ratio: 1.6;
     overflow: hidden;
@@ -243,12 +243,12 @@
 }
 
 .comunicationMedia img {
-/*     width: inherit;
+    /*     width: inherit;
     height: inherit; */
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    
+
 }
 
 .cardNumber {
@@ -285,7 +285,25 @@
     height: 33rem;
     width: 38vw;
     align-items: center;
+    overflow: auto;
+    overflow-x: hidden;
 }
+
+.modalContainerMedia::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  .modalContainerMedia::-webkit-scrollbar-track {
+   /*  background-color: #585858; */
+    border-radius: 100px;
+  }
+  
+  .modalContainerMedia::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    border: 5px solid transparent;
+    background-clip: content-box;
+    background-color: #666666;
+  }
 
 
 .modalNav {
@@ -351,7 +369,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-        margin-top: 9rem;
+    margin-top: 9rem;
+}
+
+.iconContainer {
+    display: flex;
+    width: 38vw;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .iconContainer img {
@@ -362,6 +388,7 @@
     padding: 0.5rem;
     border-radius: 5px;
     cursor: pointer;
+    margin: 10px;
 }
 
 .cardOptionsContainer {
@@ -391,7 +418,7 @@
     width: 50%;
 }
 
-.btnSubmit:hover{
+.btnSubmit:hover {
     background-color: #02833a;
 }
 
@@ -434,7 +461,7 @@
     border-radius: 50%;
 }
 
-.createCardButton:hover{
+.createCardButton:hover {
     background-color: #30b43b;
 }
 
