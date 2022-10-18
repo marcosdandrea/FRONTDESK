@@ -88,6 +88,7 @@ function showNextComunication() {
 function showSpecificComunication(id) {
     const index = comunications.findIndex(entry => entry.id == id)
     if (index == -1) return
+    console.log ("Showing Comunication " + id)
     setupComunication(comunications[index])
     comPanel.style.opacity = 1;
     setTimeout(hideComunication, parseInt(configurations.comunication_duration))

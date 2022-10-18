@@ -3,6 +3,7 @@ const { uploadFile } = require("./comunicationsFileUploader")
 const { schemaPostMedia, schemaPost, schemaPostIcon, schemaPatch, schemaConfig } = require("./comunicationsModels")
 const validator = require('express-joi-validation').createValidator({})
 const multer = require('multer')
+const {showComunication} = require("../../../clientSocket")
 const uploader = multer()
 
 function begin(backendApp) {
@@ -42,6 +43,16 @@ function begin(backendApp) {
     backendApp.get("/comunications/config",
         uploader.none(),
         services.getConfigurations
+    )
+
+    //display comunications configuration
+
+    backendApp.get("/comunications/show/:id", 
+        (req, res, next)=>{
+            const id = req.params.id
+            showComunication(id)
+            res.sendStatus(200);
+        }
     )
 
 }

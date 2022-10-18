@@ -8,7 +8,7 @@ socket.on("refreshFrontend", () => {
     location.reload();
 })
 
-socket.on("showNotification", (id) => {
+socket.on("showComunication", (id) => {
     showSpecificComunication(id);
 })
 

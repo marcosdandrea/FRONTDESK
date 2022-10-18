@@ -10,9 +10,7 @@ async function getComunication(req, res, next) {
             const file1 = path.join(__dirname, "../../../../public/media/comunications", comunications[entry].media.filename)
             const file2 = path.join(__dirname, "../../../../backend/assets/icons/comunications", comunications[entry].media.originalName)
             const answ1 = await checkIfFileExists(file1)
-            console.log (file2)
             const answ2 = await checkIfFileExists(file2)
-            console.log (answ1, answ2)
             if (answ1 == true || answ2 == true) checkedComunications.push(comunications[entry])
         }
 

@@ -3,7 +3,7 @@
   const clientApp = express();
   const clientServer = require('http').createServer(clientApp);
   const path = require('path');
-  const socket = require('./socket.js');
+  const socket = require("./clientSocket");
   const backendManager = require('./backend/backendManager')
   const logger = require("./logger")
   const cors = require('cors')

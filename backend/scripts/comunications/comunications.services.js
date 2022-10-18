@@ -119,6 +119,9 @@ function printComunicationsCards(data) {
         cardOptionsContainer.className = 'cardOptionsContainer'
         const buttonPreview = document.createElement('button')
         buttonPreview.className = 'preview'
+        buttonPreview.addEventListener('click', ()=>{
+            socket.emit("showComunication", comunication.id)
+        })
         const deleteButton = document.createElement('button')
         deleteButton.className = 'deleteButton problem'
         deleteButton.id = comunication.id
