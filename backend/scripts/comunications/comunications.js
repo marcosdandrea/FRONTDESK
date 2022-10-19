@@ -7,7 +7,7 @@ import {
     printComunicationsCards
 } from './comunications.services.js'
 import {
-    validateFields
+    validateFields, validateFile
 } from './comunications.validations.js'
 
 
@@ -118,6 +118,8 @@ function cardCreationMode() {
 
 async function createCard(newCard) {
     console.log('Creando', newCard)
+    //--> iniciar ruedita
+
     let inputsToSend = newCard.closest('.comunicationCard')
 
     let title = inputsToSend.querySelector('#title').value
@@ -136,6 +138,13 @@ async function createCard(newCard) {
 
     //console.log("File:",fileToUpload)
 
+    const check = validateFile(fileToUpload)
+    if (!check[1]){
+        //sweet Alert
+        console.log(check[0])
+        return
+    }
+
     const options = {
         method: "POST",
         body: formData
@@ -145,12 +154,10 @@ async function createCard(newCard) {
     let url = "http://localhost:3100/comunications"
     if (newCard.getAttribute("data-cardCreation") == "true") {
 
-        console.log("Sending to server", options)
         const answ = await makeFetch(url, options)
         const comunicationData = await getComunications()
         printComunicationsCards(comunicationData)
         addComunication.style.display = 'flex'
-        console.log(answ)
 
     }
 

@@ -58,17 +58,24 @@ async function deleteHorphanMedia(comunications) {
 
 async function newComunication(req, res, next) {
     try {
-            
+
         const title = req.body.title
         const paragraph = req.body.paragraph
         const media = req.body.media
         const show_new_badge_until = req.body.show_new_badge_until
         const data = { title, paragraph, media, show_new_badge_until }
-        console.log("This is data:",data)
+        console.log("This is data:", data)
         const answ = await DAO.newComunication(data)
         await deleteHorphanMedia(await DAO.getComunication())
-
-        res.status(200).send(answ)
+        
+        const intervalCheck = setInterval(() => {
+            if (req.uploadCompleted) {
+                console.log ("Upload completed - final")
+                res.status(200).send(answ)
+                clearInterval(intervalCheck)
+            }
+        }, 1000)
+        
     } catch (err) {
         res.status(304)
     }

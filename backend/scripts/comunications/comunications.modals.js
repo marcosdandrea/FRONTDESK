@@ -44,7 +44,9 @@ function printInModal(modalMedia) {
         console.log (fileToUpload)
         if (fileToUpload.name.includes("png")) {
             currentCardImageEdition.poster = createObjectURL(fileToUpload)
+            currentCardImageEdition.src = ""
         } else {
+            currentCardImageEdition.poster = ""
             currentCardImageEdition.src = createObjectURL(fileToUpload)
         }
     })

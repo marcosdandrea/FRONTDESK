@@ -23,6 +23,10 @@ socket.on("calendarData", (data) => {
     buildCalendarControls(data)
 })
 
+socket.on("uploadProgress", (progress) => {
+    console.log(progress)
+})
+
 
 socket.on("userData", (data) => {
     const userName = document.getElementById("username")

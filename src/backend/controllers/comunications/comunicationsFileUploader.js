@@ -1,3 +1,4 @@
+
 const multer = require('multer')
 const crypto = require('crypto')
 const fs = require('fs')
@@ -45,7 +46,6 @@ function uploadFile(req, res, next) {
     upload(req, res, function (err) {
         //if req.file is undefined there's no file to upload
         let media = {}
-        console.log("Req file:",req.file)
         if (req.file != undefined) {
             res.multerUploadCompleted = true
             console.log ("Media mode: File upload")
@@ -69,4 +69,24 @@ function uploadFile(req, res, next) {
     })
 }
 
-module.exports = { uploadFile }
+function progress_middleware(req, res, next){
+    let progress = 0;
+    const file_size = req.headers["content-length"];
+    req.uploadCompleted = false;
+    // set event listener
+    req.on("data", (chunk) => {
+        progress += chunk.length;
+        const percentage = (progress / file_size) * 100;
+        //console.log("upload progress: " + percentage)
+        if (percentage == 100){
+            req.uploadCompleted = true;
+            console.log("Upload Completed")
+        }
+        // other code ...
+    });
+
+    // invoke next middleware
+    next();
+}
+
+module.exports = { uploadFile, progress_middleware}
