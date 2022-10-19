@@ -7,3 +7,4 @@ const building1 = document.getElementsByClassName("building1")[0];
 const building2 = document.getElementsByClassName("building2")[0];
 const comunicationsElement = document.getElementsByClassName("comunications")[0]
 const parade = document.getElementsByClassName("parade")[0]
+const newBadge = document.getElementsByClassName("newBadge")[0]

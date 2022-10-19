@@ -46,9 +46,9 @@ function setupComunication(data) {
 
     const mediaFilename = data.media.filename
     let mediaURL = undefined
-    if (mediaFilename.includes("/")){
+    if (mediaFilename.includes("/")) {
         mediaURL = "url('" + mediaFilename + "')"
-    }else{
+    } else {
         mediaURL = "url('../../media/comunications/" + mediaFilename + "')"
     }
     const mediaExtension = mediaFilename.split(".").pop()
@@ -66,6 +66,13 @@ function setupComunication(data) {
     }
 
     paragraph.innerHTML = data.paragraph
+    const showNewBadgeUntil = new Date(data.show_new_badge_until)
+    const today = new Date()
+    if (today > showNewBadgeUntil) {
+        newBadge.style.display = "none"
+    } else {
+        newBadge.style.display = "block"
+    }
 }
 
 let triggerComunication
@@ -78,7 +85,7 @@ function hideComunication() {
     showingComunication = 0
     comPanel.style.opacity = 0;
     currIndexCom++
-    if (currIndexCom > comunications.length-1) currIndexCom = 0;
+    if (currIndexCom > comunications.length - 1) currIndexCom = 0;
     triggerComunication = undefined
     setupTimers()
 }
@@ -94,7 +101,7 @@ function showNextComunication() {
 function showSpecificComunication(id) {
     const index = comunications.findIndex(entry => entry.id == id)
     if (index == -1) return
-    console.log ("Showing Comunication " + id)
+    console.log("Showing Comunication " + id)
     setupComunication(comunications[index])
     comPanel.style.opacity = 1;
     clearTimeout(hideTimeout)
