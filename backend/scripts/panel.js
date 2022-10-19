@@ -83,6 +83,10 @@ function changePanelMode() {
         const log = { type: "ACT", content: `Ingresó al modo Programación de Videos` }
         socket.emit("setLog", JSON.stringify(log))
 
+        videoSectionButton.style.display = "none"
+        nominaSectionButton.style.display = "flex"
+        comunicationSectionButton.style.display = "flex"
+
         comunicationSection.style.display = "none"
         appDiv.style.display = "flex";
         nomenclatorSectionControls.style.display = "none"
@@ -100,6 +104,10 @@ function changePanelMode() {
         const log = { type: "ACT", content: `Ingresó al modo Modificar Nomenclador` }
         socket.emit("setLog", JSON.stringify(log))
 
+        nominaSectionButton.style.display = "none"
+        videoSectionButton.style.display = "flex"
+        comunicationSectionButton.style.display = "flex"
+
         comunicationSection.style.display = "none"
         appDiv.style.display = "flex";
         nomenclatorSectionControls.style.display = "flex"
@@ -112,6 +120,10 @@ function changePanelMode() {
     })
 
     comunicationSectionButton.addEventListener("click", ()=>{
+
+        comunicationSectionButton.style.display = "none"
+        nominaSectionButton.style.display = "flex"
+        videoSectionButton.style.display = "flex"
 
         appDiv.style.display = "none";
         comunicationSection.style.display = "flex"

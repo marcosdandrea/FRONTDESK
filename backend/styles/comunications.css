@@ -229,7 +229,7 @@
 }
 
 .configTimeInputs input {
-    width: 2rem
+    width: 2.3rem
 }
 
 .configTimeInputs div {
@@ -264,7 +264,7 @@
     font-family: 'Stainless Regular';
 }
 
-.availableToClick{
+.availableToClick {
     cursor: pointer;
 }
 
@@ -296,20 +296,20 @@
 }
 
 .modalContainerMedia::-webkit-scrollbar {
-    width: 20px;
-  }
-  
-  .modalContainerMedia::-webkit-scrollbar-track {
-   /*  background-color: #585858; */
+    width: 10px;
+}
+
+.modalContainerMedia::-webkit-scrollbar-track {
+    /*  background-color: #585858; */
     border-radius: 100px;
-  }
-  
-  .modalContainerMedia::-webkit-scrollbar-thumb {
+}
+
+.modalContainerMedia::-webkit-scrollbar-thumb {
     border-radius: 20px;
-    border: 5px solid transparent;
+    border: 3px solid transparent;
     background-clip: content-box;
     background-color: #666666;
-  }
+}
 
 
 .modalNav {
@@ -492,17 +492,53 @@
 
     .configTimeInputs {
         width: 90%;
+        align-items: center;
     }
 
     .comunicationCard {
         flex-wrap: wrap;
         justify-content: center;
+        flex-direction: column;
+    }
+
+    .editableDiv {
+        overflow: hidden;
+        width: 90%;
+    }
+
+    .comunicationsConfig {
+        margin-right: auto;
+        margin-left: auto;
+        width: 30%;
+    }
+
+    .comunicationsPanel {
+        width: 30%;
+        margin-right: auto;
+        margin-left: auto;
     }
 
     .comunicationInputs {
         width: 90%;
         align-content: center;
         align-items: center;
+    }
+
+    .comunicationInputs p {
+
+        margin-right: auto;
+        margin-left: auto;
+
+    }
+
+    .comunicationInputs textarea {
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+    }
+
+    .comunicationCard input {
+        width: 100%;
     }
 
     .comunicationDate {
@@ -514,8 +550,17 @@
         flex-direction: column;
     }
 
+    .comunicationMedia video {
+        height: auto;
+        width: 12rem;
+    }
+
     .cardOptionsContainer {
         flex-direction: row !important;
-        margin-top: 0;
+        margin-top: 3rem;
+    }
+
+    .modalContainerMedia{
+            width: 90vw;
     }
 }

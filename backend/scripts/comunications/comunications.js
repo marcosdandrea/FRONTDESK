@@ -80,6 +80,9 @@ function cardCreationMode() {
     const newCardOptions = newComunicationCard.querySelector('.cardOptionsContainer')
     const newCardImage = newComunicationCard.querySelector('.cardMedia')
     const newCardPreview = newCardOptions.querySelector('.preview')
+    const newComunicationMedia = newComunicationCard.querySelector('.comunicationMedia')
+    newComunicationMedia.style.cursor = 'pointer'
+  
 
     const oldCards = document.querySelectorAll('.comunicationCard:not(:last-child)')
 
