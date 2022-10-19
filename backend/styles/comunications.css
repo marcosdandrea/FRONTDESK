@@ -477,6 +477,10 @@
 
 @media (max-width: 992px) {
 
+    #sectionTitle{
+        justify-content: center;
+    }
+
     .configContainer {
         flex-direction: column;
     }
