@@ -21,6 +21,7 @@ let configs = []
 let fileToUpload = undefined
 let creatingComunication = false;
 let tempData = undefined;
+let currentCardImageEdition = undefined
 
 
 //EVENT LISTENERS

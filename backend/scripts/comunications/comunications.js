@@ -48,17 +48,18 @@ const addComunicationModal = document.getElementsByClassName('addComunicationMod
 
 addComunication.addEventListener('click', function () {
 
-    const today = new Date().toLocaleDateString('en-ca')
-    const splitedDate = today.split('-')
-    const show_new_badge_untilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
-
-
+    const today = new Date();
+    const tomorrow = new Date(today)
+    tomorrow.setDate(tomorrow.getDate() + 2)
+    const tomorrowFormat = tomorrow.toLocaleDateString('en-ca')
+    const splitedDate = tomorrowFormat.split('-')
+    const show_new_badge_untilParsed = splitedDate[0] + '-' + splitedDate[1] + '-' + splitedDate[2]
 
     creatingComunication = true;
 
     tempData = {
-        title: "Escribe un titulo",
-        paragraph: "Escribe un parrafo",
+        title: "",
+        paragraph: "",
         show_new_badge_until: show_new_badge_untilParsed,
         media: {
             filename: "http://localhost:3100/assets/icons/comunications/videoNotAvailable.png",

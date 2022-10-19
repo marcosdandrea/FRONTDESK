@@ -30,24 +30,36 @@ function printComunicationsCards(data) {
         const cardNumber = document.createElement('div')
         cardNumber.className = 'cardNumber'
         if (cardCount < 10) {
-        cardNumber.innerText = "0"+cardCount++
-        }else{
+            cardNumber.innerText = "0" + cardCount++
+        } else {
             cardNumber.innerText = cardCount++
         }
-      
+
 
         comunicationsPanel.appendChild(comunicationCard)
         comunicationCard.appendChild(cardNumber)
 
         const comunicationMediaContainer = document.createElement('div')
         comunicationMediaContainer.className = 'comunicationMedia'
-        const cardImage = document.createElement('img')
-        if (comunication.media.filename.includes("/")){
-            cardImage.src = comunication.media.filename
-        }else{
-            cardImage.src = 'http://localhost:3000/media/comunications/' + comunication.media.filename
+        const cardImage = document.createElement('video')
+        const filename = comunication.media.filename
+        if (filename.includes("/")) {
+            if (filename.includes("png")) {
+                cardImage.poster = filename
+            } else {
+                cardImage.src = filename
+            }
+        } else {
+            if (filename.includes("png")) {
+                cardImage.poster = 'http://localhost:3000/media/comunications/' + filename
+            } else {
+                cardImage.src = 'http://localhost:3000/media/comunications/' + filename
+            }
         }
         cardImage.className = 'cardMedia'
+        cardImage.style = "background-color: whitesmoke;"
+        if (cardImage.src.includes('videoNotAvailable'))
+            cardImage.classList.add("availableToClick")
         comunicationCard.setAttribute('data-CardCreation', "false")
         cardImage.addEventListener('click', openModal)
 
@@ -65,9 +77,11 @@ function printComunicationsCards(data) {
         const inputTitle = document.createElement('input')
         inputTitle.setAttribute("type", "text")
         inputTitle.setAttribute("name", "title")
+        inputTitle.setAttribute("placeholder", "Escribe un título")
         inputTitle.setAttribute("value", comunication.title)
         inputTitle.className = 'inputToSend'
         inputTitle.id = 'title'
+        inputTitle.setAttribute("maxlength", 25)
 
         comunicationInputsContainer.appendChild(titleDiv)
         titleDiv.appendChild(cardTitle)
@@ -82,10 +96,12 @@ function printComunicationsCards(data) {
         const inputParagraph = document.createElement('textarea')
         inputParagraph.setAttribute("type", "textarea")
         inputParagraph.setAttribute("name", "paragraph")
+        inputParagraph.setAttribute("placeholder", "Escribe un párrafo")
         inputParagraph.setAttribute("value", comunication.paragraph)
         inputParagraph.className = 'inputToSend'
         inputParagraph.id = 'paragraph'
         inputParagraph.innerHTML = comunication.paragraph
+        inputParagraph.setAttribute("maxlength", 100)
 
         comunicationInputsContainer.appendChild(paragraphDiv)
         paragraphDiv.appendChild(paragraph)
@@ -119,7 +135,7 @@ function printComunicationsCards(data) {
         cardOptionsContainer.className = 'cardOptionsContainer'
         const buttonPreview = document.createElement('button')
         buttonPreview.className = 'preview'
-        buttonPreview.addEventListener('click', ()=>{
+        buttonPreview.addEventListener('click', () => {
             socket.emit("showComunication", comunication.id)
         })
         const deleteButton = document.createElement('button')
@@ -149,7 +165,7 @@ async function waitToSend() {
 async function editCard(selectedInput) {
 
     let inputsToSend = selectedInput.closest('.comunicationCard')
-    console.log("This input to send:",inputsToSend)
+    console.log("This input to send:", inputsToSend)
 
     let title = inputsToSend.querySelector('#title').value
     let paragraph = inputsToSend.querySelector('#paragraph').value

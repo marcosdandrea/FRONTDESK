@@ -1,7 +1,8 @@
 import makeFetch from './comunications.fetch.js'
 
-async function openModal() {
+async function openModal(e) {
     if (this.getAttribute('data-cardCreation') == 'true') {
+        currentCardImageEdition = e.target
         printInModal()
         outerModal.style.display = 'flex'
     }
@@ -30,7 +31,7 @@ function printInModal(modalMedia) {
     inputFile.type = "file"
     inputFile.id = "media"
     inputFile.className = "inputToSend"
-    inputFile.setAttribute("accept", ".png")
+    inputFile.setAttribute("accept", ".png, .mp4")
 
     iconContainer.appendChild(inputFile)
 
@@ -40,6 +41,12 @@ function printInModal(modalMedia) {
     acceptButton.addEventListener("click", () => {
         outerModal.style.display = "none"
         fileToUpload = inputFile.files[0]
+        console.log (fileToUpload)
+        if (fileToUpload.name.includes("png")) {
+            currentCardImageEdition.poster = createObjectURL(fileToUpload)
+        } else {
+            currentCardImageEdition.src = createObjectURL(fileToUpload)
+        }
     })
 
     iconsNav.style.borderBottom = "none"
@@ -81,7 +88,7 @@ async function printIconsModal() {
                 originalName: originalMedia
             })
             outerModal.style.display = "none"
-
+            currentCardImageEdition.src = comunications.at(-1).media.filename
             console.log(originalMedia, mediaUrl)
         })
 
@@ -117,7 +124,7 @@ multimediaNav.addEventListener('click', function () {
     inputFile.type = "file"
     inputFile.id = "media"
     inputFile.className = "inputToSend"
-    inputFile.setAttribute("accept", ".png")
+    inputFile.setAttribute("accept", ".png, .mp4")
 
     iconContainer.appendChild(inputFile)
 
@@ -134,5 +141,9 @@ multimediaNav.addEventListener('click', function () {
     iconContainer.appendChild(acceptButton)
 
 })
+
+function createObjectURL(object) {
+    return (window.URL) ? window.URL.createObjectURL(object) : window.webkitURL.createObjectURL(object);
+}
 
 export default openModal

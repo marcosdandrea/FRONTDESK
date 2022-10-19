@@ -39,7 +39,7 @@
     width: 80%;
     aspect-ratio: 16/9;
     border-radius: 2rem;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -61,6 +61,8 @@
     font-family: 'Stainless Regular';
     color: #575756;
     width: 80%;
+    height: 150px;
+    word-break: break-word;
 }
 
 .comunications .footer{

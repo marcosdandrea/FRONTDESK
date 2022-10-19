@@ -3,8 +3,8 @@ const JoiDate = require("@joi/date")
 const Joi = JoiBase.extend(JoiDate); // extend Joi with Joi Date
 
 const schemaPost = Joi.object({
-  title: Joi.string().required().min(10).max(20),
-  paragraph: Joi.string().required().min(15).max(100),
+  title: Joi.string().required(),
+  paragraph: Joi.string().required(),
   show_new_badge_until: Joi.date().format("DD/MM/YYYY").required().greater("now"),
   icon: Joi.string(),
   media: {
@@ -12,7 +12,7 @@ const schemaPost = Joi.object({
     originalName: Joi.string().required()
   } 
 })
-
+/*
 const schemaPostMedia = Joi.object({
   title: Joi.string().required().min(10).max(20),
   paragraph: Joi.string().required().min(15).max(100),
@@ -29,10 +29,11 @@ const schemaPostIcon = Joi.object({
     originalName: Joi.string().required()
   }
 })
+*/
 
 const schemaPatch = Joi.object({
-  title: Joi.string().required().min(10).max(20),
-  paragraph: Joi.string().required().min(15).max(100),
+  title: Joi.string().required(),
+  paragraph: Joi.string().required(),
   show_new_badge_until: Joi.date().format("DD/MM/YYYY").required().greater("now"),
   id: Joi.string().required().guid()
 })
@@ -40,8 +41,8 @@ const schemaPatch = Joi.object({
 const schemaConfig = Joi.object({
   title: Joi.string().required(),
   footer: Joi.string().required(),
-  comunication_duration: Joi.number().required().min(10).max(240),
-  comunication_interval: Joi.number().required().min(10).max(240)
+  comunication_duration: Joi.number().required(),
+  comunication_interval: Joi.number().required()
 })
 
-module.exports = { schemaPostMedia, schemaPost, schemaPostIcon, schemaPatch, schemaConfig }
+module.exports = { schemaPost, schemaPatch, schemaConfig }

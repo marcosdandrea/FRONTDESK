@@ -1,6 +1,6 @@
 const services = require("./comunicationsServices")
 const { uploadFile } = require("./comunicationsFileUploader")
-const { schemaPostMedia, schemaPost, schemaPostIcon, schemaPatch, schemaConfig } = require("./comunicationsModels")
+const { schemaPost, schemaPatch, schemaConfig } = require("./comunicationsModels")
 const validator = require('express-joi-validation').createValidator({})
 const multer = require('multer')
 const {showComunication} = require("../../../clientSocket")
