@@ -24,7 +24,6 @@ async function getComunications() {
     try {
         const res = await fetch("http://localhost:3100/comunications")
         comunications = await res.json()
-        console.log(comunications)
         return comunications
     } catch (error) {
         console.log(error);
@@ -117,10 +116,10 @@ function cardCreationMode() {
 }
 
 async function createCard(newCard) {
-    console.log('Creando', newCard)
-    //--> iniciar ruedita
-
     let inputsToSend = newCard.closest('.comunicationCard')
+
+    let thisLoader = inputsToSend.querySelector('.loader')
+    thisLoader.style.setProperty("display", "block", "important")
 
     let title = inputsToSend.querySelector('#title').value
     let paragraph = inputsToSend.querySelector('#paragraph').value
@@ -136,12 +135,14 @@ async function createCard(newCard) {
     formData.append("show_new_badge_until", show_new_badge_untilParsed)
     formData.append("media", fileToUpload)
 
-    //console.log("File:",fileToUpload)
-
     const check = validateFile(fileToUpload)
     if (!check[1]){
-        //sweet Alert
-        console.log(check[0])
+        Swal.fire(
+            'Error',
+            'No se pueden subir comunicados con archivos de video mayores a 100MB',
+            'error'
+        )
+
         return
     }
 
@@ -150,13 +151,17 @@ async function createCard(newCard) {
         body: formData
     }
 
-    console.log(title, paragraph, show_new_badge_until)
     let url = "http://localhost:3100/comunications"
     if (newCard.getAttribute("data-cardCreation") == "true") {
 
         const answ = await makeFetch(url, options)
         const comunicationData = await getComunications()
         printComunicationsCards(comunicationData)
+        Swal.fire(
+            'Creado Exitosamente',
+            'Se ha creado el comunicado exitosamente',
+            'success'
+        )
         addComunication.style.display = 'flex'
 
     }
@@ -168,7 +173,6 @@ async function createCard(newCard) {
 /* DELETE COMUNICATION */
 
 async function deleteComunication(e) {
-    console.log(e.target.id)
 
     const result = await Swal.fire({
         title: 'Estas seguro que quieres borrar',
@@ -202,12 +206,11 @@ async function deleteComunication(e) {
 
         Swal.fire(
             'Borrado',
-            'Borrado con exitosamente',
+            'Borrado exitosamente',
             'success'
         )
 
     } catch (err) {
-        console.log(err)
         Swal.fire(
             'Error',
             'Se produjo un error',

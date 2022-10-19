@@ -20,10 +20,14 @@ function printInModal(modalMedia) {
     const title = document.createElement("p")
     const modalText = document.createElement("p")
     title.innerText = "Subir una Imagen"
-    modalText.innerText = "Los imagenes deben tener una resolucion de 400 x 400"
+    modalText.innerText = "Los archivos de imagenes y videos deben tener un tamaño recomendado de 800px x 482px (aspecto 16:9)."
+
+    const modalText2 = document.createElement("p")
+    modalText2.innerText = 'Los videos deben tener un peso menor a 100MB.'
 
     textContainer.appendChild(title);
     textContainer.appendChild(modalText)
+    textContainer.appendChild(modalText2)
     modalContent.appendChild(textContainer);
     modalContent.appendChild(iconContainer)
 
@@ -41,7 +45,6 @@ function printInModal(modalMedia) {
     acceptButton.addEventListener("click", () => {
         outerModal.style.display = "none"
         fileToUpload = inputFile.files[0]
-        console.log (fileToUpload)
         if (fileToUpload.name.includes("png")) {
             currentCardImageEdition.poster = createObjectURL(fileToUpload)
             currentCardImageEdition.src = ""
@@ -91,7 +94,6 @@ async function printIconsModal() {
             })
             outerModal.style.display = "none"
             currentCardImageEdition.src = comunications.at(-1).media.filename
-            console.log(originalMedia, mediaUrl)
         })
 
         iconContainer.appendChild(iconButton)
@@ -115,10 +117,14 @@ multimediaNav.addEventListener('click', function () {
     const title = document.createElement("p")
     const modalText = document.createElement("p")
     title.innerText = "Subir una Imagen"
-    modalText.innerText = "Los imagenes deben tener una resolucion de 400 x 400"
+    modalText.innerText = "Los archivos de imagenes y videos deben tener un tamaño recomendado de 800px x 482px (aspecto 16:9)."
+    const modalText2 = document.createElement("p")
+    modalText2.innerText = 'Los videos deben tener un peso menor a 100MB.'
+
 
     textContainer.appendChild(title);
     textContainer.appendChild(modalText)
+    textContainer.appendChild(modalText2)
     modalContent.appendChild(textContainer);
     modalContent.appendChild(iconContainer)
 

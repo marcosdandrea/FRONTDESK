@@ -362,6 +362,8 @@
 .modalContent p {
     font-size: 0.9rem;
     color: #3C3C3B;
+    text-align: center;
+    margin: 5px;
 }
 
 .modalContent p:first-child {
@@ -472,12 +474,37 @@
 }
 
 
+/* LOADER */
+
+.loader {
+    display: none !important;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    z-index: 10;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 /* MOBILE */
 
 @media (max-width: 992px) {
 
-    #sectionTitle{
+    #sectionTitle {
         justify-content: center;
     }
 
@@ -564,7 +591,7 @@
         margin-top: 3rem;
     }
 
-    .modalContainerMedia{
-            width: 90vw;
+    .modalContainerMedia {
+        width: 90vw;
     }
 }

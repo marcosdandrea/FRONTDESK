@@ -20,14 +20,12 @@ function switchInputEditMode(e, mode){
 
     //edit mode
     if (mode == "html"){
-        console.log ("edit mode:", e.target.id)
         content = e.target.innerHTML
         e.target.textContent = content
         e.target.classList.add("process")
 
     //view mode
     }else{
-        console.log ("view mode:", e.target.id)
         e.target.innerHTML = e.target.textContent
         e.target.classList.remove("process")
         sendConfig()
@@ -69,7 +67,6 @@ async function sendConfig() {
 
     try{
         await fetch("http://localhost:3100/comunications/config", options)
-        console.log ("Configurations saved!")
     }catch(err){
         console.log ("Error saving configuration: ", err.message)
     }

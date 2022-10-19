@@ -6,7 +6,6 @@ import {
 } from './comunications.validations.js'
 
 function printComunicationsCards(data) {
-    //console.log("Print this", data)
 
     comunicationsPanel.innerHTML = "";
 
@@ -63,8 +62,12 @@ function printComunicationsCards(data) {
         comunicationCard.setAttribute('data-CardCreation', "false")
         cardImage.addEventListener('click', openModal)
 
+        const loader = document.createElement('span')
+        loader.classList = 'loader'
+
 
         /* Checkear si agregar el input oculto */
+        comunicationMediaContainer.appendChild(loader)
         comunicationMediaContainer.appendChild(cardImage)
         comunicationCard.appendChild(comunicationMediaContainer)
 
@@ -152,20 +155,23 @@ function printComunicationsCards(data) {
     });
 
     for (let i = 0; i < comunicationInputs.length; i++) {
+        comunicationInputs[i].addEventListener('focus', () => {
+            comunicationInputs[i].classList.add("process")
+        })
         comunicationInputs[i].addEventListener('change', waitToSend)
     }
 }
 
 async function waitToSend() {
-
     if (sender) clearTimeout(sender);
     sender = setTimeout(await editCard(this), delayToSend)
+
 
 }
 async function editCard(selectedInput) {
 
+    selectedInput.classList.remove("process")
     let inputsToSend = selectedInput.closest('.comunicationCard')
-    console.log("This input to send:", inputsToSend)
 
     let title = inputsToSend.querySelector('#title').value
     let paragraph = inputsToSend.querySelector('#paragraph').value
@@ -178,8 +184,6 @@ async function editCard(selectedInput) {
 
     /* VALIDACION */
     if (!validateFields(title, paragraph)) return
-
-    console.log(fileToUpload)
 
     const options = {
         method: "PATCH",
@@ -207,9 +211,7 @@ async function editCard(selectedInput) {
 
     if (inputsToSend.getAttribute("data-cardCreation") == "false") {
         let url = "http://localhost:3100/comunications"
-        console.log("Sending to server", options)
         const answ = await makeFetch(url, options)
-        console.log(answ)
     }
 
 
@@ -221,11 +223,3 @@ async function editCard(selectedInput) {
 export {
     printComunicationsCards
 }
-
-
-
-/* 
-    let url = "http://localhost:3100/comunications"
-    console.log("Sending to server", options)
-    const answ = await makeFetch(url, options)
-    console.log(answ) */
