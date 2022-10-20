@@ -86,7 +86,6 @@ function cardCreationMode() {
     const oldCards = document.querySelectorAll('.comunicationCard:not(:last-child)')
 
 
-
     newComunicationCard.classList = 'comunicationCard process'
     newComunicationCard.setAttribute('data-CardCreation', "true")
     newCardImage.setAttribute('data-CardCreation', "true")

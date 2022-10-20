@@ -13,11 +13,6 @@ function printComunicationsCards(data) {
 
     data.forEach(comunication => {
 
-        /*
-        let parsedDate = Date.parse(comunication.showNewBadgeUntil)
-        const dateForInput = new Date(parsedDate).toLocaleDateString('en-ca')
-        const today = new Date().toLocaleDateString('en-ca')
-        */
 
         const today = new Date().toLocaleDateString('en-ca')
         const comunicationExpiration = Date.parse(comunication.comunicationExpiration)
@@ -135,9 +130,19 @@ function printComunicationsCards(data) {
         comunicationDateContainer.appendChild(dateDiv)
         dateDiv.appendChild(dateTitle)
         dateDiv.appendChild(dateInput)
+
+        if (comunicationExpirationDate <= today) {
+            console.log("Checkea fecha")
+            dateInput.style.border = '1px solid red';
+            dateInput.classList.add('expirated')
+
+        }
+
         /*---------------*/
 
         /* Card Options */
+
+        
         const cardOptionsContainer = document.createElement('div')
         cardOptionsContainer.className = 'cardOptionsContainer'
         const buttonPreview = document.createElement('button')
@@ -154,17 +159,26 @@ function printComunicationsCards(data) {
         cardOptionsContainer.appendChild(buttonPreview)
         cardOptionsContainer.appendChild(deleteButton)
 
+
         /* ------------ */
 
     });
 
     for (let i = 0; i < comunicationInputs.length; i++) {
+
+
+        comunicationInputs[i].addEventListener('input', ()=>{
+            comunicationInputs[i].classList.add("process")
+
+            if (comunicationInputs[i].value == comunicationInputs[i].defaultValue) {
+                comunicationInputs[i].classList.remove("process")
+            }
+        })
         comunicationInputs[i].addEventListener('change', waitToSend)
     }
 }
 
 async function waitToSend() {
-    this.classList.add("process")
     if (sender) clearTimeout(sender);
     sender = setTimeout(await editCard(this), delayToSend)
 
@@ -197,7 +211,6 @@ async function editCard(selectedInput) {
         id: comunicationID
     }
 
-    console.log (data)
 
     /* VALIDACION */
     if (!validateFields(title, paragraph)) return
@@ -230,7 +243,7 @@ async function editCard(selectedInput) {
     if (inputsToSend.getAttribute("data-cardCreation") == "false") {
         let url = "http://localhost:3100/comunications"
         const answ = await makeFetch(url, options)
-        selectedInput.classList.remove("process") 
+        selectedInput.classList.remove("process")  
     }
 
 

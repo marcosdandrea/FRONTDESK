@@ -649,7 +649,7 @@ async function addVideoFile(event) {
                     }
                 }
             })
-z
+
             if (!ans.value) return
             //parseDatabase
             selectedMedia.fileName = filename.name;

@@ -5,6 +5,7 @@ async function openModal(e) {
         currentCardImageEdition = e.target
         printInModal()
         outerModal.style.display = 'flex'
+        modalContent.style.backgroundImage = 'url(../assets/icons/uploadIcon.png)'
     }
 
 }
@@ -92,6 +93,10 @@ async function printIconsModal() {
                 filename: mediaUrl,
                 originalName: originalMedia
             })
+
+            currentCardImageEdition.poster = mediaUrl
+            currentCardImageEdition.src = ""
+
             outerModal.style.display = "none"
             currentCardImageEdition.src = comunications.at(-1).media.filename
         })
