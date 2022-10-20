@@ -155,14 +155,12 @@ function printComunicationsCards(data) {
     });
 
     for (let i = 0; i < comunicationInputs.length; i++) {
-        comunicationInputs[i].addEventListener('focus', () => {
-            comunicationInputs[i].classList.add("process")
-        })
         comunicationInputs[i].addEventListener('change', waitToSend)
     }
 }
 
 async function waitToSend() {
+    this.classList.add("process")
     if (sender) clearTimeout(sender);
     sender = setTimeout(await editCard(this), delayToSend)
 
@@ -170,7 +168,7 @@ async function waitToSend() {
 }
 async function editCard(selectedInput) {
 
-    selectedInput.classList.remove("process")
+    
     let inputsToSend = selectedInput.closest('.comunicationCard')
 
     let title = inputsToSend.querySelector('#title').value
@@ -212,6 +210,7 @@ async function editCard(selectedInput) {
     if (inputsToSend.getAttribute("data-cardCreation") == "false") {
         let url = "http://localhost:3100/comunications"
         const answ = await makeFetch(url, options)
+        selectedInput.classList.remove("process") 
     }
 
 
