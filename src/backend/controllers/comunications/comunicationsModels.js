@@ -16,7 +16,7 @@ const schemaPost = Joi.object({
 const schemaPatch = Joi.object({
   title: Joi.string().required(),
   paragraph: Joi.string().required(),
-  showNewBadgeUntil: Joi.date().format("DD/MM/YYYY").required().greater("now"),
+  showNewBadgeUntil: Joi.date().format("DD/MM/YYYY").required(),
   comunicationExpiration: Joi.date().format("DD/MM/YYYY").required().greater("now"),
   id: Joi.string().required().guid()
 })
