@@ -52,14 +52,14 @@ addComunication.addEventListener('click', function () {
     tomorrow.setDate(tomorrow.getDate() + 2)
     const tomorrowFormat = tomorrow.toLocaleDateString('en-ca')
     const splitedDate = tomorrowFormat.split('-')
-    const show_new_badge_untilParsed = splitedDate[0] + '-' + splitedDate[1] + '-' + splitedDate[2]
+    const showNewBadgeUntilParsed = splitedDate[0] + '-' + splitedDate[1] + '-' + splitedDate[2]
 
     creatingComunication = true;
 
     tempData = {
         title: "",
         paragraph: "",
-        show_new_badge_until: show_new_badge_untilParsed,
+        showNewBadgeUntil: showNewBadgeUntilParsed,
         media: {
             filename: "http://localhost:3100/assets/icons/comunications/videoNotAvailable.png",
             originalName: "videoNotAvailable.png"
@@ -123,16 +123,16 @@ async function createCard(newCard) {
 
     let title = inputsToSend.querySelector('#title').value
     let paragraph = inputsToSend.querySelector('#paragraph').value
-    let show_new_badge_until = inputsToSend.querySelector('#show_new_badge_until').value
+    let showNewBadgeUntil = inputsToSend.querySelector('#showNewBadgeUntil').value
 
-    const splitedDate = show_new_badge_until.split('-')
-    const show_new_badge_untilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
+    const splitedDate = showNewBadgeUntil.split('-')
+    const showNewBadgeUntilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
     const comunicationID = inputsToSend.id
 
     const formData = new FormData()
     formData.append("title", title)
     formData.append("paragraph", paragraph)
-    formData.append("show_new_badge_until", show_new_badge_untilParsed)
+    formData.append("showNewBadgeUntil", showNewBadgeUntilParsed)
     formData.append("media", fileToUpload)
 
     const check = validateFile(fileToUpload)

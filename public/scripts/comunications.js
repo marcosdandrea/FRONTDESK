@@ -55,7 +55,7 @@ function setupComunication(data) {
         const mediaExtension = mediaFilename.split(".").pop()
         media.innerHTML = ""
         paragraph.innerHTML = data.paragraph
-        const showNewBadgeUntil = new Date(data.show_new_badge_until)
+        const showNewBadgeUntil = new Date(data.showNewBadgeUntil)
         const today = new Date()
         if (today > showNewBadgeUntil) {
             newBadge.style.display = "none"

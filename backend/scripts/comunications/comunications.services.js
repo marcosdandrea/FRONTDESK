@@ -13,7 +13,7 @@ function printComunicationsCards(data) {
 
     data.forEach(comunication => {
 
-        let parsedDate = Date.parse(comunication.show_new_badge_until)
+        let parsedDate = Date.parse(comunication.showNewBadgeUntil)
         const dateFormated = new Date(parsedDate).toLocaleDateString('es-EN')
         const dateForInput = new Date(parsedDate).toLocaleDateString('en-ca')
         const today = new Date().toLocaleDateString('en-ca')
@@ -120,12 +120,12 @@ function printComunicationsCards(data) {
         dateTitle.innerText = 'Duracion de Novedad'
         const dateInput = document.createElement('input')
         dateInput.setAttribute("type", "date")
-        dateInput.setAttribute("name", "show_new_badge_until")
+        dateInput.setAttribute("name", "showNewBadgeUntil")
         dateInput.setAttribute("pattern", "\d{2}-\d{2}-\d{4}")
         dateInput.setAttribute("min", today)
         dateInput.setAttribute("value", dateForInput)
         dateInput.className = 'inputToSend'
-        dateInput.id = 'show_new_badge_until'
+        dateInput.id = 'showNewBadgeUntil'
 
         comunicationInputsContainer.appendChild(comunicationDateContainer)
         comunicationDateContainer.appendChild(dateDiv)
@@ -175,10 +175,10 @@ async function editCard(selectedInput) {
 
     let title = inputsToSend.querySelector('#title').value
     let paragraph = inputsToSend.querySelector('#paragraph').value
-    let show_new_badge_until = inputsToSend.querySelector('#show_new_badge_until').value
+    let showNewBadgeUntil = inputsToSend.querySelector('#showNewBadgeUntil').value
 
-    const splitedDate = show_new_badge_until.split('-')
-    const show_new_badge_untilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
+    const splitedDate = showNewBadgeUntil.split('-')
+    const showNewBadgeUntilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
     const comunicationID = inputsToSend.id
 
 
@@ -190,7 +190,7 @@ async function editCard(selectedInput) {
         body: JSON.stringify({
             title,
             paragraph,
-            show_new_badge_until: show_new_badge_untilParsed,
+            showNewBadgeUntil: showNewBadgeUntilParsed,
             id: comunicationID
         }),
         headers: {
