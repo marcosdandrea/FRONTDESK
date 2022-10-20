@@ -63,7 +63,8 @@ async function newComunication(req, res, next) {
         const paragraph = req.body.paragraph
         const media = req.body.media
         const showNewBadgeUntil = req.body.showNewBadgeUntil
-        const data = { title, paragraph, media, showNewBadgeUntil }
+        const comunicationExpiration = req.body.comunicationExpiration
+        const data = { title, paragraph, media, showNewBadgeUntil, comunicationExpiration }
         console.log("This is data:", data)
         const answ = await DAO.newComunication(data)
         await deleteHorphanMedia(await DAO.getComunication())

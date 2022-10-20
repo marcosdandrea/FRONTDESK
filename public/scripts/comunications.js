@@ -22,7 +22,17 @@ async function refreshData() {
         header.innerHTML = configurations.title
         footer.innerHTML = configurations.footer
 
-        comunications = await getData("http://localhost:3100/comunications")
+        const comunicationsRawData = await getData("http://localhost:3100/comunications")
+
+        comunications = comunicationsRawData.filter(entry => {
+            const today = new Date()
+            const expiration = new Date(entry.comunicationExpiration)
+            if (today >= expiration) {
+                console.log ("comunication id", entry.id, "expirated")
+                return
+            }
+            return entry
+        })
 
         setupTimers()
     }, 5000)
@@ -57,6 +67,7 @@ function setupComunication(data) {
         paragraph.innerHTML = data.paragraph
         const showNewBadgeUntil = new Date(data.showNewBadgeUntil)
         const today = new Date()
+
         if (today > showNewBadgeUntil) {
             newBadge.style.display = "none"
         } else {
@@ -83,7 +94,7 @@ function setupComunication(data) {
 
 let triggerComunication
 function setupTimers() {
-    if (comunications.length > 0 && !triggerComunication)
+    if (comunications?.length > 0 && !triggerComunication)
         triggerComunication = setTimeout(showNextComunication, parseInt(configurations.comunication_interval))
 }
 
@@ -98,6 +109,7 @@ function hideComunication() {
 
 let hideTimeout = undefined
 async function showNextComunication() {
+    console.log ("Showing comunication id", comunications[currIndexCom].id)
     await setupComunication(comunications[currIndexCom])
     comPanel.style.opacity = 1;
     showingComunication = 1

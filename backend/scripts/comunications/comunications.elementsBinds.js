@@ -22,6 +22,7 @@ let fileToUpload = undefined
 let creatingComunication = false;
 let tempData = undefined;
 let currentCardImageEdition = undefined
+let newBadgeDuration = 3
 
 
 //EVENT LISTENERS

@@ -123,16 +123,23 @@ async function createCard(newCard) {
 
     let title = inputsToSend.querySelector('#title').value
     let paragraph = inputsToSend.querySelector('#paragraph').value
-    let showNewBadgeUntil = inputsToSend.querySelector('#showNewBadgeUntil').value
 
-    const splitedDate = showNewBadgeUntil.split('-')
+    let comunicationExpiration = inputsToSend.querySelector('#comunicationExpiration').value
+    let splitedDate = comunicationExpiration.split('-')
+    const comunicationExpirationParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
+
+    let today = new Date()
+    let showNewBadgeUntil = new Date(today)
+    showNewBadgeUntil.setDate(showNewBadgeUntil.getDate() + newBadgeDuration)
+    const showNewBadgeUntilFormated = new Date(showNewBadgeUntil).toLocaleDateString('en-ca')
+    splitedDate = showNewBadgeUntilFormated.split('-')
     const showNewBadgeUntilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
-    const comunicationID = inputsToSend.id
 
     const formData = new FormData()
     formData.append("title", title)
     formData.append("paragraph", paragraph)
     formData.append("showNewBadgeUntil", showNewBadgeUntilParsed)
+    formData.append("comunicationExpiration", comunicationExpirationParsed)
     formData.append("media", fileToUpload)
 
     const check = validateFile(fileToUpload)

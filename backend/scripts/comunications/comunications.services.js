@@ -13,18 +13,22 @@ function printComunicationsCards(data) {
 
     data.forEach(comunication => {
 
+        /*
         let parsedDate = Date.parse(comunication.showNewBadgeUntil)
-        const dateFormated = new Date(parsedDate).toLocaleDateString('es-EN')
         const dateForInput = new Date(parsedDate).toLocaleDateString('en-ca')
         const today = new Date().toLocaleDateString('en-ca')
+        */
+
+        const today = new Date().toLocaleDateString('en-ca')
+        const comunicationExpiration = Date.parse(comunication.comunicationExpiration)
+        const comunicationExpirationDate = new Date(comunicationExpiration).toLocaleDateString('en-ca')  
+        console.log (comunication.comunicationExpiration, comunicationExpirationDate)   
 
         /*  */
         const comunicationCard = document.createElement('div')
         comunicationCard.className = 'comunicationCard'
         comunicationCard.id = comunication.id
         comunicationCard.setAttribute('data-CardCreation', "false")
-
-
 
         const cardNumber = document.createElement('div')
         cardNumber.className = 'cardNumber'
@@ -117,15 +121,15 @@ function printComunicationsCards(data) {
 
         const dateDiv = document.createElement('div');
         const dateTitle = document.createElement('p')
-        dateTitle.innerText = 'Duracion de Novedad'
+        dateTitle.innerText = 'Expiración'
         const dateInput = document.createElement('input')
         dateInput.setAttribute("type", "date")
-        dateInput.setAttribute("name", "showNewBadgeUntil")
+        dateInput.setAttribute("name", "comunicationExpiration")
         dateInput.setAttribute("pattern", "\d{2}-\d{2}-\d{4}")
         dateInput.setAttribute("min", today)
-        dateInput.setAttribute("value", dateForInput)
+        dateInput.setAttribute("value", comunicationExpirationDate)
         dateInput.className = 'inputToSend'
-        dateInput.id = 'showNewBadgeUntil'
+        dateInput.id = 'comunicationExpiration'
 
         comunicationInputsContainer.appendChild(comunicationDateContainer)
         comunicationDateContainer.appendChild(dateDiv)
@@ -155,32 +159,45 @@ function printComunicationsCards(data) {
     });
 
     for (let i = 0; i < comunicationInputs.length; i++) {
-        comunicationInputs[i].addEventListener('focus', () => {
-            comunicationInputs[i].classList.add("process")
-        })
         comunicationInputs[i].addEventListener('change', waitToSend)
     }
 }
 
 async function waitToSend() {
+    this.classList.add("process")
     if (sender) clearTimeout(sender);
     sender = setTimeout(await editCard(this), delayToSend)
 
 
 }
+
 async function editCard(selectedInput) {
 
-    selectedInput.classList.remove("process")
+    
     let inputsToSend = selectedInput.closest('.comunicationCard')
 
     let title = inputsToSend.querySelector('#title').value
     let paragraph = inputsToSend.querySelector('#paragraph').value
-    let showNewBadgeUntil = inputsToSend.querySelector('#showNewBadgeUntil').value
 
-    const splitedDate = showNewBadgeUntil.split('-')
+    let comunicationExpiration = inputsToSend.querySelector('#comunicationExpiration').value
+    let splitedDate = comunicationExpiration.split('-')
+    const comunicationExpirationParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
+
+    let showNewBadgeUntil = new Date().toLocaleDateString('en-ca')
+    splitedDate = showNewBadgeUntil.split('-')
     const showNewBadgeUntilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
+
     const comunicationID = inputsToSend.id
 
+    const data = {            
+        title,
+        paragraph,
+        showNewBadgeUntil: showNewBadgeUntilParsed,
+        comunicationExpiration: comunicationExpirationParsed,
+        id: comunicationID
+    }
+
+    console.log (data)
 
     /* VALIDACION */
     if (!validateFields(title, paragraph)) return
@@ -191,6 +208,7 @@ async function editCard(selectedInput) {
             title,
             paragraph,
             showNewBadgeUntil: showNewBadgeUntilParsed,
+            comunicationExpiration: comunicationExpirationParsed,
             id: comunicationID
         }),
         headers: {
@@ -212,6 +230,7 @@ async function editCard(selectedInput) {
     if (inputsToSend.getAttribute("data-cardCreation") == "false") {
         let url = "http://localhost:3100/comunications"
         const answ = await makeFetch(url, options)
+        selectedInput.classList.remove("process") 
     }
 
 
