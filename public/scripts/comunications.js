@@ -38,41 +38,47 @@ async function getData(URL) {
 }
 
 function setupComunication(data) {
-    if (!data) return
-    const title = document.getElementsByClassName("title")[0]
-    const media = document.getElementsByClassName("media")[0]
-    const paragraph = document.getElementsByClassName("paragraph")[0]
-    title.innerHTML = data.title
+    return new Promise( async(resolve, reject) => {
+        if (!data) reject()
+        const title = document.getElementsByClassName("title")[0]
+        const media = document.getElementsByClassName("media")[0]
+        const paragraph = document.getElementsByClassName("paragraph")[0]
+        title.innerHTML = data.title
 
-    const mediaFilename = data.media.filename
-    let mediaURL = undefined
-    if (mediaFilename.includes("/")) {
-        mediaURL = "url('" + mediaFilename + "')"
-    } else {
-        mediaURL = "url('../../media/comunications/" + mediaFilename + "')"
-    }
-    const mediaExtension = mediaFilename.split(".").pop()
-    media.innerHTML = ""
-    if (mediaExtension == "mp4") {
-        const videoPlayer = document.createElement("video")
-        videoPlayer.src = "../../media/comunications/" + mediaFilename
-        videoPlayer.muted = true
-        videoPlayer.autoplay = true
-        videoPlayer.loop = true
-        videoPlayer.play()
-        media.appendChild(videoPlayer)
-    } else {
-        media.style.backgroundImage = mediaURL
-    }
+        const mediaFilename = data.media.filename
+        let mediaURL = undefined
+        if (mediaFilename.includes("/")) {
+            mediaURL = "url('" + mediaFilename + "')"
+        } else {
+            mediaURL = "url('../../media/comunications/" + mediaFilename + "')"
+        }
+        const mediaExtension = mediaFilename.split(".").pop()
+        media.innerHTML = ""
+        paragraph.innerHTML = data.paragraph
+        const showNewBadgeUntil = new Date(data.show_new_badge_until)
+        const today = new Date()
+        if (today > showNewBadgeUntil) {
+            newBadge.style.display = "none"
+        } else {
+            newBadge.style.display = "block"
+        }
 
-    paragraph.innerHTML = data.paragraph
-    const showNewBadgeUntil = new Date(data.show_new_badge_until)
-    const today = new Date()
-    if (today > showNewBadgeUntil) {
-        newBadge.style.display = "none"
-    } else {
-        newBadge.style.display = "block"
-    }
+        if (mediaExtension == "mp4") {
+                const videoPlayer = document.createElement("video")
+                videoPlayer.src = "../../media/comunications/" + mediaFilename
+                videoPlayer.muted = true
+                videoPlayer.autoplay = true
+                videoPlayer.loop = true
+                await videoPlayer.play()
+                media.appendChild(videoPlayer)
+                resolve()
+        } else {
+            media.style.backgroundImage = mediaURL
+            resolve()
+        }
+
+
+    })
 }
 
 let triggerComunication
@@ -91,18 +97,18 @@ function hideComunication() {
 }
 
 let hideTimeout = undefined
-function showNextComunication() {
-    setupComunication(comunications[currIndexCom])
+async function showNextComunication() {
+    await setupComunication(comunications[currIndexCom])
     comPanel.style.opacity = 1;
     showingComunication = 1
     hideTimeout = setTimeout(hideComunication, parseInt(configurations.comunication_duration))
 }
 
-function showSpecificComunication(id) {
+async function showSpecificComunication(id) {
     const index = comunications.findIndex(entry => entry.id == id)
     if (index == -1) return
     console.log("Showing Comunication " + id)
-    setupComunication(comunications[index])
+    await setupComunication(comunications[index])
     comPanel.style.opacity = 1;
     clearTimeout(hideTimeout)
     hideTimeout = setTimeout(hideComunication, parseInt(configurations.comunication_duration))

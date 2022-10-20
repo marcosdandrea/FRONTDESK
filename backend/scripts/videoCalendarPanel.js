@@ -637,7 +637,7 @@ async function addVideoFile(event) {
     openFileDialog()
         .then(async (filename) => {
 
-            const text2 = `Ha seleccionado el archivo "${filename.name}". ¿Desea enviarlo al servidor ahora? <br><strong style="color:red">No cierre esta ventana hasta que la subida se complete</strong>.`;
+            const text2 = `Ha seleccionado el archivo "${filename.name}". ¿Desea enviarlo al servidor ahora? <br><strong style="color:red">No cierre la ventana del navegador hasta que la subida se complete</strong>.`;
             const ans = await Swal.fire({
                 title: 'Agregar nuevo video',
                 html: text2,
@@ -649,7 +649,7 @@ async function addVideoFile(event) {
                     }
                 }
             })
-
+z
             if (!ans.value) return
             //parseDatabase
             selectedMedia.fileName = filename.name;
