@@ -1,8 +1,9 @@
-async function makeFetch(URL, options) {
+
+async function makeFetch(URL, port, options) {
     return new Promise(async (resolve, reject) => {
         try {
-            const res = await fetch(URL, options)
-        /*     if (res.stats != 200) return */
+            const endpoint = serverULR + ":" + port + URL
+            const res = await fetch(endpoint, options)
             let parsedRes = res.json()
             resolve(parsedRes)
         } catch (err) {

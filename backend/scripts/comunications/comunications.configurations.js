@@ -1,3 +1,4 @@
+import makeFetch from './comunications.fetch.js'
 
 configFooter.addEventListener("focus", (e)=>{switchInputEditMode(e, "html")})
 configFooter.addEventListener("blur", (e)=>{switchInputEditMode(e, "text")})
@@ -35,8 +36,7 @@ function switchInputEditMode(e, mode){
 async function getConfig() {
 
     try {
-        const res = await fetch("http://localhost:3100/comunications/config")
-        configs = await res.json();
+        const configs = await makeFetch("/comunications/config", 3100)
         return configs
     } catch (error) {
         console.log(error);

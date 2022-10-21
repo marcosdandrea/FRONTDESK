@@ -13,11 +13,21 @@ const cors = require("cors")
 
 let currentLog = {};
 
+//CORS middleware
+const allowCrossDomain = function(req, res, next) {     
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+
 function init() {
 
     const port = 3100
     socket.initSocket(backendServer);
 
+    backendApp.use(allowCrossDomain);      
     backendApp.use(cors())
     backendApp.use(express.urlencoded({extended: true}))
     backendApp.use(express.json())

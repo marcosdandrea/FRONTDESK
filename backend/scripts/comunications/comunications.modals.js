@@ -66,11 +66,11 @@ function printInModal(modalMedia) {
 iconsNav.addEventListener('click', printIconsModal)
 
 async function printIconsModal() {
-    const url = "http://localhost:3100/assets/comunications/icons"
+    const url = "/assets/comunications/icons"
     const options = {
         method: "GET"
     }
-    const mediaRepository = await makeFetch(url, options)
+    const mediaRepository = await makeFetch(url, 3100, options)
     modalContent.innerHTML = "";
     const iconContainer = document.createElement("div")
     iconContainer.className = "iconContainer"

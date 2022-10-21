@@ -14,6 +14,8 @@ import {
 (async () => {
     const config = await getConfig()
     const comunications = await getComunications()
+    console.log (comunications)
+    if (!comunications) return
     printComunicationsCards(comunications)
     printConfig(config)
 })()
@@ -22,22 +24,12 @@ import {
 async function getComunications() {
 
     try {
-        const res = await fetch("http://localhost:3100/comunications")
-        comunications = await res.json()
+        const comunications = await makeFetch("/comunications", 3100)
         return comunications
     } catch (error) {
         console.log(error);
     }
 }
-
-async function waitToSend() {
-
-    if (sender) clearTimeout(sender);
-    sender = setTimeout(await editCard(this), delayToSend)
-
-}
-
-
 
 
 /* ADD COMUNICATION */
@@ -61,7 +53,7 @@ addComunication.addEventListener('click', function () {
         paragraph: "",
         showNewBadgeUntil: showNewBadgeUntilParsed,
         media: {
-            filename: "http://localhost:3100/assets/icons/comunications/videoNotAvailable.png",
+            filename: `${serverULR}:3100/assets/icons/comunications/videoNotAvailable.png`,
             originalName: "videoNotAvailable.png"
         }
     }
@@ -157,10 +149,9 @@ async function createCard(newCard) {
         body: formData
     }
 
-    let url = "http://localhost:3100/comunications"
     if (newCard.getAttribute("data-cardCreation") == "true") {
-
-        const answ = await makeFetch(url, options)
+        let url = "/comunications"
+        const answ = await makeFetch(url, 3100, options)
         const comunicationData = await getComunications()
         printComunicationsCards(comunicationData)
         Swal.fire(
@@ -205,8 +196,8 @@ async function deleteComunication(e) {
             }
         }
 
-        const url = "http://localhost:3100/comunications"
-        await makeFetch(url, options)
+        const url = "/comunications"
+        await makeFetch(url, 3100, options)
         const comunicationData = await getComunications()
         printComunicationsCards(comunicationData)
 

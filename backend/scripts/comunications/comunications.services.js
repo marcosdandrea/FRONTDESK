@@ -241,8 +241,8 @@ async function editCard(selectedInput) {
 
 
     if (inputsToSend.getAttribute("data-cardCreation") == "false") {
-        let url = "http://localhost:3100/comunications"
-        const answ = await makeFetch(url, options)
+        let url = "/comunications"
+        const answ = await makeFetch(url, 3100, options)
         selectedInput.classList.remove("process")  
     }
 

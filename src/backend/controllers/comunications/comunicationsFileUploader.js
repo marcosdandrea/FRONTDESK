@@ -77,7 +77,7 @@ function progress_middleware(req, res, next){
     req.on("data", (chunk) => {
         progress += chunk.length;
         const percentage = (progress / file_size) * 100;
-        //console.log("upload progress: " + percentage)
+        console.log("upload progress: " + percentage)
         if (percentage == 100){
             req.uploadCompleted = true;
             console.log("Upload Completed")
