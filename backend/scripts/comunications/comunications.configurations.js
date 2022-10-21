@@ -66,7 +66,7 @@ async function sendConfig() {
     }
 
     try{
-        await fetch("http://localhost:3100/comunications/config", options)
+        await fetch(`${serverULR}:3100/comunications/config`, options)
     }catch(err){
         console.log ("Error saving configuration: ", err.message)
     }

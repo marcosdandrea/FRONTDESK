@@ -23,7 +23,7 @@ let creatingComunication = false;
 let tempData = undefined;
 let currentCardImageEdition = undefined
 let newBadgeDuration = 3 //days
-const serverULR = "http://192.168.0.251"
+const serverULR = "http://192.168.0.4"
 
 
 //EVENT LISTENERS

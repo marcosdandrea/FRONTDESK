@@ -24,7 +24,7 @@
   function launchChrome() {
     ChromeLauncher.launch({
       port: 14687,
-      startingUrl: 'http://localhost:3000',
+      startingUrl: `${serverULR}:3000`,
       chromeFlags: ['--kiosk']
     }).then(chrome => {
       chrome.process.on('close', handleExit)

@@ -14,7 +14,6 @@ import {
 (async () => {
     const config = await getConfig()
     const comunications = await getComunications()
-    console.log (comunications)
     if (!comunications) return
     printComunicationsCards(comunications)
     printConfig(config)
@@ -37,8 +36,8 @@ async function getComunications() {
 const addComunication = document.getElementById('addComunication')
 const addComunicationModal = document.getElementsByClassName('addComunicationModal')[0]
 
-addComunication.addEventListener('click', function () {
-
+addComunication.addEventListener('click', async function () {
+    getComunications()
     const today = new Date();
     const tomorrow = new Date(today)
     tomorrow.setDate(tomorrow.getDate() + 2)
@@ -58,7 +57,11 @@ addComunication.addEventListener('click', function () {
         }
     }
 
+    console.log(tempData)
+    const comunicationData = await getComunications()
+    comunications = comunicationData
     comunications.push(tempData)
+
 
     printComunicationsCards(comunications)
     cardCreationMode()

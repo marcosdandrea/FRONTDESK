@@ -17,7 +17,6 @@ function printComunicationsCards(data) {
         const today = new Date().toLocaleDateString('en-ca')
         const comunicationExpiration = Date.parse(comunication.comunicationExpiration)
         const comunicationExpirationDate = new Date(comunicationExpiration).toLocaleDateString('en-ca')  
-        console.log (comunication.comunicationExpiration, comunicationExpirationDate)   
 
         /*  */
         const comunicationCard = document.createElement('div')
@@ -49,9 +48,9 @@ function printComunicationsCards(data) {
             }
         } else {
             if (filename.includes("png")) {
-                cardImage.poster = 'http://localhost:3000/media/comunications/' + filename
+                cardImage.poster = `${serverULR}:3000/media/comunications/` + filename
             } else {
-                cardImage.src = 'http://localhost:3000/media/comunications/' + filename
+                cardImage.src = `${serverULR}:3000/media/comunications/` + filename
             }
         }
         cardImage.className = 'cardMedia'
