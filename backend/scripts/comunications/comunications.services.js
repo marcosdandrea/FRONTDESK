@@ -48,9 +48,9 @@ function printComunicationsCards(data) {
             }
         } else {
             if (filename.includes("png")) {
-                cardImage.poster = `${serverULR}:3000/media/comunications/` + filename
+                cardImage.poster = `${serverURL}:3000/media/comunications/` + filename
             } else {
-                cardImage.src = `${serverULR}:3000/media/comunications/` + filename
+                cardImage.src = `${serverURL}:3000/media/comunications/` + filename
             }
         }
         cardImage.className = 'cardMedia'
@@ -102,7 +102,7 @@ function printComunicationsCards(data) {
         inputParagraph.className = 'inputToSend'
         inputParagraph.id = 'paragraph'
         inputParagraph.innerHTML = comunication.paragraph
-        inputParagraph.setAttribute("maxlength", 100)
+        inputParagraph.setAttribute("maxlength", 300)
 
         comunicationInputsContainer.appendChild(paragraphDiv)
         paragraphDiv.appendChild(paragraph)

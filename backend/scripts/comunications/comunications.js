@@ -52,7 +52,7 @@ addComunication.addEventListener('click', async function () {
         paragraph: "",
         showNewBadgeUntil: showNewBadgeUntilParsed,
         media: {
-            filename: `${serverULR}:3100/assets/icons/comunications/videoNotAvailable.png`,
+            filename: `${serverURL}:3100/assets/icons/comunications/videoNotAvailable.png`,
             originalName: "videoNotAvailable.png"
         }
     }
@@ -128,6 +128,7 @@ async function createCard(newCard) {
     const showNewBadgeUntilFormated = new Date(showNewBadgeUntil).toLocaleDateString('en-ca')
     splitedDate = showNewBadgeUntilFormated.split('-')
     const showNewBadgeUntilParsed = splitedDate[2] + '/' + splitedDate[1] + '/' + splitedDate[0]
+    console.log ("show new badge until", showNewBadgeUntilParsed)
 
     const formData = new FormData()
     formData.append("title", title)

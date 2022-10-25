@@ -81,7 +81,7 @@ async function printIconsModal() {
 
         const formatedMedia = mediaElement.replace(/\\/g, "/")
         const iconButton = document.createElement("img")
-        const mediaUrl = `${serverULR}:3100/${formatedMedia}`
+        const mediaUrl = `${serverURL}:3100/${formatedMedia}`
         iconButton.src = mediaUrl
 
         iconButton.addEventListener('click', () => {

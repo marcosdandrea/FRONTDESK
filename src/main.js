@@ -7,7 +7,8 @@
   const backendManager = require('./backend/backendManager')
   const logger = require("./logger")
   const cors = require('cors')
-
+  const serverURL = "http://192.168.11.100"  
+  
   socket.initSocket(clientServer);
   backendManager.init();  
 
@@ -24,7 +25,7 @@
   function launchChrome() {
     ChromeLauncher.launch({
       port: 14687,
-      startingUrl: `${serverULR}:3000`,
+      startingUrl: `${serverURL}:3000`,
       chromeFlags: ['--kiosk']
     }).then(chrome => {
       chrome.process.on('close', handleExit)

@@ -2,7 +2,7 @@
 async function makeFetch(URL, port, options) {
     return new Promise(async (resolve, reject) => {
         try {
-            const endpoint = serverULR + ":" + port + URL
+            const endpoint = serverURL + ":" + port + URL
             const res = await fetch(endpoint, options)
             let parsedRes = res.json()
             resolve(parsedRes)

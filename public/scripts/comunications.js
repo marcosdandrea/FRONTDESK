@@ -3,6 +3,7 @@ let comunications
 let configurations
 let currIndexCom = 0
 let showingComunication = false
+const serverURL = "http://192.168.11.100"
 
 document.addEventListener('DOMContentLoaded', async () => {
     refreshData()
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function refreshData() {
     setInterval(async () => {
         comPanel = document.querySelector(".comunications")
-        configurations = await getData(`${serverULR}:3100/comunications/config`)
+        configurations = await getData(`${serverURL}:3100/comunications/config`)
 
         configurations.comunication_interval *= 1000
         configurations.comunication_duration *= 1000
@@ -22,7 +23,7 @@ async function refreshData() {
         header.innerHTML = configurations.title
         footer.innerHTML = configurations.footer
 
-        const comunicationsRawData = await getData(`${serverULR}:3100/comunications`)
+        const comunicationsRawData = await getData(`${serverURL}:3100/comunications`)
 
         comunications = comunicationsRawData.filter(entry => {
             const today = new Date()

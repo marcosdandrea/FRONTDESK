@@ -67,7 +67,7 @@ async function newComunication(req, res, next) {
         const data = { title, paragraph, media, showNewBadgeUntil, comunicationExpiration }
         console.log("This is data:", data)
         const answ = await DAO.newComunication(data)
-        await deleteHorphanMedia(await DAO.getComunication())
+        //await deleteHorphanMedia(await DAO.getComunication())
         
         const intervalCheck = setInterval(() => {
             if (req.uploadCompleted) {

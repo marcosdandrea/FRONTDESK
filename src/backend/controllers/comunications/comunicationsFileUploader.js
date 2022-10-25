@@ -2,10 +2,11 @@
 const multer = require('multer')
 const crypto = require('crypto')
 const fs = require('fs')
+const modulePath = require("path")
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        const path = `public/media/comunications`
+        const path = modulePath.join(__dirname, "../../../../public/media/comunications")
         fs.mkdirSync(path, { recursive: true })
         return cb(null, path)
     },
@@ -45,6 +46,7 @@ function uploadFile(req, res, next) {
 
     upload(req, res, function (err) {
         //if req.file is undefined there's no file to upload
+        if (err) console.log (err)
         let media = {}
         if (req.file != undefined) {
             res.multerUploadCompleted = true
@@ -77,7 +79,7 @@ function progress_middleware(req, res, next){
     req.on("data", (chunk) => {
         progress += chunk.length;
         const percentage = (progress / file_size) * 100;
-        console.log("upload progress: " + percentage)
+        //console.log("upload progress: " + percentage)
         if (percentage == 100){
             req.uploadCompleted = true;
             console.log("Upload Completed")

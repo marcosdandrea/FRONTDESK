@@ -1,1 +1,35 @@
-{"users":[{"username":"j.garvie","password":"belgrano2299","permissions":"user"},{"username":"d.baez","password":"avenida5544","permissions":"user"},{"username":"m.catalani","password":"submarino7788","permissions":"user"},{"username":"f.scalabrini","password":"automatico14687","permissions":"user"},{"username":"s.mussari","password":"esperanza1583","permissions":"user"}],"log":[]}
+{
+    "users": [
+        {
+            "username": "j.garvie",
+            "password": "belgrano2299",
+            "permissions": "user"
+        },
+        {
+            "username": "d.baez",
+            "password": "avenida5544",
+            "permissions": "user"
+        },
+        {
+            "username": "m.catalani",
+            "password": "submarino7788",
+            "permissions": "user"
+        },
+        {
+            "username": "f.scalabrini",
+            "password": "automatico14687",
+            "permissions": "user"
+        },
+        {
+            "username": "s.mussari",
+            "password": "esperanza1583",
+            "permissions": "user"
+        },
+        {
+            "username": "c.gamarra",
+            "password": "morena01",
+            "permissions": "user"
+        }
+    ],
+    "log": []
+}
